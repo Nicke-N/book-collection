@@ -14,7 +14,7 @@ export default function BookDetail(props) {
         .then(data => {
             setCurrentBook(data)
             
-            document.getElementById('title') = data.title
+            document.getElementById('title').value = data.title
             document.getElementById('author').value = data.author
             document.getElementById('image').value = data.image
         })
