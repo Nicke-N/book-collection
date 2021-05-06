@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import './Login.css'
 import { login } from '../kit/api/User'
+import { DataContext } from '../context/DataContext'
 
 export default function Login() {
 
+    const { setAuthorized } = useContext(DataContext)
     const history = useHistory()
     const submit = async (event) =>  {
         event.preventDefault()
         const details = {username: event.target[0].value, password: event.target[1].value} 
 
         await login(details)
-        .then(
-            sessionStorage.getItem('token') ? 
-            history.push('/collection') : 
+        .then (
+            sessionStorage.getItem('token') ? () => {
+
+                setAuthorized(true)
+                history.push('/collection')
+            }
+             : 
             document.getElementById('error').innerHTML = sessionStorage.getItem('error')
         )
         
