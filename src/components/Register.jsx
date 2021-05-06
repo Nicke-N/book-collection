@@ -14,7 +14,7 @@ export default function Register() {
             email: event.target[3].value,
             description: event.target[4].value
         }
-        console.log(details)
+
 
         await register(details)
         .then(sessionStorage.getItem('registration') === 'User was created!' ? async () => {
