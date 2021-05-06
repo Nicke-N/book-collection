@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { editBook } from '../kit/api/Book'
+import { DataContext } from '../context/DataContext'
 
 export default function EditBook(props) {
-
+    console.log(props.data)
     var rating = null
-    const bookID = props.data._id
-
-    document.getElementById('title').value = props.data.title
-    document.getElementById('author').value = props.data.author
-    document.getElementById('series').value = props.data.series
-    document.getElementById('publisher').value = props.data.publisher
-    document.getElementById('image').value = props.data.image
+    const { currentBook } = useContext(DataContext)
+    const bookID = currentBook._id
+    const addInfo = () => {
+        
+        const title = document.getElementById('title')
+        if(title) {
+            title.value =currentBook.title
+            document.getElementById('author').value =currentBook.author
+            document.getElementById('series').value =currentBook.series
+            document.getElementById('publisher').value =currentBook.publisher
+            document.getElementById('image').value =currentBook.image
+        } 
+    }
 
     const updateBook = async () => {
         const title = document.getElementById('title').value
@@ -113,7 +120,10 @@ export default function EditBook(props) {
         }, 1000);
         
     }
-
+    
+    useEffect(() => {
+        addInfo()
+    }, [])
 
     return (
         <div>

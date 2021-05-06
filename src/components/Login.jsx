@@ -13,15 +13,19 @@ export default function Login() {
         const details = {username: event.target[0].value, password: event.target[1].value} 
 
         await login(details)
-        .then (
-            sessionStorage.getItem('token') ? () => {
-
+        .then(() => {
+            const token = sessionStorage.getItem('token')
+            
+            if (token) {
                 setAuthorized(true)
                 history.push('/collection')
+               
+            } else {
+                console.log(sessionStorage.getItem('error'))
+                document.getElementById('error').innerHTML = sessionStorage.getItem('error')
             }
-             : 
-            document.getElementById('error').innerHTML = sessionStorage.getItem('error')
-        )
+        
+        })      
         
     }
     return (

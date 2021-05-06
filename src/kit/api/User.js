@@ -11,8 +11,12 @@ export const register = async (details) => {
     }
 
     return await fetch('http://localhost:5000/user/register', user)
-                 .then(res => res.text())
-                 .then(data => sessionStorage.setItem('registration', data))
+                 .then(data => data.text())
+                 .then(res => {
+                     sessionStorage.setItem('registration', `${res}`)
+
+                     console.log(res)
+                 })
                  .catch(error => console.log(error))
 
 }
@@ -29,13 +33,15 @@ export const login = async (details) => {
     await fetch('http://localhost:5000/user/login', post)
         .then(data => data.json())
         .then(res => {
-            if (res === "Username doesn't exist!" || res === 'Wrong password!') {
+            console.log(res)
+            if (res.length > 40) {
+                sessionStorage.setItem('token', `Bearer ${res}`)
+                return
+            } else if (res.length > 20) {
                 sessionStorage.setItem('error', `${res}`)
                 return
             }
-
-            sessionStorage.setItem('token', `Bearer ${res}`)
-         
+            
         })
         .catch(error => console.log(error))
 
