@@ -27,7 +27,7 @@ export const login = async (details) => {
 
     await fetch('http://localhost:5000/user/login', post)
         .then(res => {
-            sessionStorage.setItem('token', res)
+            sessionStorage.setItem('token', `Bearer ${res}`)
             return 'Login successful!'
         })
         .catch(error => console.log(error))
