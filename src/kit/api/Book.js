@@ -44,14 +44,14 @@ export const editBook = async (bookID, newBook) => {
 
 }
 
-export const addBook = async (title, author, image) => {
+export const addBook = async (post) => {
     
         const book = {
           method: 'POST',
           headers: {
               'Content-type': 'application/json'
           },
-          body: image === '' ? JSON.stringify({title: title, author: author}) : JSON.stringify({title: title, author: author, image: image})
+          body: JSON.stringify(post)
         }
     
         await fetch('http://localhost:5000/collection/', book)
