@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react'
-import { editBook } from '../kit/api/Book'
+import { editBook, getBook } from '../kit/api/Book'
 import { DataContext } from '../context/DataContext'
 
 export default function EditBook(props) {
-    console.log(props.data)
+
     var rating = null
-    const { currentBook } = useContext(DataContext)
+    const { currentBook, authorized, setCurrentBook } = useContext(DataContext)
     const bookID = currentBook._id
     const addInfo = () => {
         
@@ -20,22 +20,34 @@ export default function EditBook(props) {
     }
 
     const updateBook = async () => {
-        const title = document.getElementById('title').value
-        const author = document.getElementById('author').value
-        const image = document.getElementById('image').value
-        const series = document.getElementById('series').value
-        const publisher = document.getElementById('publisher').value
-
         var book = {}
+        if (authorized) {
+            const title = document.getElementById('title').value
+            const author = document.getElementById('author').value
+            const image = document.getElementById('image').value
+            const series = document.getElementById('series').value
+            const publisher = document.getElementById('publisher').value
 
-        if (title.length > 0) book.title = title
-        if (author.length > 0) book.author = author
-        if (image.length > 0) book.image = image
-        if (series.length > 0) book.series = series
-        if (publisher.length > 0) book.publisher = publisher
-        if (rating) book.personalRating = rating
+            if (title.length > 0) book.title = title
+            if (author.length > 0) book.author = author
+            if (image.length > 0) book.image = image
+            if (series.length > 0) book.series = series
+            if (publisher.length > 0) book.publisher = publisher
+            
+        }
+        if (rating) {
+            book.personalRating = rating
+        } else {
+            book.personalRating = 0
+        }
 
         await editBook(bookID, book)
+
+        await getBook(bookID)
+            .then(res => res.json())
+            .then(data => setCurrentBook(data))
+
+        document.getElementById('simpleModal').style.display = 'none'
     }
     const addEventListeners = () => {
         for (let element = 0; element < HTMLcollection.length; element++) {
@@ -88,7 +100,7 @@ export default function EditBook(props) {
     const ratingClick = (event) => {
         const children = event.path[1].children
         const index = Array.from(children).indexOf(event.currentTarget)
-
+        console.log(index)
         for (let element = 0; element < HTMLcollection.length; element++) {
 
             HTMLcollection[element].removeEventListener('mouseover', ratingHover)   
@@ -96,7 +108,6 @@ export default function EditBook(props) {
 
         }
 
-        
         const redoImage = document.getElementById('redo-image')
 
         if(!redoImage) {
@@ -128,6 +139,7 @@ export default function EditBook(props) {
     return (
         <div>
             {props.data ?
+                authorized ?
                 <div>
                     
                     <p className='label'>Title</p>
@@ -148,7 +160,7 @@ export default function EditBook(props) {
                         <span className='fa fa-star icon'></span>
                         <span className='fa fa-star icon'></span>
                         <span className='fa fa-star icon'></span>
-                        <span className="fas fa-redo-alt small-icon"></span>
+                        
                     </div>
                     
 
@@ -156,7 +168,18 @@ export default function EditBook(props) {
                     
                 </div>
                 :
-                null
+                <div>
+                    <div id='ratingContainer'>
+                    <img className='fa small-icon' src='https://upload.wikimedia.org/wikipedia/commons/5/58/White_Circle.svg' />
+                        <span className='fa fa-star icon'></span>
+                        <span className='fa fa-star icon'></span>
+                        <span className='fa fa-star icon'></span>
+                        <span className='fa fa-star icon'></span>
+                        <span className='fa fa-star icon'></span>
+                    </div>
+                    <button onClick={updateBook}>Rate!</button>
+                </div>
+                : null
 
             }
         </div>

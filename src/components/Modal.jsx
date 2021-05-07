@@ -9,8 +9,6 @@ export default function Modal(props) {
         modalBtn = document.getElementById('tradeHistory')
         if (modalBtn)
         modalBtn.addEventListener('click', openModal);
-    
-        console.log(props.authorized)
         
         closeBtn = document.getElementsByClassName('closeBtn')[0]
         if (closeBtn)

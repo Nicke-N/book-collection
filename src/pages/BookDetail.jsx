@@ -8,7 +8,7 @@ import { DataContext } from '../context/DataContext'
 export default function BookDetail(props) {
     const bookID = props.match.params.id
     const history = useHistory()
-    const { authorized, setAuthorized,currentBook, setCurrentBook } = useContext(DataContext)
+    const { authorized, setAuthorized, currentBook, setCurrentBook } = useContext(DataContext)
 
     const fetchBook = async () => {
         if (sessionStorage.getItem('token')) setAuthorized(true)
@@ -26,15 +26,11 @@ export default function BookDetail(props) {
         var modal = document.getElementById('simpleModal');
         modal.style.display = 'flex';
     }
-    const guestRating = () => {
 
-    }
-
-    console.log(authorized)
     useEffect(() => {
         fetchBook()
     }, [])
-
+    console.log(currentBook)
     return (
         <div className='page-container'>
             {currentBook &&
@@ -57,9 +53,9 @@ export default function BookDetail(props) {
                     Personal Rating: {currentBook.personalRating}
                 </p>
                 <p className='detail'>
-                    Guests rating: {(currentBook.guestsRating / (currentBook.guestsRating === 0 ? 1 : currentBook.guestsRating)).toFixed(2)}
+                    Guests rating: {(currentBook.guestsRating / (currentBook.guests === 0 ? 1 : currentBook.guests) ).toFixed(2)}
                 </p>
-                <Modal data={currentBook} authorized />
+                <Modal data={currentBook} />
             </div>
                 )
             }
@@ -74,7 +70,7 @@ export default function BookDetail(props) {
                 : 
                 (
                     <>
-                        <button onClick={guestRating}>
+                        <button onClick={showModal}>
                             Rate it!
                         </button>
                     </>
