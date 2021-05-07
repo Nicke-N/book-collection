@@ -1,21 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import EditBook from './EditBook';
 import './Modal.css'
 
 export default function Modal(props) {
-    var modalBtn = document.getElementById('tradeHistory')
-    if (modalBtn)
-    modalBtn.addEventListener('click', openModal);
-
+   
+    var modal, closeBtn, modalBtn
+    useEffect(() => {
+        modalBtn = document.getElementById('tradeHistory')
+        if (modalBtn)
+        modalBtn.addEventListener('click', openModal);
+        
+        closeBtn = document.getElementsByClassName('closeBtn')[0]
+        if (closeBtn)
+        closeBtn.addEventListener('click', closeModal)
     
-    var closeBtn = document.getElementsByClassName('closeBtn')[0]
-    if (closeBtn)
-    closeBtn.addEventListener('click', closeModal)
-
-    var modal = document.getElementById('simpleModal')
-    if (modal)
-    window.addEventListener('click', outsideClick)
-
+        modal = document.getElementById('simpleModal')
+        if (modal)
+        window.addEventListener('click', outsideClick)
+    
+    }, [])
 
     function openModal() {
 

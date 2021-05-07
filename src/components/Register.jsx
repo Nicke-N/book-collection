@@ -17,10 +17,17 @@ export default function Register() {
 
 
         await register(details)
-        .then(sessionStorage.getItem('registration') === 'User was created!' ? async () => {
-            await login({username: details.username, password: details.password})
-            .then(history.push('/collection'))
-        } : document.getElementById('error').innerHTML = 'User already exists!')
+        .then( async () => {
+            const registration = sessionStorage.getItem('registration')
+            if (registration === 'User was created!' ) {
+                await login({username: details.username, password: details.password})
+                .then(history.push('/collection'))
+            } else {
+                console.log(registration)
+                document.getElementById('error').innerHTML = registration
+            }
+            
+        })
 
     }
 
