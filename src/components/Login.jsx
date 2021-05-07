@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import './Login.css'
 import { login } from '../kit/api/User'
 import { DataContext } from '../context/DataContext'
-
+import { authenticated } from '../kit/Functions'
 export default function Login() {
 
     const { setAuthorized } = useContext(DataContext)
@@ -14,9 +14,9 @@ export default function Login() {
 
         await login(details)
         .then(() => {
-            const token = sessionStorage.getItem('token')
             
-            if (token) {
+            
+            if (authenticated()) {
                 setAuthorized(true)
                 history.push('/collection')
                

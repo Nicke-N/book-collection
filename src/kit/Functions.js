@@ -1,0 +1,1 @@
+export const authenticated = () => sessionStorage.getItem('token') ? console.log(sessionStorage.getItem('token')) : false

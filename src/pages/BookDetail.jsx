@@ -4,6 +4,7 @@ import { getBook, deleteBook } from '../kit/api/Book'
 import './BookDetail.css'
 import Modal from '../components/Modal'
 import { DataContext } from '../context/DataContext'
+import { authenticated } from '../kit/Functions'
 
 export default function BookDetail(props) {
     const bookID = props.match.params.id
@@ -11,7 +12,7 @@ export default function BookDetail(props) {
     const { authorized, setAuthorized, currentBook, setCurrentBook } = useContext(DataContext)
 
     const fetchBook = async () => {
-        if (sessionStorage.getItem('token')) setAuthorized(true)
+        if (authenticated()) setAuthorized(true)
         await getBook(bookID)
             .then(res => res.json())
             .then(data => setCurrentBook(data))
