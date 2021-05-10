@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react'
-import EditBook from './EditBook';
-import EditProfile from './EditProfile';
+import React, { useEffect, useContext } from 'react'
+import EditBook from './EditBook'
+import EditProfile from './EditProfile'
 import './Modal.css'
+import RemoveUser from './RemoveUser'
+import { closeModal, showModal } from '../kit/Functions'
+import { DataContext } from '../context/DataContext'
 
 export default function Modal(props) {
    
+    const { setRemove } = useContext(DataContext)
     var modal, closeBtn, modalBtn
 
     useEffect(() => {
         modalBtn = document.getElementById('tradeHistory')
         if (modalBtn)
-        modalBtn.addEventListener('click', openModal);
+        modalBtn.addEventListener('click', showModal);
         
         closeBtn = document.getElementsByClassName('closeBtn')[0]
         if (closeBtn)
@@ -22,21 +26,13 @@ export default function Modal(props) {
     
     }, [])
 
-    function openModal() {
-
-        modal.style.display = 'flex';
-    }
-
-    function closeModal() {
-
-        modal.style.display = 'none'
-    }
-
-    function outsideClick(e) {
-
+    const outsideClick = (e) => {
+       
         if (e.target === modal) {
- 
-            modal.style.display = 'none';
+            console.log('hmm')
+            setRemove(false)
+            closeModal()
+            
         }
     }
     return (
@@ -46,7 +42,9 @@ export default function Modal(props) {
                     <div className="modal-header">
                         <span className="closeBtn"> x </span>
                         <h2 className="modal-title">
-                            {props.data && props.data.title ?
+                            {props.remove ?
+                                'Remove user'
+                                : props.data && props.data.title ?
                                 'Edit book details'
                                 : props.data && props.data.username ?
                                 'Edit user details'
@@ -55,7 +53,9 @@ export default function Modal(props) {
                             </h2>
                     </div>
                     <div className="modal-body">
-                        {props.data && props.data.title ? 
+                        {props.remove ? 
+                            <RemoveUser />
+                            : props.data && props.data.title ? 
                             <EditBook data={props.data} />
                             : props.data && props.data.username ?
                             <EditProfile />
