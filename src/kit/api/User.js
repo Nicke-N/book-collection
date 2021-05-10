@@ -14,8 +14,6 @@ export const register = async (details) => {
                  .then(data => data.text())
                  .then(res => {
                      sessionStorage.setItem('registration', `${res}`)
-
-                     console.log(res)
                  })
                  .catch(error => console.log(error))
 
@@ -33,7 +31,7 @@ export const login = async (details) => {
     await fetch('http://localhost:5000/user/login', post)
         .then(data => data.json())
         .then(res => {
-            console.log(res)
+
             if (res.length > 40) {
                 sessionStorage.setItem('token', `Bearer ${res}`)
                 return
@@ -48,11 +46,13 @@ export const login = async (details) => {
 }
 
 
-export const getUserDetails = async () => {
+export const getUserDetails = async (username) => {
     const user = {
         method: 'GET',
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'token': sessionStorage.getItem('token'),
+            'user': username
         }
     }
 
@@ -71,7 +71,7 @@ export const updateUser = async (userID, details) => {
         body: JSON.stringify(details)
     }
 
-    return await fetch(`http:/localhost:5000/user/${userID}`, user)
+    return fetch(`http://localhost:5000/user/${userID}`, user)
 
 }
 
@@ -85,6 +85,6 @@ export const deleteUser = async (userID) => {
         }
     }
 
-    return await fetch(`http:/localhost:5000/user/${userID}`, user)
+    return fetch(`http://localhost:5000/user/${userID}`, user)
 
 }

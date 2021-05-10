@@ -6,7 +6,8 @@ export const DataProvider = ({children}) => {
     const [ collection, setCollection ] = useState({})
     const [ authorized, setAuthorized ] = useState(null)
     const [ currentBook, setCurrentBook ] = useState(null)
-
+    const [ userDetails, setUserDetails] = useState(null)
+    const [ remove, setRemove ] = useState(false)
     return (
     <DataContext.Provider
       value={{
@@ -15,7 +16,11 @@ export const DataProvider = ({children}) => {
         authorized, 
         setAuthorized,
         currentBook, 
-        setCurrentBook
+        setCurrentBook,
+        userDetails,
+        setUserDetails,
+        remove, 
+        setRemove
       }}
     >
       {children}
