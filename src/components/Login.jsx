@@ -8,6 +8,7 @@ export default function Login() {
 
     const { setAuthorized } = useContext(DataContext)
     const history = useHistory()
+
     const submit = async (event) =>  {
         event.preventDefault()
         const details = {username: event.target[0].value, password: event.target[1].value} 
@@ -26,8 +27,8 @@ export default function Login() {
             }
         
         })      
-        
     }
+
     return (
         <div>
             <div id='error'></div>

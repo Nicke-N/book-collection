@@ -1,0 +1,12 @@
+.profile-btn {
+    background-color: white;
+    border: none;
+}
+.profile-icon {
+    width: 2vw;
+    height: 2vw;
+}
+.profile-icon:hover {
+    width: 2.5vw;
+    height: 2.5vw;
+}

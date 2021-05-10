@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import EditBook from './EditBook';
+import EditProfile from './EditProfile';
 import './Modal.css'
 
 export default function Modal(props) {
    
     var modal, closeBtn, modalBtn
+
     useEffect(() => {
         modalBtn = document.getElementById('tradeHistory')
         if (modalBtn)
@@ -25,13 +27,11 @@ export default function Modal(props) {
         modal.style.display = 'flex';
     }
 
-
     function closeModal() {
 
         modal.style.display = 'none'
     }
 
-  
     function outsideClick(e) {
 
         if (e.target === modal) {
@@ -45,10 +45,24 @@ export default function Modal(props) {
                 <div className="modal-content">
                     <div className="modal-header">
                         <span className="closeBtn"> x </span>
-                        <h2 className="modal-title">Edit book details</h2>
+                        <h2 className="modal-title">
+                            {props.data && props.data.title ?
+                                'Edit book details'
+                                : props.data && props.data.username ?
+                                'Edit user details'
+                                : null
+                            }
+                            </h2>
                     </div>
                     <div className="modal-body">
-                    <EditBook data={props.data} />
+                        {props.data && props.data.title ? 
+                            <EditBook data={props.data} />
+                            : props.data && props.data.username ?
+                            <EditProfile />
+                            :
+                            null
+                        }
+                        
                     </div>
                     <div className="modal-footer">
                         

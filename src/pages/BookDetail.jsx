@@ -4,7 +4,7 @@ import { getBook, deleteBook } from '../kit/api/Book'
 import './BookDetail.css'
 import Modal from '../components/Modal'
 import { DataContext } from '../context/DataContext'
-import { authenticated } from '../kit/Functions'
+import { authenticated, showModal } from '../kit/Functions'
 
 export default function BookDetail(props) {
     const bookID = props.match.params.id
@@ -23,15 +23,11 @@ export default function BookDetail(props) {
         await deleteBook(bookID)
             .then(history.push('/collection'))
     }
-    const showModal = () => {
-        var modal = document.getElementById('simpleModal');
-        modal.style.display = 'flex';
-    }
+    
 
     useEffect(() => {
         fetchBook()
     }, [])
-    console.log(currentBook)
     return (
         <div className='page-container'>
             {currentBook &&
