@@ -9,13 +9,13 @@
 
 #details-container {
     display: grid;
-    grid-template-areas:    'image title            title            empty1'
+    grid-template-areas:    'image title            title            back'
                             'image personalRating   personalRating   empty1'
                             'image guestsRating     guestsRating     empty1'
                             'image author           author           empty1'
                             'image publisher        publisher        empty1'
                             'image series           series           empty1'
-                            'image buttons          buttons          back'; 
+                            'image buttons          buttons          empty1'; 
 }
 .title {
     grid-area: title;
@@ -36,7 +36,12 @@
     grid-area: series;
 }
 .buttonContainer {
-    grid-area: buttons
+    grid-area: buttons;
+    /* display: grid;
+    grid */
+}
+.guest-rate-btn {
+    margin-left: 12%;
 }
 .detail-image {
     height: 100vh;

@@ -99,9 +99,9 @@ export default function BookDetail(props) {
                             :
                             (
                                 <div className='buttonContainer'>
-                                    <button onClick={showModal}>
+                                    <button className='accept-btn guest-rate-btn' onClick={showModal}>
                                         Rate it!
-                        </button>
+                                    </button>
                                 </div>
                             )
                         }
