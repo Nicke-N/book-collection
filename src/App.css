@@ -1,10 +1,11 @@
 .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
 }
 ul {
   list-style: none;
+}
+.page-container {
+  height: 100vh; 
 }
 .edit-info {
   display: flex;
@@ -19,7 +20,7 @@ input {
   height: 2vw;
   width: 9.55vw;
   font-size: 1vw;
-  border-radius: 10px;
+  border-radius: 1vw;
   outline: none;
   border: solid 0.1vw grey;
 }
@@ -32,18 +33,33 @@ label {
 }
 
 button {
-  border-radius: 10px;
+  border-radius: 1vw;
   border: none;
 }
 
 .accept-btn {
   background-color: rgb(20, 225, 20);
-  height: 2vw;
-  font-size: 1vw;
+  height: 3vw;
+  width: 10vw;
+  font-size: 1.5vw;
 }
+
 
 .accept-btn:hover {
   background-color: palegreen;
+}
+
+.reject-btn {
+  background-color: rgb(225, 20, 20);
+  height: 3vw;
+  width: 10vw;
+  font-size: 1.5vw;
+}
+
+.reject-btn:hover {
+  background-color: rgb(247, 149, 149);
+  height: 3vw;
+  font-size: 1.5vw;
 }
 
 .modal-btn {

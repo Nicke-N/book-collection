@@ -3,13 +3,56 @@
 }
 .small-icon {
     
-    width: 1.2vw;
+    width: 2vw;
     height: 1.2vw;
 }
-.fas {
-    height: 1.5vw;
+
+#details-container {
+    display: grid;
+    grid-template-areas:    'image title            title            empty1'
+                            'image personalRating   personalRating   empty1'
+                            'image guestsRating     guestsRating     empty1'
+                            'image author           author           empty1'
+                            'image publisher        publisher        empty1'
+                            'image series           series           empty1'
+                            'image buttons          buttons          back'; 
+}
+.title {
+    grid-area: title;
+}
+.author {
+    grid-area: author;
+}
+.personalRating {
+    grid-area: personalRating;
+}
+.guestsRating {
+    grid-area: guestsRating;
+}
+.publisher {
+    grid-area: publisher;
+}
+.series {
+    grid-area: series;
+}
+.buttonContainer {
+    grid-area: buttons
 }
 .detail-image {
-    height: 10vw;
-    width: 10vw;
+    height: 100vh;
+    width: 30vw;
+    grid-area: image;
+}
+.navBack {
+    grid-area: back;
+}
+.detail {
+    background-color: palegoldenrod;
+    border: solid 0.1vw palegoldenrod;
+    border-radius: 1vw;
+    width: 19.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2vw;
 }

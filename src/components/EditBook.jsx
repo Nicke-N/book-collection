@@ -132,7 +132,7 @@ export default function EditBook(props) {
             }
         }
     }
-    const HTMLcollection = document.getElementsByClassName('fa')
+    const HTMLcollection = document.getElementsByClassName('icon')
     if (HTMLcollection) {
         setTimeout(() => {
             addEventListeners()
