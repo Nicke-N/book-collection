@@ -18,28 +18,28 @@
   .modal-content{
     color: #b7b7b7;
     background-color: white;
-    width: 70%;
-    height: 70%;
+    width: 20vw;
+    height: 30vw;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
     border: solid 1px white;
-    border-radius: none;
-  }
-  
-  .modal-header h2, .modal-footer h3{
-    margin: 0;
+    border-radius: 1vw;
   }
   
   .modal-header{
     background: white;
-    padding: 15px;
     color: #b7b7b7;
-    border-radius: none;
+    border-radius: 1vw;
+    height: 20%;
     display: grid;
-    grid-template-areas: 'empty empty empty title empty1 empty1 close';
+    grid-template-areas:  'empty empty empty empty close'
+                          'empty1 empty1 title title title';
   }
   
   .modal-body{
-    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 80%;
   }
   
   .modal-footer{
@@ -48,17 +48,18 @@
     color: #b7b7b7;
     text-align: center;
     border: solid 1px white;
-    border-radius: none;
+    border-radius: 1vw;
   }
   
   .closeBtn{
-    font-size: 30px;
+    font-size: 1.5vw;
     color: #b7b7b7;
     float: right;
     grid-area: close;
   }
   .modal-title {
     grid-area: title;
+    font-size: 2vw;
   }
   
   .closeBtn:hover,.closeBtn:focus{
