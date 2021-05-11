@@ -3,6 +3,7 @@ import AddBook from '../components/AddBook'
 import BookCover from '../components/BookCover'
 import { DataContext } from '../context/DataContext'
 import { getCollection } from '../kit/api/Book'
+import './BookCollection.css'
 
 
 export default function BookCollection() {
@@ -21,7 +22,7 @@ export default function BookCollection() {
     }
 
     return (
-        <div>
+        <div id='collection-page'>
              <AddBook />
             {collection && Object.entries(collection).map((element) => {
             return <div key={element[1]._id}> 

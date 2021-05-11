@@ -1,38 +1,68 @@
 .App {
-  text-align: center;
+  height: 100%;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul {
+  list-style: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.page-container {
+  height: 100vh; 
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.edit-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-content: center;
+  height: 20vw;
+  width: 10vw;
 }
 
-.App-link {
-  color: #61dafb;
+input {
+  height: 2vw;
+  width: 9.55vw;
+  font-size: 1vw;
+  border-radius: 1vw;
+  outline: none;
+  border: solid 0.1vw grey;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.edit-detail {
+  margin-top: 0vw;
+}
+label {
+  font-size: 1vw;
+}
+
+button {
+  border-radius: 1vw;
+  border: none;
+}
+
+.accept-btn {
+  background-color: rgb(20, 225, 20);
+  height: 3vw;
+  width: 10vw;
+  font-size: 1.5vw;
+}
+
+
+.accept-btn:hover {
+  background-color: palegreen;
+}
+
+.reject-btn {
+  background-color: rgb(225, 20, 20);
+  height: 3vw;
+  width: 10vw;
+  font-size: 1.5vw;
+}
+
+.reject-btn:hover {
+  background-color: rgb(247, 149, 149);
+  height: 3vw;
+  font-size: 1.5vw;
+}
+
+.modal-btn {
+  position: relative;
+  top: 1vw;
 }

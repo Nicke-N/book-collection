@@ -64,9 +64,6 @@ export default function Modal(props) {
                         }
                         
                     </div>
-                    <div className="modal-footer">
-                        
-                    </div>
                 </div>
             </div>
         </div>
