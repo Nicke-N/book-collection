@@ -1,0 +1,89 @@
+.carousel {
+  margin: 20px;
+}
+.carousel__view {
+  width: calc((200px*4) + 22px);
+  height: 300px;
+  width: 80vw;
+  background: white;
+  box-shadow: 0 1px 8px #888888;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+.carousel__control {
+  position: absolute;
+  z-index: 1;
+  height: 300px;
+  width: 70px;
+  background-color: rgba(221, 221, 221, 0.5);
+  transition: background-color 0.3s;
+  display: table;
+}
+.carousel__control .icon {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.carousel__control:hover {
+  background-color: rgba(221, 221, 221, 0.8);
+}
+.carousel__control:first-of-type {
+  left: 0;
+}
+.carousel__control:last-of-type {
+  right: 0;
+}
+
+.product-list {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.3s;
+  transform: translateX(0px);
+  list-style: none;
+  height: 300px;
+  width: 80vw;
+}
+.product-list__item {
+  width: 20vw;
+  height: 300px;
+  display: inline-block;
+}
+
+.product {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.product span {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  font-size: 50px;
+}
+.product[data-slide="1"] {
+  background-color: blue;
+}
+.product[data-slide="2"] {
+  background-color: green;
+}
+.product[data-slide="3"] {
+  background-color: yellow;
+}
+.product[data-slide="4"] {
+  background-color: orange;
+}
+.product[data-slide="5"] {
+  background-color: red;
+}
+.product[data-slide="6"] {
+  background-color: pink;
+}
+
+body {
+  margin: 50px;
+}
+
+/*# sourceMappingURL=Carousel2.css.map */
