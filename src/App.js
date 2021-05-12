@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Register from './components/Register';
 import Login from './components/Login';
 import Profile from './pages/Profile';
+import BookList from './components/BookList'
 
 function App() {
   return (
@@ -13,12 +14,13 @@ function App() {
       <Header/>
 
       <Switch>
-
-          <Route path="/collection/:id" component={BookDetail}/>
-          <Route path="/collection" component={BookCollection}/>
-          <Route path="/profile" component={Profile} />
-          <Route path="/register" component={Register} />
-          <Route path="/" component={Login} />
+        
+      <Route exact path="/collection/:id" component={BookDetail}/>
+          <Route exact path="/collection" component={BookList}/>
+          <Route exact path="/latest" component={BookCollection}/>
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/" component={Login} />
       </Switch>
 
     </div>

@@ -61,3 +61,8 @@
     align-items: center;
     font-size: 1.2vw;
 }
+#return:hover {
+    transition: all;
+    transition-duration: 1s;
+    transform: scale(2)
+}

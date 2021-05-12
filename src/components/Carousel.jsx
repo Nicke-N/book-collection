@@ -59,7 +59,7 @@ export default function Carousel2() {
    
     return (
         <div>
-            <div className="carousel js-product-carousel">
+            <div id='carousel1' className="carousel js-product-carousel">
                 <h2>{currentMonth.toString().charAt(1) === '' ? 0 + currentMonth.toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">
                     <span className="carousel__control js-carousel-prev"><i className="icon">previous</i></span>
@@ -77,7 +77,7 @@ export default function Carousel2() {
                     </ul>
                 </div>
             </div>
-            <div className="carousel js-product-carousel">
+            <div id='carousel2' className="carousel js-product-carousel">
             <h2>{currentMonth.toString().charAt(1) === '' ? 0 + (currentMonth - 1).toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">
                     <span className="carousel__control js-carousel-prev"><i className="icon">previous</i></span>
@@ -95,7 +95,7 @@ export default function Carousel2() {
                     </ul>
                 </div>
             </div>
-            <div className="carousel js-product-carousel">
+            <div id='carousel3' className="carousel js-product-carousel">
             <h2>{currentMonth.toString().charAt(1) === '' ? 0 + (currentMonth - 2).toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">
                     <span className="carousel__control js-carousel-prev"><i className="icon">previous</i></span>

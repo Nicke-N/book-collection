@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import AddBook from '../components/AddBook'
 import BookCover from '../components/BookCover'
 import Carousel from '../components/Carousel'
@@ -9,7 +10,7 @@ import './BookCollection.css'
 
 
 export default function BookCollection() {
-    const { collection, setCollection } = useContext(DataContext)
+    const { setCollection } = useContext(DataContext)
     useEffect(() => {
         fetchData()   
         
@@ -25,7 +26,10 @@ export default function BookCollection() {
 
     return (
         <div id='collection-page'>
-            <h1>Books read latest month</h1>
+            <Link className='nav' to='/collection'>
+                Check out the full collection!
+            </Link>
+            <h1 className='latest-title'>Books read recently</h1>
             <Carousel />
          
         </div>

@@ -1,7 +1,19 @@
 .cover {
     width: 20vw;
-    height: 28vh;
+    height: 20vw;
+}
+.cover:hover {
+   
+        transition: all;
+        transition-duration: 1s;
+        transform: scale(1.1);
+    
 }
 .cover-title {
     z-index: 100;
+}
+a:hover {
+    transition: all;
+        transition-duration: 1s;
+        transform: scale(1.5);
 }

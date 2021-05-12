@@ -1,6 +1,31 @@
 #collection-page {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    align-items: center; */
+
+    display: grid;
+    grid-template-areas:    'title        title       nav'
+                            'empty    carousel1       empty1'
+                            'empty    carousel2       empty1'
+                            'empty    carousel3       empty1';
+}
+.nav {
+    border-radius: 1vw;
+    background-color: chartreuse;
+    grid-area: nav;
+    display: flex;
     align-items: center;
+    text-align: center;
+}
+#carousel1 {
+    grid-area: carousel1;
+}
+#carousel2 {
+    grid-area: carousel2;
+}
+#carousel3 {
+    grid-area: carousel3;
+}
+.latest-title {
+    grid-area: title;
 }

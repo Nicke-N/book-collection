@@ -3,7 +3,7 @@
 }
 .carousel__view {
   width: calc((200px*4) + 22px);
-  height: 35vh;
+  height: 23vw;
   width: 80vw;
   background: white;
   box-shadow: 0 1px 8px #888888;
@@ -14,7 +14,7 @@
 .carousel__control {
   position: absolute;
   z-index: 1;
-  height: 35vh;
+  height: 23vw;
   width: 5vw;
   background-color: rgba(221, 221, 221, 0.5);
   transition: background-color 0.3s;
