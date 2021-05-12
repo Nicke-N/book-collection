@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { getBook, deleteBook } from '../kit/api/Book'
 import './BookDetail.css'
 import Modal from '../components/Modal'
@@ -46,6 +46,8 @@ export default function BookDetail(props) {
             }
         }
     }
+    const goBack = () => window.history.back()
+    
     useEffect(() => {
         addRatings()
     }, [currentBook])
@@ -106,7 +108,7 @@ export default function BookDetail(props) {
                             )
                         }
                         <div className='navBack'>
-                            <a href="/collection"><img className='small-icon' src="https://img.flaticon.com/icons/png/512/60/60577.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" alt="" /></a>
+                            <img onClick={goBack} id='return' className='small-icon' src="https://img.flaticon.com/icons/png/512/60/60577.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" alt="" />
                         </div>
                         <Modal data={currentBook} />
                     </div>

@@ -4,6 +4,15 @@
 ul {
   list-style: none;
 }
+a {
+  text-decoration: none;
+}
+a:hover {
+  transition: all;
+  transition-duration: 1s;
+  transform: scale(1.2);
+  color: rgb(150, 150, 255);
+}
 .page-container {
   height: 100vh; 
 }

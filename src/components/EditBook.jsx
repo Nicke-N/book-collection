@@ -162,21 +162,24 @@ export default function EditBook(props) {
     const addOptions = () => {
         const currYear = new Date().getFullYear()
         var startYear = 2010
-        
+        const yearContainer = document.getElementById('year')
+        if(yearContainer)
         while(startYear <= currYear) {
 
             var option = document.createElement('option')
             option.setAttribute('value', startYear)
             option.textContent = startYear
-            document.getElementById('year').appendChild(option)
+            yearContainer.appendChild(option)
             startYear++
         }
         var month = 1
+        const monthContainer = document.getElementById('year')
+        if(monthContainer)
         while ( month <= 12) {
             var option = document.createElement('option')
             option.setAttribute('value', month)
             option.textContent = month
-            document.getElementById('month').appendChild(option)
+            monthContainer.appendChild(option)
             month++
         }
     }
@@ -218,7 +221,9 @@ export default function EditBook(props) {
         
         addOptions()
         addInfo()
-        document.getElementById('genre').addEventListener('keydown', addToArray)
+        const genreInput = document.getElementById('genre')
+        if(genreInput)
+        genreInput.addEventListener('keydown', addToArray)
     }
     const HTMLcollection = document.getElementsByClassName('icon')
     if (HTMLcollection) {
