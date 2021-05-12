@@ -29,7 +29,6 @@ export default function Modal(props) {
     const outsideClick = (e) => {
        
         if (e.target === modal) {
-            console.log('hmm')
             setRemove(false)
             closeModal()
             

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import './Carousel2.css'
+import './Carousel.css'
 import { DataContext } from '../context/DataContext'
 import BookCover from './BookCover';
 
