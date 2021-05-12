@@ -63,21 +63,7 @@
   color: white;
   font-size: px;
 }
-.product[data-slide="1"] {
-  background-color: blue;
-}
-.product[data-slide="2"] {
-  background-color: green;
-}
-.product[data-slide="3"] {
-  background-color: yellow;
-}
-.product[data-slide="4"] {
-  background-color: orange;
-}
-.product[data-slide="5"] {
-  background-color: red;
-}
+
 
 body {
   margin: 50px;

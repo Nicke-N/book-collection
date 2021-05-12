@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import './Carousel.css'
 import { DataContext } from '../context/DataContext'
 import BookCover from './BookCover';
@@ -6,6 +6,9 @@ import BookCover from './BookCover';
 export default function Carousel2() {
     
     const { collection } = useContext(DataContext)
+    const date = new Date()
+    const currentMonth = date.getMonth() + 1
+    const currentYear = date.getFullYear()
 
     if (collection) {
         var carousels = document.querySelectorAll('.js-product-carousel');
@@ -33,9 +36,7 @@ export default function Carousel2() {
             });
     
             carouselNext.onclick = function () {
-                console.log(productListSteps)
-                console.log(productAmount)
-                console.log(productAmountVisible)
+
                 if (productListSteps < productAmount - productAmountVisible ) {
                     productListSteps++;
                     moveProductList();
@@ -59,11 +60,14 @@ export default function Carousel2() {
     return (
         <div>
             <div className="carousel js-product-carousel">
+                <h2>{currentMonth.toString().charAt(1) === '' ? 0 + currentMonth.toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">
                     <span className="carousel__control js-carousel-prev"><i className="icon">previous</i></span>
                     <span href="#" className="carousel__control js-carousel-next"><i className="icon">next</i></span>
                     <ul className="product-list js-product-list">
                         {collection && Object.entries(collection).map((element) => {
+                         
+                            if (element[1].monthRead === currentMonth && element[1].yearRead === currentYear) 
                             return  <li key={element[0]} className="product-list__item">
                                         <BookCover number={element[0]} data={element[1]}/>
                                     </li>
@@ -74,71 +78,40 @@ export default function Carousel2() {
                 </div>
             </div>
             <div className="carousel js-product-carousel">
+            <h2>{currentMonth.toString().charAt(1) === '' ? 0 + (currentMonth - 1).toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">
                     <span className="carousel__control js-carousel-prev"><i className="icon">previous</i></span>
                     <span href="#" className="carousel__control js-carousel-next"><i className="icon">next</i></span>
                     <ul className="product-list js-product-list">
-                        <li className="product-list__item">
-                            <div data-slide="1" className="product">
-                                <span>1</span>
-                            </div>
-                        </li>
-                        <li className="product-list__item">
-                            <div data-slide="2" className="product">
-                                <span>2</span>
-                            </div>
-                        </li>
-                        <li className="product-list__item">
-                            <div data-slide="3" className="product">
-                                <span>3</span>
-                            </div>
-                        </li>
-                        <li className="product-list__item">
-                            <div data-slide="4" className="product">
-                                <span>4</span>
-                            </div>
-                        </li>
-                        <li className="product-list__item">
-                            <div data-slide="5" className="product">
-                                <span>5</span>
-                            </div>
-                        </li>
+                    {collection && Object.entries(collection).map((element) => {
+                         
+                         if (element[1].monthRead === currentMonth-1 && element[1].yearRead === currentYear) 
+                         return  <li key={element[0]} className="product-list__item">
+                                     <BookCover number={element[0]} data={element[1]}/>
+                                 </li>
+                     })
 
+                     }
                     </ul>
                 </div>
             </div>
             <div className="carousel js-product-carousel">
+            <h2>{currentMonth.toString().charAt(1) === '' ? 0 + (currentMonth - 2).toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">
                     <span className="carousel__control js-carousel-prev"><i className="icon">previous</i></span>
                     <span href="#" className="carousel__control js-carousel-next"><i className="icon">next</i></span>
                     <ul className="product-list js-product-list">
-                        <li className="product-list__item">
-                            <div data-slide="1" className="product">
-                                <span>1</span>
-                            </div>
-                        </li>
-                        <li className="product-list__item">
-                            <div data-slide="2" className="product">
-                                <span>2</span>
-                            </div>
-                        </li>
-                        <li className="product-list__item">
-                            <div data-slide="3" className="product">
-                                <span>3</span>
-                            </div>
-                        </li>
-                        <li className="product-list__item">
-                            <div data-slide="4" className="product">
-                                <span>4</span>
-                            </div>
-                        </li>
-                        <li className="product-list__item">
-                            <div data-slide="5" className="product">
-                                <span>5</span>
-                            </div>
-                        </li>
+                    {collection && Object.entries(collection).map((element) => {
+                         
+                         if (element[1].monthRead === currentMonth-2 && element[1].yearRead === currentYear) 
+                         return  <li key={element[0]} className="product-list__item">
+                                     <BookCover number={element[0]} data={element[1]}/>
+                                 </li>
+                     })
 
+                     }
                     </ul>
+                    
                 </div>
             </div>
 

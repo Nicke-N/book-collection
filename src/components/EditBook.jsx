@@ -46,7 +46,7 @@ export default function EditBook(props) {
             const month = document.getElementById('month').value
             const year = document.getElementById('year').value
             const genreContainer = document.getElementById('genre-container').children
-            genres = [];
+            genres = []
 
             if (genreContainer.length > 0) {
                 for (let i = 0; i < genreContainer.length; i++) {

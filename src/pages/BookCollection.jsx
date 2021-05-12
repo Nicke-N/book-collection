@@ -25,17 +25,8 @@ export default function BookCollection() {
 
     return (
         <div id='collection-page'>
+            <h1>Books read latest month</h1>
             <Carousel />
-             <AddBook />
-            {collection && Object.entries(collection).map((element) => {
-            return <div key={element[1]._id}> 
-
-             <BookCover data={element[1]} />   
-
-              
-            </div>
-          })
-          }
          
         </div>
     )

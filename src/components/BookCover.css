@@ -2,3 +2,6 @@
     width: 20vw;
     height: 28vh;
 }
+.cover-title {
+    z-index: 100;
+}
