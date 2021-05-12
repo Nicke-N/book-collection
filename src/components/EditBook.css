@@ -30,3 +30,23 @@
     flex-direction: column;
     
 }
+.detail-genre {
+    border-radius: 1vw;
+    background-color: darkblue;
+    font-size: 1vw;
+    color: white;
+}
+.detail-genre:hover {
+    background-color: lightblue;
+    color: black;
+}
+.edit-detail:hover {
+    transition: all;
+    transition-duration: 1s;
+    transform: scale(1.2)
+}
+label:hover {
+    transition: all;
+    transition-duration: 1s;
+    transform: scale(1.5);
+}

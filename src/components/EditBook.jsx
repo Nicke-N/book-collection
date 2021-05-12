@@ -8,6 +8,8 @@ export default function EditBook(props) {
     var rating = null
     const { currentBook, authorized, setCurrentBook } = useContext(DataContext)
     const bookID = currentBook._id
+    var genres = [] 
+
     const addInfo = () => {
 
         const title = document.getElementById('title')
@@ -17,9 +19,22 @@ export default function EditBook(props) {
             document.getElementById('series').value = currentBook.series
             document.getElementById('publisher').value = currentBook.publisher
             document.getElementById('image').value = currentBook.image
+            document.getElementById('year').value = currentBook.yearRead
+            document.getElementById('month').value = currentBook.monthRead
+            var genresContainer = document.getElementById('genre-container')
+            
+            if(currentBook.genre) {
+                (currentBook.genre).map((element) => {
+                    var span = document.createElement('span')
+                    span.classList.add('detail-genre')
+                    span.textContent = `${element}`
+                    span.addEventListener('click', removeOnClick)
+                    genresContainer.appendChild(span)
+                })
+            }
+            
         }
     }
-
     const updateBook = async () => {
         var book = {}
         if (authorized) {
@@ -28,20 +43,32 @@ export default function EditBook(props) {
             const image = document.getElementById('image').value
             const series = document.getElementById('series').value
             const publisher = document.getElementById('publisher').value
+            const month = document.getElementById('month').value
+            const year = document.getElementById('year').value
+            const genreContainer = document.getElementById('genre-container').children
+            genres = []
 
+            if (genreContainer.length > 0) {
+                for (let i = 0; i < genreContainer.length; i++) {
+                    genres.push(genreContainer[i].textContent)
+                }
+            }
+        
             if (title.length > 0) book.title = title
             if (author.length > 0) book.author = author
             if (image.length > 0) book.image = image
             if (series.length > 0) book.series = series
             if (publisher.length > 0) book.publisher = publisher
-
+            book.genre = genres
+            book.monthRead = month
+            book.yearRead = year
         }
         if (rating) {
             book.personalRating = rating
         } else {
             book.personalRating = 0
         }
-      
+        
         await editBook(bookID, book)
 
         await getBook(bookID)
@@ -132,6 +159,67 @@ export default function EditBook(props) {
             }
         }
     }
+    const addOptions = () => {
+        const currYear = new Date().getFullYear()
+        var startYear = 2010
+        
+        while(startYear <= currYear) {
+
+            var option = document.createElement('option')
+            option.setAttribute('value', startYear)
+            option.textContent = startYear
+            document.getElementById('year').appendChild(option)
+            startYear++
+        }
+        var month = 1
+        while ( month <= 12) {
+            var option = document.createElement('option')
+            option.setAttribute('value', month)
+            option.textContent = month
+            document.getElementById('month').appendChild(option)
+            month++
+        }
+    }
+    const removeOnClick = (e) => {
+        e.preventDefault()
+        
+        e.target.parentNode.removeChild(e.target)
+        const index = genres.indexOf(e.target.value)
+        genres.splice(index, 1)
+    }
+    const addToArray = (e) => {
+       
+        if (e.code === 'Enter') {
+            var genre = document.getElementById('genre')
+            const genresContainer = document.getElementById('genre-container')
+            if (genre) {
+                if (genre.value !== '') {
+                    genres.push(genre.value)
+                    genre.value = ''
+                    
+                    if (genresContainer) {
+                        genresContainer.textContent = ''
+                        genres.map((element)=> {
+                            var span = document.createElement('span')
+                            span.classList.add('detail-genre')
+                            span.textContent = `${element}`
+                            span.addEventListener('click', removeOnClick)
+                            genresContainer.appendChild(span)
+                        })
+                    }
+                    
+                }
+            }
+        }
+            
+        
+    }
+    const initialSetUp = () => {
+        
+        addOptions()
+        addInfo()
+        document.getElementById('genre').addEventListener('keydown', addToArray)
+    }
     const HTMLcollection = document.getElementsByClassName('icon')
     if (HTMLcollection) {
         setTimeout(() => {
@@ -141,7 +229,7 @@ export default function EditBook(props) {
     }
 
     useEffect(() => {
-        addInfo()
+        initialSetUp()
     }, [])
 
     return (
@@ -156,13 +244,21 @@ export default function EditBook(props) {
                         <input className='edit-detail' id='author' type='text' maxLength='15' />
                         <label >Publisher</label>
                         <input className='edit-detail' id='publisher' type='text' maxLength='15' />
+                        <label>Genre</label>
+                        <input className='edit-detail' type="text" id='genre'/>
+                        <div id='genre-container'></div>
                         <label >Series</label>
                         <input className='edit-detail' id='series' type='text' maxLength='15' />
+                        <label >Year read</label>
+                        <select className='edit-detail' name="year" id="year">
+                        </select>
+                        <label >Month read</label>
+                        <select className='edit-detail' name="month" id="month">
+                        </select>
                         <label >Image URL</label>
                         <input className='edit-detail' id='image' type='text' maxLength='150' />
-
                         <div id='ratingContainer'>
-                            {/* <img className='fa small-icon' src='https://upload.wikimedia.org/wikipedia/commons/5/58/White_Circle.svg' /> */}
+                            
                             <span className='fa fa-star icon'></span>
                             <span className='fa fa-star icon'></span>
                             <span className='fa fa-star icon'></span>
