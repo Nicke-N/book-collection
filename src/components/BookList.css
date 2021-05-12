@@ -1,0 +1,19 @@
+#book-list {
+    display: grid;
+    grid-template-columns: repeat( 4, 1fr);
+}
+.top-container {
+    display: grid;
+    grid-template-columns: 3fr 5fr 1fr;
+    /* grid-template-areas: 'title empty empty emotyempty nav'; */
+}
+#nav {
+    background-color: chartreuse;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-radius: 1vw;
+}
+#latest-title {
+    /* grid-area: title; */
+}
