@@ -1,5 +1,9 @@
-.App {
+/* .App {
   height: 100%;
+} */
+
+body {
+  margin: 2vh 5vw 0 5vw;
 }
 ul {
   list-style: none;
@@ -41,9 +45,10 @@ label {
   font-size: 1vw;
 }
 
-button {
+button, select {
   border-radius: 1vw;
   border: none;
+  outline: none;
 }
 
 .accept-btn {
@@ -75,3 +80,11 @@ button {
   position: relative;
   top: 1vw;
 }
+ img {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  
+ }

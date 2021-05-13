@@ -8,6 +8,8 @@ export const DataProvider = ({children}) => {
     const [ currentBook, setCurrentBook ] = useState(null)
     const [ userDetails, setUserDetails] = useState(null)
     const [ remove, setRemove ] = useState(false)
+    const [ searchVal, setSearchVal ] = useState(null)
+    const [ filterOption, setFilterOption ] = useState(null)
     return (
     <DataContext.Provider
       value={{
@@ -20,7 +22,11 @@ export const DataProvider = ({children}) => {
         userDetails,
         setUserDetails,
         remove, 
-        setRemove
+        setRemove,
+        filterOption, 
+        setFilterOption,
+        searchVal, 
+        setSearchVal
       }}
     >
       {children}

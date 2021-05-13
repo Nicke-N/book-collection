@@ -2,6 +2,10 @@ import React, { useContext } from 'react'
 import './Carousel.css'
 import { DataContext } from '../context/DataContext'
 import BookCover from './BookCover';
+import BookShelfLowerRow from './BookShelfLowerRow';
+import BookShelfLeftColumn from './BookShelfLeftColumn'
+import BookShelfUpperRow from './BookShelfUpperRow'
+import BookShelf from './BookShelf'
 
 export default function Carousel2() {
     
@@ -9,19 +13,26 @@ export default function Carousel2() {
     const date = new Date()
     const currentMonth = date.getMonth() + 1
     const currentYear = date.getFullYear()
-
+    
     if (collection) {
         var carousels = document.querySelectorAll('.js-product-carousel');
         if (carousels.length > 0) {
+            let count = 0;
             [].forEach.call(carousels, function (carousel) {
-                carouselize(carousel);
+                
+                let array = []
+                Object.entries(collection).map(element => (element[1].monthRead === currentMonth - count && element[1].yearRead === currentYear) ? array.push(element[1]) : null)
+
+                carouselize(carousel, array);
+
+                count ++
             });
         }
     
-        function carouselize(carousel) {
+        function carouselize(carousel, array) {
 
             var productList = carousel.querySelector('.js-product-list');
-            var productListWidth = 80;
+            var productListWidth = 84;
             var productListSteps = 0;
             var productAmount = 0;
             var productAmountVisible = 4;
@@ -29,9 +40,9 @@ export default function Carousel2() {
             var carouselNext = carousel.querySelector('.js-carousel-next');
     
             //Count all the products
-            [].forEach.call(collection, function (product) {
+            [].forEach.call(array, function (product) {
                 productAmount++;
-                productListWidth += 80;
+                productListWidth += 84;
                 productList.style.width = productListWidth + "vw";
             });
     
@@ -52,13 +63,14 @@ export default function Carousel2() {
             // This is a bit hacky, let me know if you find a better way to do this!
             // Move the carousels product-list
             function moveProductList() {
-                productList.style.transform = "translateX(-" + 20 * productListSteps + "vw)";
+                productList.style.transform = "translateX(-" + 21 * productListSteps + "vw)";
             }
         }
     }
    
     return (
         <div>
+            <BookShelf />
             <div id='carousel1' className="carousel js-product-carousel">
                 <h2>{currentMonth.toString().charAt(1) === '' ? 0 + currentMonth.toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">
@@ -69,7 +81,7 @@ export default function Carousel2() {
                          
                             if (element[1].monthRead === currentMonth && element[1].yearRead === currentYear) 
                             return  <li key={element[0]} className="product-list__item">
-                                        <BookCover number={element[0]} data={element[1]}/>
+                                        <BookCover data={element[1]}/>
                                     </li>
                         })
 
@@ -77,6 +89,7 @@ export default function Carousel2() {
                     </ul>
                 </div>
             </div>
+  
             <div id='carousel2' className="carousel js-product-carousel">
             <h2>{currentMonth.toString().charAt(1) === '' ? 0 + (currentMonth - 1).toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">
@@ -95,6 +108,7 @@ export default function Carousel2() {
                     </ul>
                 </div>
             </div>
+
             <div id='carousel3' className="carousel js-product-carousel">
             <h2>{currentMonth.toString().charAt(1) === '' ? 0 + (currentMonth - 2).toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">

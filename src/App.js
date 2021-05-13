@@ -7,6 +7,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Profile from './pages/Profile';
 import BookList from './components/BookList'
+import BookShelf from './components/bookShelf'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/" component={Login} />
+          <Route exact path='/bookshelf' component={BookShelf} />
       </Switch>
 
     </div>

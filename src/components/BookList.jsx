@@ -4,18 +4,20 @@ import { DataContext } from '../context/DataContext'
 import BookCover from './BookCover'
 import { getCollection } from '../kit/api/Book'
 import './BookList.css'
+import SectionDividerTop from './SectionDividerTop'
 
 export default function BookList() {
 
-    const { collection, setCollection } = useContext(DataContext)
-    const [ searchVal, setSearchVal ] = useState(null)
-    const [ filterOption, setFilterOption ] = useState(null)
+    const { collection, setCollection, searchVal, setSearchVal, filterOption, setFilterOption } = useContext(DataContext)
+
     var added
     useEffect(() => {
-        if (!collection) {
+        if (!collection || Object.keys(collection).length === 0) {
             fetchData()
         }
-    }, [])
+        setPreviousValues()
+        addEventListeners()
+    }, [filterOption, searchVal])
 
     const fetchData = async () => {
 
@@ -26,31 +28,37 @@ export default function BookList() {
     }
     const searchHandler = (e) => {
         setSearchVal(e.target.value)
-        const searchOption = document.getElementById('filter').value
-        setFilterOption(searchOption)
+        setOptionValue()
     }
+    const setPreviousValues = () => {
+        if (filterOption) document.getElementById('filter').value = filterOption
+        if (searchVal) document.getElementById('search').value = searchVal
+    }
+    const addEventListeners = () => {
+        document.getElementById('filter').removeEventListener('mouseleave', setOptionValue)
+        document.getElementById('filter').addEventListener('mouseleave', setOptionValue)
+    }
+    const setOptionValue = () => setFilterOption(document.getElementById('filter').value)
 
     return (
         <div>
             <div className='top-container'>
                 <div id='filterOptions'>
-                    <label>Filter by: </label>
                     <select name="filter" id="filter">
-                        <option value="author">Author</option>
-                        <option value="title">Title</option>
-                        <option value="publisher">Publisher</option>
-                        <option value="genre">Genre</option>
+                        <option className='option' value="author">Author</option>
+                        <option className='option' value="title">Title</option>
+                        <option className='option' value="publisher">Publisher</option>
+                        <option className='option' value="genre">Genre</option>
                     </select>
                 </div>
                 <div id='search-field'>
                     <input id='search' type="text" maxLength='50' onChange={searchHandler} />
-                </div>
-                
+                </div>     
                 <Link id='nav' to='/latest'>
                     Check my latest reads!
                 </Link>
             </div>
-           
+            <SectionDividerTop />
             <div id='book-list'>
                 {searchVal && filterOption !== 'genre' ? 
 
