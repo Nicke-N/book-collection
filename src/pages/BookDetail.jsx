@@ -31,19 +31,29 @@ export default function BookDetail(props) {
 
         const personalRatings = document.getElementsByClassName('personal-detail-icon')
         if (personalRatings && currentBook) {
+
             for (let check = 0; check < currentBook.personalRating; check++) {
                 personalRatings[check].classList.add('checked')
             }
         }
         const guestsRatings = document.getElementsByClassName('guests-detail-icon')
+
         if (guestsRatings && currentBook) {
             
             const val = Math.floor(guestRating)
 
+            for (let check = 0; check < 5; check++) {
+
+                const classList = Array.from(guestsRatings[check].classList)
+                    
+                if(classList.includes('checked')) guestsRatings[check].classList.remove('checked')
+               
+            }
             for (let check = 0; check < val; check++) {
-       
+
                 guestsRatings[check].classList.add('checked')
             }
+        
         }
     }
     const goBack = () => window.history.back()
@@ -90,7 +100,15 @@ export default function BookDetail(props) {
                             <span className='fa fa-star guests-detail-icon'></span>
                             {`(${guestRating})`}
                         </p>
-
+                        <p className='detail genre'>
+                            Genre: {currentBook.genre.map(element => ` ${element}`)}
+                        </p>
+                        <p className='detail guests'>
+                            {currentBook.guests} votes
+                        </p>
+                        <p className='detail read'>
+                            Read: {currentBook.monthRead} - {currentBook.yearRead}
+                        </p>
                         {authorized ?
                             (
                                 <div className='buttonContainer'>
