@@ -4,7 +4,7 @@
 }
 .top-container {
     display: grid;
-    grid-template-columns: 2fr 6fr 1fr;
+    grid-template-columns: 1fr 8fr 1fr;
   }
 #nav {
     background-color: chartreuse;
@@ -44,4 +44,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.list-nav {
+    position: fixed;
+    bottom: 5%;
+    left: 85%;
+}
+.list-btn {
+    position: fixed;
+    bottom: 5%;
+    left:5vw;
 }

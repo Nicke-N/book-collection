@@ -1,0 +1,14 @@
+.remove-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.remove-text {
+    text-align: center;
+}
+.remove-btn-container {
+    display: flex;
+    justify-content: center;
+    
+}

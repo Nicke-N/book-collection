@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react'
+import AddBook from './AddBook'
 import EditBook from './EditBook'
 import EditProfile from './EditProfile'
 import './Modal.css'
@@ -47,6 +48,8 @@ export default function Modal(props) {
                                 'Edit book details'
                                 : props.data && props.data.username ?
                                 'Edit user details'
+                                : props.type && props.type === 'addNewBook' ?
+                                'Add new Book'
                                 : null
                             }
                             </h2>
@@ -58,8 +61,9 @@ export default function Modal(props) {
                             <EditBook data={props.data} />
                             : props.data && props.data.username ?
                             <EditProfile />
-                            :
-                            null
+                            : props.type && props.type === 'addNewBook' ?
+                            <AddBook />
+                            : null
                         }
                         
                     </div>

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
 import { closeModal } from '../kit/Functions'
 import { deleteUser } from '../kit/api/User'
+import './RemoveUser.css'
 
 export default function RemoveUser() {
 
@@ -24,10 +25,13 @@ export default function RemoveUser() {
     }
     
     return (
-        <div>
-            <p>Are you sure you want to delete account: <b>{userDetails.username}</b> </p>
-            <button className='accept-btn' onClick={removeAccount}>Yes</button>
-            <button className='reject-btn' onClick={returnToProfile}>No</button>
+        <div className='remove-container'>
+            <p className='remove-text'>Are you sure you want to delete account: <b>{userDetails.username}</b> </p>
+            <div className='remove-btn-container'>
+                <button className='accept-btn' onClick={removeAccount}>Yes</button>
+                <button className='reject-btn' onClick={returnToProfile}>No</button>
+            </div>
+                
         </div>
     )
 }

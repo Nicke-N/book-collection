@@ -11,7 +11,8 @@ export default function BookDetail(props) {
     const history = useHistory()
     const { authorized, setAuthorized, currentBook, setCurrentBook } = useContext(DataContext)
     var guestRating
-
+    const months = [ "January", "February", "March", "April", "May", "June", 
+    "July", "August", "September", "October", "November", "December" ]
     if (currentBook) guestRating = (currentBook.guestsRating / (currentBook.guests === 0 ? 1 : currentBook.guests)).toFixed(2)
 
     const fetchBook = async () => {
@@ -109,7 +110,7 @@ export default function BookDetail(props) {
                             {currentBook.guests} votes
                         </p>
                         <p className='detail read'>
-                            Read: {currentBook.monthRead} - {currentBook.yearRead}
+                            Read: {months[currentBook.monthRead - 1]} {currentBook.yearRead}
                         </p>
                         {authorized ?
                             (

@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { editBook, getBook } from '../kit/api/Book'
 import { DataContext } from '../context/DataContext'
 import './EditBook.css'
+import { addOptions } from '../kit/Functions'
 
 export default function EditBook(props) {
 
@@ -22,12 +23,14 @@ export default function EditBook(props) {
             document.getElementById('year').value = currentBook.yearRead
             document.getElementById('month').value = currentBook.monthRead
             var genresContainer = document.getElementById('genre-container')
-            
+            genresContainer.textContent = ''
+
             if(currentBook.genre) {
                 (currentBook.genre).map((element) => {
                     var span = document.createElement('span')
                     span.classList.add('detail-genre')
                     span.textContent = `${element}`
+                    genres.push(element)
                     span.addEventListener('click', removeOnClick)
                     genresContainer.appendChild(span)
                 })
@@ -68,12 +71,16 @@ export default function EditBook(props) {
         } else {
             book.personalRating = 0
         }
+
+        console.log(rating)
+        console.log(book)
         
         await editBook(bookID, book)
 
         await getBook(bookID)
             .then(res => res.json())
             .then(data => setCurrentBook(data))
+            .then(addEventListeners())
 
         document.getElementById('simpleModal').style.display = 'none'
     }
@@ -159,30 +166,6 @@ export default function EditBook(props) {
             }
         }
     }
-    const addOptions = () => {
-        const currYear = new Date().getFullYear()
-        var startYear = 2010
-        const yearContainer = document.getElementById('year')
-        if(yearContainer)
-        while(startYear <= currYear) {
-
-            var option = document.createElement('option')
-            option.setAttribute('value', startYear)
-            option.textContent = startYear
-            yearContainer.appendChild(option)
-            startYear++
-        }
-        var month = 1
-        const monthContainer = document.getElementById('year')
-        if(monthContainer)
-        while ( month <= 12) {
-            var option = document.createElement('option')
-            option.setAttribute('value', month)
-            option.textContent = month
-            monthContainer.appendChild(option)
-            month++
-        }
-    }
     const removeOnClick = (e) => {
         e.preventDefault()
         
@@ -235,7 +218,7 @@ export default function EditBook(props) {
 
     useEffect(() => {
         initialSetUp()
-    }, [])
+    }, [currentBook])
 
     return (
         <div id='edit-container'>

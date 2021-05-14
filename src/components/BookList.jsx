@@ -5,16 +5,19 @@ import BookCover from './BookCover'
 import { getCollection } from '../kit/api/Book'
 import './BookList.css'
 import SectionDividerTop from './SectionDividerTop'
+import { showModal, authenticated } from '../kit/Functions.js'
+import Modal from './Modal'
 
 export default function BookList() {
 
-    const { collection, setCollection, searchVal, setSearchVal, filterOption, setFilterOption } = useContext(DataContext)
+    const { collection, setCollection, searchVal, setSearchVal, filterOption, setFilterOption, authorized , setAuthorized} = useContext(DataContext)
 
     var added
     useEffect(() => {
         if (!collection || Object.keys(collection).length === 0) {
             fetchData()
         }
+        if (authenticated()) setAuthorized(true)
         setPreviousValues()
         addEventListeners()
     }, [filterOption, searchVal])
@@ -39,7 +42,7 @@ export default function BookList() {
         document.getElementById('filter').addEventListener('mouseleave', setOptionValue)
     }
     const setOptionValue = () => setFilterOption(document.getElementById('filter').value)
-
+    const returnToTop = () => window.scroll(0, 0)
     return (
         <div>
             <div className='top-container'>
@@ -55,7 +58,7 @@ export default function BookList() {
                     <input id='search' type="text" maxLength='50' onChange={searchHandler} />
                 </div>     
                 <Link id='nav' to='/latest'>
-                    Check my latest reads!
+                    <button className='nav-btn'>Check my latest reads</button>
                 </Link>
             </div>
             <SectionDividerTop />
@@ -81,6 +84,16 @@ export default function BookList() {
 
                 }
             </div>
+            <button className='nav-btn list-nav'onClick={returnToTop}>Return to top</button>
+            { authorized ? 
+                <>
+                    <button className='accept-btn list-btn'onClick={showModal}>Add book</button>
+                    <Modal type='addNewBook' />
+                </>
+                : 
+                null
+            }
+            
         </div>
 
     )
