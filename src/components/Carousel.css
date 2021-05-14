@@ -1,8 +1,6 @@
-/* .carousel {
-  margin: 2vh;
-} */
+
 .carousel__view {
-  width: calc((200px*4) + 22px);
+
   height: 33.7vh;
   width: 84vw;
   background: transparent;
@@ -74,7 +72,7 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 19.4%;
+  top: 19.5%;
   left: 0.7%;
   
 
@@ -85,7 +83,7 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 56.6%;
+  top: 56.8%;
   left: 0.7%;
 }
 #carousel3 {
@@ -93,9 +91,13 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 93.8%;
+  top: 94%;
   left: 0.7%;
 }
 
-
-
+.carousel-title {
+  position: relative;
+  left: 7.5%;
+  top: 3.3%;
+  font-size: calc(1vw + 1.1vh);
+}

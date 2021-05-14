@@ -71,9 +71,11 @@ export default function BookDetail(props) {
                 (
                     <div id='details-container'>
                         <img className='detail-image' src={currentBook.image} alt="URL has changed!" />
+                        
                         <p className='detail title'>
                             Title: {currentBook.title}
                         </p>
+                        
                         <p className='detail author'>
                             Author: {currentBook.author}
                         </p>

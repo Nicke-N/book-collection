@@ -50,16 +50,21 @@
 }
 .navBack {
     grid-area: back;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .detail {
     background-color: palegoldenrod;
-    border: solid 0.1vw palegoldenrod;
     border-radius: 1vw;
     width: 19.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2vw;
+}
+#return {
+    width: 5vw;
 }
 #return:hover {
     transition: all;
