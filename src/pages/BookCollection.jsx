@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Carousel from '../components/Carousel'
-import SectionDividerTop from '../components/SectionDividerTop'
 import { DataContext } from '../context/DataContext'
 import { getCollection } from '../kit/api/Book'
 import './BookCollection.css'
@@ -36,8 +35,7 @@ export default function BookCollection() {
                 
             </div>
             
-
-            <SectionDividerTop />
+            <div className='section-divider'></div>
 
             <Carousel />
          

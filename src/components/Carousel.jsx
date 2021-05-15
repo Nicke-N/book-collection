@@ -2,10 +2,7 @@ import React, { useContext } from 'react'
 import './Carousel.css'
 import { DataContext } from '../context/DataContext'
 import BookCover from './BookCover';
-import BookShelfLowerRow from './BookShelfLowerRow';
-import BookShelfLeftColumn from './BookShelfLeftColumn'
-import BookShelfUpperRow from './BookShelfUpperRow'
-import BookShelf from './BookShelf'
+import BirchPlank from './BirchPlank';
 
 export default function Carousel2() {
     
@@ -70,7 +67,7 @@ export default function Carousel2() {
    
     return (
         <div>
-            <BookShelf />
+         
             <div id='carousel1' className="carousel js-product-carousel">
                 <h2 className='carousel-title'>{currentMonth.toString().charAt(1) === '' ? 0 + currentMonth.toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">
@@ -89,7 +86,7 @@ export default function Carousel2() {
                     </ul>
                 </div>
             </div>
-  
+            <BirchPlank />
             <div id='carousel2' className="carousel js-product-carousel">
             <h2  className='carousel-title'>{currentMonth.toString().charAt(1) === '' ? 0 + (currentMonth - 1).toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { editBook, getBook } from '../kit/api/Book'
 import { DataContext } from '../context/DataContext'
 import './EditBook.css'
-import { addOptions } from '../kit/Functions'
+import { addOptions, closeModal } from '../kit/Functions'
 
 export default function EditBook(props) {
 
@@ -67,7 +67,15 @@ export default function EditBook(props) {
             book.yearRead = year
         }
         if (rating) {
-            book.personalRating = rating
+            var http = require('http');
+
+            http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp) {
+              resp.on('data', function(ip) {
+                book.guestID = ip
+              });
+            });
+            book.rating = rating
+             
         } else {
             book.personalRating = 0
         }
@@ -81,8 +89,7 @@ export default function EditBook(props) {
             .then(res => res.json())
             .then(data => setCurrentBook(data))
             .then(addEventListeners())
-
-        document.getElementById('simpleModal').style.display = 'none'
+            .then(closeModal())
     }
     const addEventListeners = () => {
         for (let element = 0; element < HTMLcollection.length; element++) {
@@ -95,8 +102,9 @@ export default function EditBook(props) {
 
         const redoImage = document.getElementById('redo-image')
         if (redoImage) {
-
-            document.getElementById('ratingContainer').removeChild(redoImage)
+            const con =  document.getElementById('ratingContainer')
+            con.removeChild(redoImage)
+         
             rating = null
         }
     }
@@ -141,8 +149,8 @@ export default function EditBook(props) {
         const redoImage = document.getElementById('redo-image')
 
         if (!redoImage) {
-            rating = index + 1  
             
+ 
             const span = document.createElement('img')
 
             span.src = 'https://image.flaticon.com/icons/png/512/44/44650.png'
@@ -151,7 +159,7 @@ export default function EditBook(props) {
             span.addEventListener('click', addEventListeners)
             document.getElementById('ratingContainer').appendChild(span)
         }
-
+        rating = index + 1  
     }
     const ratingUnFocus = (event) => {
      
@@ -218,6 +226,10 @@ export default function EditBook(props) {
 
     useEffect(() => {
         initialSetUp()
+    }, [])
+
+    useEffect(() => {
+        
     }, [currentBook])
 
     return (

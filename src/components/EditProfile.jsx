@@ -59,7 +59,7 @@ export default function EditProfile() {
                             <textarea maxLength='200' type='text' for={element[0]} id={element[0]}></textarea>
                         </div>
                     )
-                } else if (element[0] === 'goodReads') {
+                } else if (element[0] === 'goodReads' || element[0] === 'instagram') {
                     return (
                         <div className='user-detail'>
                             <label htmlFor={element[0]}>{element[0]}</label>

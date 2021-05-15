@@ -34,8 +34,12 @@ export default function Profile() {
         <>
 
         {userDetails && Object.entries(userDetails).map((element) => {
-
-            if (element[0] !== 'password' && element[0] !== '__v' && element[0] !== '_id') {
+            if (element[0] === 'goodReads' || element[0] === 'instagram') {
+                return (
+                    <div className='user-detail'><a href={element[1]}>{element[0]}: Visit my page! </a></div>
+                )
+            }
+            else if (element[0] !== 'password' && element[0] !== '__v' && element[0] !== '_id') {
                 return (
                     <div className='user-detail'>{element[0]}: {element[1]}</div>
                 )

@@ -130,9 +130,46 @@ export default function AddBook() {
             .then(closeModal())
 
     }
+    const addToArray = (e) => {
+       
+        if (e.code === 'Enter') {
+            var genre = document.getElementById('genre')
+            const genresContainer = document.getElementById('genre-container')
+            if (genre) {
+                if (genre.value !== '') {
+                    genres.push(genre.value)
+                    genre.value = ''
+                    
+                    if (genresContainer) {
+                        genresContainer.textContent = ''
+                        genres.map((element)=> {
+                            var span = document.createElement('span')
+                            span.classList.add('detail-genre')
+                            span.textContent = `${element}`
+                            span.addEventListener('click', removeOnClick)
+                            genresContainer.appendChild(span)
+                        })
+                    }
+                    
+                }
+            }
+        }
+            
+        
+    }
+    const removeOnClick = (e) => {
+        e.preventDefault()
+        
+        e.target.parentNode.removeChild(e.target)
+        const index = genres.indexOf(e.target.value)
+        genres.splice(index, 1)
+    }
+    
     useEffect(() => {
         addOptions()
-        
+        const genreInput = document.getElementById('genre')
+        if(genreInput)
+        genreInput.addEventListener('keydown', addToArray)
     }, [])
     const HTMLcollection = document.getElementsByClassName('icon')
     if (HTMLcollection) {

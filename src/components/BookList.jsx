@@ -4,7 +4,6 @@ import { DataContext } from '../context/DataContext'
 import BookCover from './BookCover'
 import { getCollection } from '../kit/api/Book'
 import './BookList.css'
-import SectionDividerTop from './SectionDividerTop'
 import { showModal, authenticated } from '../kit/Functions.js'
 import Modal from './Modal'
 
@@ -61,7 +60,8 @@ export default function BookList() {
                     <button className='nav-btn'>Check my latest reads</button>
                 </Link>
             </div>
-            <SectionDividerTop />
+            <div className='section-divider'></div>
+
             <div id='book-list'>
                 {searchVal && filterOption !== 'genre' ? 
 

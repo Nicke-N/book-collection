@@ -10,10 +10,14 @@ export default function BookDetail(props) {
     const bookID = props.match.params.id
     const history = useHistory()
     const { authorized, setAuthorized, currentBook, setCurrentBook } = useContext(DataContext)
-    var guestRating
+    var guestRating, voters ,average
     const months = [ "January", "February", "March", "April", "May", "June", 
     "July", "August", "September", "October", "November", "December" ]
-    if (currentBook) guestRating = (currentBook.guestsRating / (currentBook.guests === 0 ? 1 : currentBook.guests)).toFixed(2)
+    if (currentBook){
+        (currentBook.guestsRating).map(element => guestRating += element.rating)
+        voters = currentBook.guestsRating.length
+        average = (guestRating / voters === 0 ? 1 : voters).toFixed(2)
+    }
 
     const fetchBook = async () => {
 
@@ -58,14 +62,16 @@ export default function BookDetail(props) {
         }
     }
     const goBack = () => window.history.back()
-    
+    // FIXA att sidan ej re-renders efter en update!!!
     useEffect(() => {
+        
         addRatings()
     }, [currentBook])
 
     useEffect(() => {
-        fetchBook()
+        if (!currentBook) fetchBook()
     }, [])
+
     return (
         <div className='page-container'>
             {currentBook &&
@@ -101,13 +107,13 @@ export default function BookDetail(props) {
                             <span className='fa fa-star guests-detail-icon'></span>
                             <span className='fa fa-star guests-detail-icon'></span>
                             <span className='fa fa-star guests-detail-icon'></span>
-                            {`(${guestRating})`}
+                            {`(${average})`}
                         </p>
                         <p className='detail genre'>
                             Genre: {currentBook.genre.map(element => ` ${element}`)}
                         </p>
                         <p className='detail guests'>
-                            {currentBook.guests} votes
+                            {voters} votes
                         </p>
                         <p className='detail read'>
                             Read: {months[currentBook.monthRead - 1]} {currentBook.yearRead}
