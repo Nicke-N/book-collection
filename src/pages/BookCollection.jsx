@@ -4,7 +4,7 @@ import Carousel from '../components/Carousel'
 import { DataContext } from '../context/DataContext'
 import { getCollection } from '../kit/api/Book'
 import './BookCollection.css'
-
+import LeftArrow from '../images/left-arrow.png'
 
 export default function BookCollection() {
     const { setCollection } = useContext(DataContext)
@@ -38,7 +38,7 @@ export default function BookCollection() {
             <div className='section-divider'></div>
 
             <Carousel />
-         
+            <img src={LeftArrow} alt="" />
         </div>
     )
 }

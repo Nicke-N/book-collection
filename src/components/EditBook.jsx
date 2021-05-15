@@ -124,7 +124,7 @@ export default function EditBook(props) {
         }
     }
     const ratingHover = (event) => {
-
+ 
         if (event.path[1].children.length > 0) {
 
             const children = event.path[1].children

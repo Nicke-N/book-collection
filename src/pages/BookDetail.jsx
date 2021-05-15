@@ -12,14 +12,15 @@ export default function BookDetail(props) {
 
     const history = useHistory()
     const { authorized, setAuthorized, currentBook, setCurrentBook } = useContext(DataContext)
-    var guestRating, voters ,average
+    var guestRating = 0, voters ,average
     const months = [ "January", "February", "March", "April", "May", "June", 
     "July", "August", "September", "October", "November", "December" ]
 
     if (currentBook){
         (currentBook.guestsRating).map(element => guestRating += element.rating)
         voters = currentBook.guestsRating.length
-        average = (guestRating / voters === 0 ? 1 : voters).toFixed(2)
+        
+        average = (guestRating / (voters === 0 ? 1 : voters)).toFixed(2)
     }
 
     const fetchBook = async () => {
@@ -51,7 +52,7 @@ export default function BookDetail(props) {
 
         if (guestsRatings && currentBook) {
             
-            const val = Math.floor(guestRating)
+            const val = Math.floor(average)
 
             for (let check = 0; check < 5; check++) {
 
@@ -60,8 +61,9 @@ export default function BookDetail(props) {
                 if(classList.includes('checked')) guestsRatings[check].classList.remove('checked')
                
             }
+  
             for (let check = 0; check < val; check++) {
-
+               
                 guestsRatings[check].classList.add('checked')
             }
         

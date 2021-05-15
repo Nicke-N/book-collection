@@ -11,7 +11,6 @@ export default function BookCover(props) {
                 <span>
                     <img className='cover' src={props.data.image} alt="hehe" />
                 </span>
-                <h5 className='cover-title'>{props.data.title} </h5>
             </Link>
 
             </div>
