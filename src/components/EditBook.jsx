@@ -85,26 +85,26 @@ export default function EditBook(props) {
         } else {
            
             var http = require('http');
-
-            http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp) {
-              resp.on('data', function(ip) {
-               book.guestID = `ip: ${ip}`
+            await http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp) {
+              return resp.on('data', function(ip) {
+                
+                book.guestID = `ip: ${ip}`
               });
             });
             book.rating = rating ? rating : 0
+        
+         
         }
         
-
-        console.log(rating)
-        console.log(book)
-        
-        await editBook(bookID, book)
-
-        await getBook(bookID)
+        setTimeout( async () => {
+            await editBook(bookID, book)
+            await getBook(bookID)
             .then(res => res.json())
             .then(data => setCurrentBook(data))
             // .then(addEventListeners())
             .then(closeModal())
+        }, 1000);
+        
     }
     const addEventListeners = () => {
         for (let element = 0; element < HTMLcollection.length; element++) {
