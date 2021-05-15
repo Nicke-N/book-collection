@@ -4,7 +4,7 @@ import { DataContext } from '../context/DataContext'
 import BookCover from './BookCover';
 import BirchPlank from './BirchPlank';
 
-export default function Carousel2() {
+export default function Carousel() {
     
     const { collection } = useContext(DataContext)
     const date = new Date()
