@@ -2,7 +2,11 @@
     width: 15vh;
     height: 15vh;
 }
-.cover:hover {
+.cover-collection {
+    width: 100%;
+    height: calc(18vh + 1px);
+}
+.cover:hover, .cover-collection:hover {
    
     transition: all;
     transition-duration: 1s;
@@ -11,7 +15,7 @@
 }
 .cover-title {
     z-index: 100;
-    font-size: 1.8vh;
+    font-size: 2.5vh;
     position: relative;
     bottom: 2vh;
 }

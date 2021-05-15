@@ -15,6 +15,14 @@ export default function EditBook(props) {
 
         const title = document.getElementById('title')
         if (title) {
+            clearInfo()
+            document.getElementById('author').value = currentBook.author
+            document.getElementById('series').value = currentBook.series
+            document.getElementById('publisher').value = currentBook.publisher
+            document.getElementById('image').value = currentBook.image
+            document.getElementById('year').value = currentBook.yearRead
+            document.getElementById('month').value = currentBook.monthRead
+
             title.value = currentBook.title
             document.getElementById('author').value = currentBook.author
             document.getElementById('series').value = currentBook.series
@@ -23,7 +31,6 @@ export default function EditBook(props) {
             document.getElementById('year').value = currentBook.yearRead
             document.getElementById('month').value = currentBook.monthRead
             var genresContainer = document.getElementById('genre-container')
-            genresContainer.textContent = ''
 
             if(currentBook.genre) {
                 (currentBook.genre).map((element) => {
@@ -37,6 +44,15 @@ export default function EditBook(props) {
             }
             
         }
+    }
+    const clearInfo = () => {
+        document.getElementById('genre-container').textContent = ''
+        document.getElementById('author').value = ''
+        document.getElementById('series').value = ''
+        document.getElementById('publisher').value = ''
+        document.getElementById('image').value =''
+        document.getElementById('year').value = ''
+        document.getElementById('month').value = ''
     }
     const updateBook = async () => {
         var book = {}
@@ -65,20 +81,19 @@ export default function EditBook(props) {
             book.genre = genres
             book.monthRead = month
             book.yearRead = year
-        }
-        if (rating) {
+            book.personalRating = rating ? rating : 0
+        } else {
+           
             var http = require('http');
 
             http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp) {
               resp.on('data', function(ip) {
-                book.guestID = ip
+               book.guestID = `ip: ${ip}`
               });
             });
-            book.rating = rating
-             
-        } else {
-            book.personalRating = 0
+            book.rating = rating ? rating : 0
         }
+        
 
         console.log(rating)
         console.log(book)
@@ -88,7 +103,7 @@ export default function EditBook(props) {
         await getBook(bookID)
             .then(res => res.json())
             .then(data => setCurrentBook(data))
-            .then(addEventListeners())
+            // .then(addEventListeners())
             .then(closeModal())
     }
     const addEventListeners = () => {
@@ -226,7 +241,7 @@ export default function EditBook(props) {
 
     useEffect(() => {
         initialSetUp()
-    }, [])
+    }, [currentBook])
 
     useEffect(() => {
         

@@ -29,17 +29,17 @@ export default function Carousel2() {
         function carouselize(carousel, array) {
 
             var productList = carousel.querySelector('.js-product-list');
-            var productListWidth = 84;
+            var productListWidth = 60;
             var productListSteps = 0;
             var productAmount = 0;
-            var productAmountVisible = 4;
+            var productAmountVisible = 5;
             var carouselPrev = carousel.querySelector('.js-carousel-prev');
             var carouselNext = carousel.querySelector('.js-carousel-next');
     
             //Count all the products
             [].forEach.call(array, function (product) {
                 productAmount++;
-                productListWidth += 84;
+                productListWidth += 60;
                 productList.style.width = productListWidth + "vw";
             });
     
@@ -60,7 +60,7 @@ export default function Carousel2() {
             // This is a bit hacky, let me know if you find a better way to do this!
             // Move the carousels product-list
             function moveProductList() {
-                productList.style.transform = "translateX(-" + 21 * productListSteps + "vw)";
+                productList.style.transform = "translateX(-" + 15 * productListSteps + "vw)";
             }
         }
     }
@@ -78,7 +78,7 @@ export default function Carousel2() {
                          
                             if (element[1].monthRead === currentMonth && element[1].yearRead === currentYear) 
                             return  <li key={element[0]} className="product-list__item">
-                                        <BookCover data={element[1]}/>
+                                        <BookCover carousel data={element[1]}/>
                                     </li>
                         })
 
@@ -97,7 +97,7 @@ export default function Carousel2() {
                          
                          if (element[1].monthRead === currentMonth-1 && element[1].yearRead === currentYear) 
                          return  <li key={element[0]} className="product-list__item">
-                                     <BookCover number={element[0]} data={element[1]}/>
+                                     <BookCover carousel number={element[0]} data={element[1]}/>
                                  </li>
                      })
 
@@ -105,7 +105,7 @@ export default function Carousel2() {
                     </ul>
                 </div>
             </div>
-
+            <BirchPlank />
             <div id='carousel3' className="carousel js-product-carousel">
             <h2  className='carousel-title'>{currentMonth.toString().charAt(1) === '' ? 0 + (currentMonth - 2).toString() : currentMonth} - {currentYear}</h2>
                 <div className="carousel__view">
@@ -116,7 +116,7 @@ export default function Carousel2() {
                          
                          if (element[1].monthRead === currentMonth-2 && element[1].yearRead === currentYear) 
                          return  <li key={element[0]} className="product-list__item">
-                                     <BookCover number={element[0]} data={element[1]}/>
+                                     <BookCover carousel number={element[0]} data={element[1]}/>
                                  </li>
                      })
 
@@ -125,7 +125,7 @@ export default function Carousel2() {
                     
                 </div>
             </div>
-
+            <BirchPlank />
         </div>
     )
 }

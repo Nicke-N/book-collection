@@ -7,12 +7,15 @@ import { DataContext } from '../context/DataContext'
 import { authenticated, showModal } from '../kit/Functions'
 
 export default function BookDetail(props) {
+    
     const bookID = props.match.params.id
+
     const history = useHistory()
     const { authorized, setAuthorized, currentBook, setCurrentBook } = useContext(DataContext)
     var guestRating, voters ,average
     const months = [ "January", "February", "March", "April", "May", "June", 
     "July", "August", "September", "October", "November", "December" ]
+
     if (currentBook){
         (currentBook.guestsRating).map(element => guestRating += element.rating)
         voters = currentBook.guestsRating.length
@@ -35,8 +38,11 @@ export default function BookDetail(props) {
     const addRatings = () => {
 
         const personalRatings = document.getElementsByClassName('personal-detail-icon')
+        
         if (personalRatings && currentBook) {
-
+            for (let check = 0; check < 5; check++) {
+                personalRatings[check].classList.remove('checked')
+            }
             for (let check = 0; check < currentBook.personalRating; check++) {
                 personalRatings[check].classList.add('checked')
             }
@@ -69,7 +75,8 @@ export default function BookDetail(props) {
     }, [currentBook])
 
     useEffect(() => {
-        if (!currentBook) fetchBook()
+        fetchBook()
+        addRatings()
     }, [])
 
     return (

@@ -128,6 +128,17 @@ export default function AddBook() {
             .then(res => res.json())
             .then(data => setCollection(data))
             .then(closeModal())
+            .then(
+                document.getElementById('title').value = '',
+                document.getElementById('author').value = '',
+                document.getElementById('image').value = '',
+                document.getElementById('series').value = '',
+                document.getElementById('publisher').value = '',
+                document.getElementById('month').value = '',
+                document.getElementById('year').value = '',
+                document.getElementById('genre-container').textContent = ''
+
+            )
 
     }
     const addToArray = (e) => {

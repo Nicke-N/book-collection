@@ -2,20 +2,18 @@
 .carousel__view {
 
   height: 20vh;
-  width: 84vw;
+  width: calc(100vw - 51vw - 2px) ;
   background: transparent;
   margin: auto;
   overflow: hidden;
   position: relative;
   z-index: 5;
-  background-repeat: no-repeat;
-  background-size: 100%;
   
 }
 .carousel__control {
   position: absolute;
   z-index: 1;
-  height: 20vh;
+  height: 100%;
   width: 5vw;
   background-color: rgba(221, 221, 221, 0.5);
   transition: background-color 0.3s;
@@ -44,26 +42,25 @@
   transform: translateX(0px);
   list-style: none;
   height: 35vh;
-  width: 80vw;
+  width: 100%;
   
 }
 .product-list__item {
-  width: 20vw;
-  height: 35vh;
+  width: 10vw;
+  height: 20vh;
   display: inline-block;
 }
 
 .product {
   display: table;
   height: 100%;
-  width: 100%;
+  width: 15vw;
 }
 .product span {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
   color: white;
-  font-size: 1px;
 }
 
 .shelf {
