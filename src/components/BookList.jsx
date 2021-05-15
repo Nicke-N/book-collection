@@ -6,6 +6,7 @@ import { getCollection } from '../kit/api/Book'
 import './BookList.css'
 import { showModal, authenticated } from '../kit/Functions.js'
 import Modal from './Modal'
+import BirchPlank from './BirchPlank'
 
 export default function BookList() {
 
@@ -29,7 +30,9 @@ export default function BookList() {
 
     }
     const searchHandler = (e) => {
-        setSearchVal(e.target.value)
+        var val = e.target.value
+        val = val.toLowerCase()
+        setSearchVal(val)
         setOptionValue()
     }
     const setPreviousValues = () => {
@@ -42,6 +45,7 @@ export default function BookList() {
     }
     const setOptionValue = () => setFilterOption(document.getElementById('filter').value)
     const returnToTop = () => window.scroll(0, 0)
+
     return (
         <div>
             <div className='top-container'>
@@ -64,23 +68,24 @@ export default function BookList() {
 
             <div id='book-list'>
                 {searchVal && filterOption !== 'genre' ? 
-
-                    Object.entries(collection).map((element) => element[1][filterOption].includes(searchVal) ? <BookCover  key={element[0]} data={element[1]} /> : null)
+                    
+                    Object.entries(collection).map((element, index) => ((element[1][filterOption]).toLowerCase()).includes(searchVal) ? (index + 1 ) % 4 === 0 ? <> <BirchPlank /> <BookCover  key={element[0]} data={element[1]} /> </>: <BookCover  key={element[0]} data={element[1]} /> : null)
 
                     : searchVal && filterOption === 'genre' ?
 
-                    Object.entries(collection).map((element) => {
+                    Object.entries(collection).map((element, index) => {
                         added = false
+                        
                         return (element[1]['genre']).map((elem) => {
                            
-                            if (elem.includes(searchVal) && !added) {
+                            if (elem.toLowerCase().includes(searchVal) && !added) {
                                 added = true
                                 return <BookCover key={element[0]} data={element[1]} />
                             }
                          
                         })
                     })
-                    : collection && Object.entries(collection).map((element) => <BookCover  key={element[0]} data={element[1]} />)
+                    : collection && Object.entries(collection).map((element) => <BookCover key={element[0]} data={element[1]} />)
 
                 }
             </div>

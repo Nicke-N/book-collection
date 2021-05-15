@@ -5,7 +5,7 @@ export default function BookCover(props) {
 
     return (
         props.carousel ?
-            <div className="product">
+            <div className="book">
             <Link to={`/collection/${props.data._id}`}>
 
                 <span>
@@ -16,7 +16,7 @@ export default function BookCover(props) {
 
             </div>
         : 
-        <div>
+        <div className='collection'>
             <Link to={`/collection/${props.data._id}`}>
 
                 <span>
