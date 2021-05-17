@@ -10,7 +10,7 @@ import BirchPlank from './BirchPlank'
 
 export default function BookList() {
 
-    const { collection, setCollection, searchVal, setSearchVal, filterOption, setFilterOption, authorized , setAuthorized} = useContext(DataContext)
+    const { collection, setCollection, searchVal, setSearchVal, filterOption, setFilterOption, authorized , setAuthorized, currentBook} = useContext(DataContext)
 
     var added
     useEffect(() => {
@@ -21,7 +21,9 @@ export default function BookList() {
         setPreviousValues()
         addEventListeners()
     }, [filterOption, searchVal])
-
+    useEffect(() => {
+        fetchData()
+    }, [currentBook])
     const fetchData = async () => {
 
         await getCollection()
