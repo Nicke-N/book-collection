@@ -16,13 +16,12 @@ export default function Login() {
         await login(details)
         .then(() => {
             
-            
             if (authenticated()) {
                 setAuthorized(true)
                 history.push('/collection')
                
             } else {
-                console.log(sessionStorage.getItem('error'))
+
                 document.getElementById('error').innerHTML = sessionStorage.getItem('error')
             }
         

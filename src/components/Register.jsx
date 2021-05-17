@@ -4,7 +4,9 @@ import './Register.css'
 import { register, login } from '../kit/api/User'
 
 export default function Register() {
+
     const history = useHistory()
+
     const submit = async (event) => {
         event.preventDefault()
         const details = {
@@ -23,7 +25,7 @@ export default function Register() {
                 await login({username: details.username, password: details.password})
                 .then(history.push('/collection'))
             } else {
-                console.log(registration)
+   
                 document.getElementById('error').innerHTML = registration
             }
             
