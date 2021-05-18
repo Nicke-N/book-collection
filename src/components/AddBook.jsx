@@ -193,25 +193,25 @@ export default function AddBook() {
         <div id='edit-container'>
             <div className='edit-info'>
 
-<label >Title</label>
-<input className='edit-detail' id='title' type='text' maxLength='15' />
-<label >Author</label>
-<input className='edit-detail' id='author' type='text' maxLength='15' />
-<label >Publisher</label>
-<input className='edit-detail' id='publisher' type='text' maxLength='15' />
+<label className='book-label'>Title</label>
+<input className='book-input edit-detail' id='title' type='text' maxLength='15' />
+<label className='book-label'>Author</label>
+<input className='book-input edit-detail' id='author' type='text' maxLength='15' />
+<label className='book-label'>Publisher</label>
+<input className='book-input edit-detail' id='publisher' type='text' maxLength='15' />
 <label>Genre</label>
-<input className='edit-detail' type="text" id='genre' />
+<input className='book-input edit-detail' type="text" id='genre' />
 <div id='genre-container'></div>
-<label >Series</label>
-<input className='edit-detail' id='series' type='text' maxLength='15' />
-<label >Year read</label>
-<select className='edit-detail' name="year" id="year">
+<label className='book-label'>Series</label>
+<input className='book-input edit-detail' id='series' type='text' maxLength='15' />
+<label className='book-label'>Year read</label>
+<select className='book-select edit-detail' name="year" id="year">
 </select>
-<label >Month read</label>
-<select className='edit-detail' name="month" id="month">
+<label className='book-label'>Month read</label>
+<select className='book-select edit-detail' name="month" id="month">
 </select>
-<label >Image URL</label>
-<input className='edit-detail' id='image' type='text' maxLength='150' />
+<label className='book-label'>Image URL</label>
+<input className='book-input edit-detail' id='image' type='text' maxLength='150' />
 <div id='ratingContainer'>
 
     <span className='fa fa-star icon'></span>

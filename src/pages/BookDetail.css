@@ -60,3 +60,10 @@
     transition-duration: 1s;
     transform: scale(2)
 }
+.book-label {
+    font-size: calc(1vw + 1.5vh);
+}
+
+.book-input, .book-select {
+    font-size: calc(1vw + 1.2vh);
+}
