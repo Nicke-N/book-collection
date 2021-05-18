@@ -6,6 +6,7 @@
 }
 .remove-text {
     text-align: center;
+    font-size: calc(1vw + 2vh);
 }
 .remove-btn-container {
     display: flex;

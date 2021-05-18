@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
 import { closeModal } from '../kit/Functions'
 import { deleteUser } from '../kit/api/User'
-import './RemoveUser.css'
+import './Remove.css'
 
 export default function RemoveUser() {
 

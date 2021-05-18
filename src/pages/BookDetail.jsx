@@ -1,17 +1,17 @@
 import React, { useEffect, useContext } from 'react'
-import { useHistory, Link } from 'react-router-dom'
-import { getBook, deleteBook } from '../kit/api/Book'
+import { getBook } from '../kit/api/Book'
 import './BookDetail.css'
 import Modal from '../components/Modal'
 import { DataContext } from '../context/DataContext'
-import { authenticated, showModal } from '../kit/Functions'
+import { authenticated, showModal, goBack } from '../kit/Functions'
+import ButtonEdit from '../components/ButtonEdit'
+import ButtonRemove from '../components/ButtonRemove'
 
 export default function BookDetail(props) {
     
     const bookID = props.match.params.id
 
-    const history = useHistory()
-    const { authorized, setAuthorized, currentBook, setCurrentBook } = useContext(DataContext)
+    const { authorized, setAuthorized, currentBook, setCurrentBook, remove } = useContext(DataContext)
     var guestRating = 0, voters ,average
     const months = [ "January", "February", "March", "April", "May", "June", 
     "July", "August", "September", "October", "November", "December" ]
@@ -32,11 +32,7 @@ export default function BookDetail(props) {
             .then(data => setCurrentBook(data))
 
     }
-    const removeBook = async () => {
-
-        await deleteBook(bookID)
-            .then(history.push('/collection'))
-    }
+    
     const addRatings = () => {
 
         const personalRatings = document.getElementsByClassName('personal-detail-icon')
@@ -70,8 +66,7 @@ export default function BookDetail(props) {
         
         }
     }
-    const goBack = () => window.history.back()
-
+    
     useEffect(() => {
         
         addRatings()
@@ -131,8 +126,8 @@ export default function BookDetail(props) {
                         {authorized ?
                             (
                                 <div className='buttonContainer'>
-                                    <button className='accept-btn' onClick={showModal}> Update details</button>
-                                    <button className='reject-btn' onClick={removeBook}>Delete Book</button>
+                                   <ButtonEdit />
+                                   <ButtonRemove />
                                 </div>
                             )
                             :
@@ -147,7 +142,7 @@ export default function BookDetail(props) {
                         <div className='navBack'>
                             <img onClick={goBack} id='return' className='small-icon' src="https://img.flaticon.com/icons/png/512/60/60577.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" alt="" />
                         </div>
-                        <Modal data={currentBook} />
+                        <Modal data={currentBook} remove={remove} />
                     </div>
                 )
             }
