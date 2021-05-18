@@ -32,10 +32,10 @@ export default function Login() {
             <div id='error'></div>
             <form onSubmit={submit} className='sign-container'>
     
-                <label>Username</label>
-                <input name='username' type="text" maxLength='15'/>
-                <label>Password</label>
-                <input name='password' type="password" maxLength='15'/>
+                <label className='user-label'>Username</label>
+                <input className='user-input' name='username' type="text" maxLength='15'/>
+                <label className='user-label'>Password</label>
+                <input className='user-input' name='password' type="password" maxLength='15'/>
     
 
             <button className='accept-btn sign-btn' type='submit' name='Login'>Login</button>

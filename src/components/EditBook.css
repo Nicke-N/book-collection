@@ -33,7 +33,7 @@
 .detail-genre {
     border-radius: 1vw;
     background-color: darkblue;
-    font-size: 1vw;
+    font-size: calc(1vw + 1vh);
     color: white;
 }
 .detail-genre:hover {

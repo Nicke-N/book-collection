@@ -10,10 +10,12 @@ import Profile from './pages/Profile';
 import BookList from './components/BookList'
 import { DataContext } from './context/DataContext'
 import NavigationPanel from './components/NavigationPanel';
+import Modal from './components/Modal';
 
 function App() {
 
-  const { setUserIP } = useContext(DataContext)
+  const { setUserIP, type } = useContext(DataContext)
+
   useEffect(() => {
     fetch('https://api.ipify.org?format=json')
     .then(res => res.json())
@@ -31,7 +33,7 @@ function App() {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/" component={BookList} />
       </Switch>
-
+      {/* <Modal type={type} /> */}
     </div>
   );
 }

@@ -18,10 +18,10 @@ export default function BookCover(props) {
         <div className='collection'>
             <Link to={`/collection/${props.data._id}`}>
 
-                <span>
+                <span className=''>
                     <img className='cover-collection' src={props.data.image} alt="hehe" />
                 </span>
-                <h5 className='cover-title'>{props.data.title} </h5>
+                <div className='cover-title'>{props.data.title} </div>
             </Link>
 
         </div>

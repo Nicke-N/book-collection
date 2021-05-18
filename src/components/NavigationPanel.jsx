@@ -1,20 +1,39 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './NavigationPanel.css'
-import { goBack, showModal  } from '../kit/Functions'
+import { goBack, showModal } from '../kit/Functions'
 import { DataContext } from '../context/DataContext'
+import Modal from './Modal'
+import AddBook from './AddBook'
 
-export default function NavigationPanel() {
-    const { setType } = useContext(DataContext)
-    
+export default function NavigationPanel(props) {
+    const { setType, authorized, setAuthorized, currentLocation } = useContext(DataContext)
+
+    useEffect(() => {
+
+    }, [currentLocation])
+
     const loginModal = () => {
         setType('login')
+
         showModal()
+
     }
 
     const registerModal = () => {
         setType('register')
+
         showModal()
+    }
+
+    const addBookModal = () => {
+        setType('addNewBook')
+        showModal()
+    }
+
+    const logout = () => {
+        setAuthorized(null)
+        sessionStorage.removeItem('token')
     }
 
     return (
@@ -32,19 +51,23 @@ export default function NavigationPanel() {
                     <li>
                         <Link to='/latest'>
                             <div className='nav-text'>
-                                Latest reads
+                                Latest
                             </div>
 
                         </Link>
                     </li>
-                    <li>
-                        <Link to='/profile'>
-                            <div className='nav-text'>
-                                Profile
+                    {authorized ?
+                        <li>
+                            <Link to='/profile'>
+                                <div className='nav-text'>
+                                    Profile
                             </div>
 
-                        </Link>
-                    </li>
+                            </Link>
+                        </li>
+                        : null
+                    }
+
 
                     <li >
                         <Link onClick={goBack}>
@@ -55,15 +78,26 @@ export default function NavigationPanel() {
                     </li>
                 </ul>
             </div>
-            <div id='admin-section'>
+            <div>
                 <ul>
-                    <li>
-                        <Link onClick={loginModal}>
-                            <div className='nav-text'>
-                                Login
+                    {authorized ?
+                        <li>
+                            <Link onClick={logout}>
+                                <div className='nav-text'>
+                                    Logout
                             </div>
-                        </Link>
-                    </li>
+                            </Link>
+                        </li>
+                        :
+                        <li>
+                            <Link onClick={loginModal}>
+                                <div className='nav-text'>
+                                    Login
+                            </div>
+                            </Link>
+                        </li>
+                    }
+
                     <li>
                         <Link onClick={registerModal}>
                             <div className='nav-text'>
@@ -73,7 +107,24 @@ export default function NavigationPanel() {
                     </li>
                 </ul>
             </div>
-            
+            <div id='admin-section'>
+                {authorized ?
+
+                    <ul>
+                        <li>
+                            <Link onClick={addBookModal}>
+                                <div className='nav-text'>
+                                    Add book
+                            </div>
+                            </Link>
+                        </li>
+                    </ul>
+
+                    : null
+                }
+
+            </div>
+            {/* <Modal type={type}/> */}
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { getCollection, addBook } from '../kit/api/Book'
 import { DataContext } from '../context/DataContext'
-import { addOptions, closeModal } from '../kit/Functions'
+import { addOptions, closeModal, clearInfo } from '../kit/Functions'
 
 export default function AddBook() {
     const { setCollection } = useContext(DataContext)
@@ -128,17 +128,10 @@ export default function AddBook() {
             .then(res => res.json())
             .then(data => setCollection(data))
             .then(closeModal())
-            .then(
-                document.getElementById('title').value = '',
-                document.getElementById('author').value = '',
-                document.getElementById('image').value = '',
-                document.getElementById('series').value = '',
-                document.getElementById('publisher').value = '',
-                document.getElementById('month').value = '',
-                document.getElementById('year').value = '',
-                document.getElementById('genre-container').textContent = ''
-
-            )
+            .then( () => {
+                clearInfo()
+                genres = []
+            })
 
     }
     const addToArray = (e) => {
@@ -177,6 +170,8 @@ export default function AddBook() {
     }
     
     useEffect(() => {
+     
+       
         addOptions()
         const genreInput = document.getElementById('genre')
         if(genreInput)

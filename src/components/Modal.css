@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    z-index: 100;
+    z-index: 10000;
     left: 0;
     top: 0;
     height: 100%;
@@ -19,21 +19,23 @@
     color: #b7b7b7;
     background-color: white;
     width: calc(15vw + 10vh);
-    height: calc(25vw + 35vh);
+    height: calc(30vw + 40vh);
     box-shadow: 0 1vh 1.5vh 0 rgba(0,0,0,0.2),0 1vh 2vh 0 rgba(0,0,0,0.17);
     border: solid 1px white;
     border-radius: 1vw;
-    z-index: 100;
+    z-index: 10000;
   }
   
   .modal-header{
     background: white;
     color: #b7b7b7;
     border-radius: 1vw;
-    height: 20%;
+    height: 15%;
     display: grid;
-    grid-template-areas:  'empty empty empty empty emtpy close'
-                          'empty1 title title title title  empty2';
+    grid-template-areas:  'empty empty empty empty empty close'
+                          'empty1 title title title title  empty2'
+                          'empty3 empty3 empty3 empty3 empty3 empty3';
+    z-index: 10000;
                             
   }
   
@@ -41,7 +43,8 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    height: 80%;
+    height: 85%;
+    z-index: 10000;
   }
   
   .modal-footer{

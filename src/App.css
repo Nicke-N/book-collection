@@ -4,8 +4,11 @@
   font-family: 'Tangerine', cursive;
   
 }
+html {
+  height: 100vh;
+}
 .App {
-  height: 100%;
+  height: calc(100%);
   
 }
 body {
@@ -118,7 +121,9 @@ select {
 
 #navigation-panel {
   position: fixed;
-  right: 90%;
+  right: 85%;
+  top: 20%;
+  width: 15vw;
 }
 .nav-text {
   font-size: calc(1.5vw + 1.5vh);

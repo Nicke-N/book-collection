@@ -9,7 +9,7 @@ import ButtonEdit from '../components/ButtonEdit'
 
 export default function Profile() {
 
-    const { authorized, setAuthorized, userDetails, setUserDetails, remove } = useContext(DataContext)
+    const { authorized, setAuthorized, userDetails, setUserDetails, remove, type } = useContext(DataContext)
 
 
     if (authenticated()) setAuthorized(true)
@@ -65,7 +65,7 @@ export default function Profile() {
 
                 :
 
-                null
+                <Modal type={type} />
 
             }
 

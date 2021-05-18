@@ -26,3 +26,13 @@ export const addOptions = () => {
     }
 }
 export const goBack = () => window.history.back()
+export const clearInfo = () => {
+    document.getElementById('genre-container').textContent = ''
+    document.getElementById('author').value = ''
+    document.getElementById('series').value = ''
+    document.getElementById('publisher').value = ''
+    document.getElementById('image').value =''
+    document.getElementById('year').value = ''
+    document.getElementById('month').value = ''
+    document.getElementById('title').value = ''
+}
