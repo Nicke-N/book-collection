@@ -173,7 +173,8 @@ export default function EditBook(props) {
         if (event.path[1].children.length > 0) {
 
             for (let i = 0; i < 5; i++) {
-
+                console.log(i)
+                console.log(event.path[1].children[i])
                 const classList = Array.from(event.path[1].children[i].classList)
 
                 if (classList.includes('checked'))

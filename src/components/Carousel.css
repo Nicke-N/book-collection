@@ -19,7 +19,7 @@
   transition: background-color 0.3s;
   display: table;
 }
-.carousel_control .icon {
+.carousel_control .nav-icon {
   display: table-cell;
   vertical-align: middle;
   text-align: center;

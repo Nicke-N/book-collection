@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Profile from './pages/Profile';
 import BookList from './components/BookList'
 import { DataContext } from './context/DataContext'
+import NavigationPanel from './components/NavigationPanel';
 
 function App() {
 
@@ -23,14 +24,12 @@ function App() {
   return (
     <div className="App">
       <Header/>
+      <NavigationPanel />
       <Switch>
         <Route exact path="/collection/:id" component={BookDetail}/>
-        <Route exact path="/collection" component={BookList}/>
         <Route exact path="/latest" component={BookCollection}/>
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/register" component={Register} />
-
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={BookList} />
       </Switch>
 
     </div>

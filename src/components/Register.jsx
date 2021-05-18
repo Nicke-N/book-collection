@@ -1,13 +1,12 @@
 import React, { useContext } from 'react'
-import { useHistory } from 'react-router-dom'
 import './Register.css'
 import { register, login } from '../kit/api/User'
 import { DataContext } from '../context/DataContext'
-import { authenticated } from '../kit/Functions'
+import { authenticated, closeModal } from '../kit/Functions'
 
 export default function Register() {
 
-    const history = useHistory()
+
     const { setAuthorized } = useContext(DataContext)
     const submit = async (event) => {
         event.preventDefault()
@@ -16,53 +15,57 @@ export default function Register() {
             password: event.target[1].value,
             name: event.target[2].value,
             email: event.target[3].value,
-            description: event.target[4].value
+            instagram: event.target[4].value,
+            goodReads: event.target[5].value,
+            description: event.target[6].value
         }
 
 
         await register(details)
-        .then( async () => {
-            const registration = sessionStorage.getItem('registration')
-            if (registration === 'User was created!' ) {
-                await login({username: details.username, password: details.password})
-                .then(authenticated() ? setAuthorized(true) : document.getElementById('error').textContent = 'Login failed for no reason!')
-                .then(history.push('/collection'))
-            } else {
-   
-                document.getElementById('error').textContent = registration
-            }
-            
-        })
+            .then(async () => {
+                const registration = sessionStorage.getItem('registration')
+                if (registration === 'User was created!') {
+                    await login({ username: details.username, password: details.password })
+                        .then(authenticated() ? setAuthorized(true) : document.getElementById('error').textContent = 'Login failed for no reason!')
+                        .then(closeModal())
+                } else {
+
+                    document.getElementById('error').textContent = registration
+                }
+
+            })
 
     }
 
     return (
-        <>
-        <div id='error'></div>
-        <form onSubmit={submit}>
-            <div>
-                Username: 
-                <input name='username' type="text" maxLength='15'/>
-            </div>
-            <div>
-                Password: 
-                <input name='password' type="password" maxLength='15'/>
-            </div>
-            <div>
-                Name: 
-                <input name='name' type="text" maxLength='15'/>
-            </div>
-            <div>
-                Email: 
-                <input name='email' type="email" maxLength='15'/>
-            </div>
-            <div>
-                Description: 
-                <textarea name="description" cols="20" rows="10" maxLength='200'></textarea>
-            </div>
+        <div className='sign-container'>
+            <div id='error'></div>
+            <form onSubmit={submit} className='sign-container'>
+                <label className='user-label'>Username</label>
+                <input className='user-input' name='username' type="text" maxLength='15' />
 
-            <button type='submit' name='register'>Register</button>
-        </form>
-        </>
+                <label className='user-label'>Password</label>
+                <input className='user-input' name='password' type="password" maxLength='15' />
+
+                <label className='user-label'>Name</label>
+                <input className='user-input' name='name' type="text" maxLength='15' />
+
+                <label className='user-label'>Email</label>
+                <input className='user-input' name='email' type="email" maxLength='50' />
+
+                <label className='user-label'>instagram</label>
+                <input className='user-input' name='instagram' type="text" maxLength='200' />
+
+
+                <label className='user-label'>GoodReads</label>
+                <input className='user-input' name='goodReads' type="text" maxLength='200' />
+
+                <label className='user-label'>Description</label>
+                <textarea className='user-text-area' name="description"  maxLength='200'></textarea>
+
+
+                <button type='submit' name='register' className='accept-btn sign-btn'>Register</button>
+            </form>
+        </div>
     )
 }

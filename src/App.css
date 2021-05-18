@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
-html {
-  height: 100%;
-  background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
-}
+
 * {
   font-family: 'Tangerine', cursive;
   
 }
 .App {
-  height: 80vh;
+  height: 100%;
+  
 }
 body {
   margin: 2vh 25vw 0 25vw;
-  
+  background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
 }
 
 h1 {
@@ -116,4 +114,12 @@ select {
  }
 .remove-icon {
   background-color: transparent;
+}
+
+#navigation-panel {
+  position: fixed;
+  right: 90%;
+}
+.nav-text {
+  font-size: calc(1.5vw + 1.5vh);
 }

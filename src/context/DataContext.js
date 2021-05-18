@@ -11,7 +11,7 @@ export const DataProvider = ({children}) => {
     const [ searchVal, setSearchVal ] = useState(null)
     const [ filterOption, setFilterOption ] = useState(null)
     const [ userIP, setUserIP ]  = useState(null)
-    
+    const [ type, setType ] = useState(null)
     return (
     <DataContext.Provider
       value={{
@@ -30,7 +30,9 @@ export const DataProvider = ({children}) => {
         searchVal, 
         setSearchVal,
         userIP, 
-        setUserIP
+        setUserIP,
+        type,
+        setType
       }}
     >
       {children}

@@ -5,12 +5,12 @@ import { DataContext } from '../context/DataContext'
 import { getCollection } from '../kit/api/Book'
 import './BookCollection.css'
 import LeftArrow from '../images/left-arrow.png'
+import Modal from '../components/Modal'
 
 export default function BookCollection() {
-    const { setCollection } = useContext(DataContext)
+    const { setCollection, type } = useContext(DataContext)
     useEffect(() => {
         fetchData()   
-        
     }, [])
 
     const fetchData = async () => {
@@ -35,10 +35,11 @@ export default function BookCollection() {
                 
             </div>
             
-            <div className='section-divider'></div>
+            <div className='section-divider' />
 
             <Carousel />
             <img src={LeftArrow} alt="" />
+            <Modal type={type} />
         </div>
     )
 }
