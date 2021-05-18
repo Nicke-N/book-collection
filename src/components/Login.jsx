@@ -4,6 +4,7 @@ import './Login.css'
 import { login } from '../kit/api/User'
 import { DataContext } from '../context/DataContext'
 import { authenticated } from '../kit/Functions'
+
 export default function Login() {
 
     const { setAuthorized } = useContext(DataContext)
@@ -16,13 +17,12 @@ export default function Login() {
         await login(details)
         .then(() => {
             
-            
             if (authenticated()) {
                 setAuthorized(true)
                 history.push('/collection')
                
             } else {
-                console.log(sessionStorage.getItem('error'))
+
                 document.getElementById('error').innerHTML = sessionStorage.getItem('error')
             }
         

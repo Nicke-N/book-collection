@@ -7,12 +7,22 @@ import { DataContext } from '../context/DataContext'
 import { authenticated, showModal } from '../kit/Functions'
 
 export default function BookDetail(props) {
+    
     const bookID = props.match.params.id
+
     const history = useHistory()
     const { authorized, setAuthorized, currentBook, setCurrentBook } = useContext(DataContext)
-    var guestRating
+    var guestRating = 0, voters ,average
+    const months = [ "January", "February", "March", "April", "May", "June", 
+    "July", "August", "September", "October", "November", "December" ]
 
-    if (currentBook) guestRating = (currentBook.guestsRating / (currentBook.guests === 0 ? 1 : currentBook.guests)).toFixed(2)
+    if (currentBook){
+        
+        (currentBook.guestsRating).map(element => guestRating += element.rating)
+        voters = currentBook.guestsRating.length
+        average = (guestRating / (voters === 0 ? 1 : voters)).toFixed(2)
+
+    }
 
     const fetchBook = async () => {
 
@@ -30,40 +40,59 @@ export default function BookDetail(props) {
     const addRatings = () => {
 
         const personalRatings = document.getElementsByClassName('personal-detail-icon')
+        
         if (personalRatings && currentBook) {
+            for (let check = 0; check < 5; check++) {
+                personalRatings[check].classList.remove('checked')
+            }
             for (let check = 0; check < currentBook.personalRating; check++) {
                 personalRatings[check].classList.add('checked')
             }
         }
         const guestsRatings = document.getElementsByClassName('guests-detail-icon')
+
         if (guestsRatings && currentBook) {
             
-            const val = Math.floor(guestRating)
+            const val = Math.floor(average)
 
+            for (let check = 0; check < 5; check++) {
+
+                const classList = Array.from(guestsRatings[check].classList)
+                    
+                if(classList.includes('checked')) guestsRatings[check].classList.remove('checked')
+               
+            }
+  
             for (let check = 0; check < val; check++) {
-       
+               
                 guestsRatings[check].classList.add('checked')
             }
+        
         }
     }
     const goBack = () => window.history.back()
-    
+
     useEffect(() => {
+        
         addRatings()
     }, [currentBook])
 
     useEffect(() => {
         fetchBook()
+        addRatings()
     }, [])
+
     return (
         <div className='page-container'>
             {currentBook &&
                 (
-                    <div id='details-container'>
+                    <div className='details-container'>
                         <img className='detail-image' src={currentBook.image} alt="URL has changed!" />
+                        
                         <p className='detail title'>
                             Title: {currentBook.title}
                         </p>
+                        
                         <p className='detail author'>
                             Author: {currentBook.author}
                         </p>
@@ -88,9 +117,17 @@ export default function BookDetail(props) {
                             <span className='fa fa-star guests-detail-icon'></span>
                             <span className='fa fa-star guests-detail-icon'></span>
                             <span className='fa fa-star guests-detail-icon'></span>
-                            {`(${guestRating})`}
+                            {`(${average})`}
                         </p>
-
+                        <p className='detail genre'>
+                            Genre: {currentBook.genre.map(element => ` ${element}`)}
+                        </p>
+                        <p className='detail guests'>
+                            {voters} votes
+                        </p>
+                        <p className='detail read'>
+                            Read: {months[currentBook.monthRead - 1]} {currentBook.yearRead}
+                        </p>
                         {authorized ?
                             (
                                 <div className='buttonContainer'>

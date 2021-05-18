@@ -36,7 +36,8 @@ export default function EditProfile() {
     }
 
     return (
-        <form onSubmit={updateUserDetails}>  
+        <div id='edit-coontainer'>
+                    <form onSubmit={updateUserDetails}>  
             {userDetails ? Object.entries(userDetails).map((element) => {
 
                 if (element[0] === 'password') {
@@ -59,7 +60,7 @@ export default function EditProfile() {
                             <textarea maxLength='200' type='text' for={element[0]} id={element[0]}></textarea>
                         </div>
                     )
-                } else if (element[0] === 'goodReads') {
+                } else if (element[0] === 'goodReads' || element[0] === 'instagram' || element[0] === 'image') {
                     return (
                         <div className='user-detail'>
                             <label htmlFor={element[0]}>{element[0]}</label>
@@ -80,6 +81,8 @@ export default function EditProfile() {
             )}
             <button type='submit' name='update'>Update User</button>
         </form>
+
+        </div>
 
 
     )

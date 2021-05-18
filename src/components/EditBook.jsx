@@ -2,11 +2,12 @@ import React, { useContext, useEffect } from 'react'
 import { editBook, getBook } from '../kit/api/Book'
 import { DataContext } from '../context/DataContext'
 import './EditBook.css'
+import { addOptions, closeModal } from '../kit/Functions'
 
 export default function EditBook(props) {
 
     var rating = null
-    const { currentBook, authorized, setCurrentBook } = useContext(DataContext)
+    const { currentBook, authorized, setCurrentBook, userIP } = useContext(DataContext)
     const bookID = currentBook._id
     var genres = [] 
 
@@ -14,6 +15,14 @@ export default function EditBook(props) {
 
         const title = document.getElementById('title')
         if (title) {
+            clearInfo()
+            document.getElementById('author').value = currentBook.author
+            document.getElementById('series').value = currentBook.series
+            document.getElementById('publisher').value = currentBook.publisher
+            document.getElementById('image').value = currentBook.image
+            document.getElementById('year').value = currentBook.yearRead
+            document.getElementById('month').value = currentBook.monthRead
+
             title.value = currentBook.title
             document.getElementById('author').value = currentBook.author
             document.getElementById('series').value = currentBook.series
@@ -22,18 +31,28 @@ export default function EditBook(props) {
             document.getElementById('year').value = currentBook.yearRead
             document.getElementById('month').value = currentBook.monthRead
             var genresContainer = document.getElementById('genre-container')
-            
+
             if(currentBook.genre) {
                 (currentBook.genre).map((element) => {
                     var span = document.createElement('span')
                     span.classList.add('detail-genre')
                     span.textContent = `${element}`
+                    genres.push(element)
                     span.addEventListener('click', removeOnClick)
                     genresContainer.appendChild(span)
                 })
             }
             
         }
+    }
+    const clearInfo = () => {
+        document.getElementById('genre-container').textContent = ''
+        document.getElementById('author').value = ''
+        document.getElementById('series').value = ''
+        document.getElementById('publisher').value = ''
+        document.getElementById('image').value =''
+        document.getElementById('year').value = ''
+        document.getElementById('month').value = ''
     }
     const updateBook = async () => {
         var book = {}
@@ -62,20 +81,22 @@ export default function EditBook(props) {
             book.genre = genres
             book.monthRead = month
             book.yearRead = year
-        }
-        if (rating) {
-            book.personalRating = rating
+            book.personalRating = rating ? rating : 0
         } else {
-            book.personalRating = 0
+           
+            book.guestID = userIP.ip
+            book.rating = rating ? rating : 0
         }
         
-        await editBook(bookID, book)
-
-        await getBook(bookID)
+        setTimeout( async () => {
+            await editBook(bookID, book)
+            await getBook(bookID)
             .then(res => res.json())
             .then(data => setCurrentBook(data))
-
-        document.getElementById('simpleModal').style.display = 'none'
+            // .then(addEventListeners())
+            .then(closeModal())
+        }, 1000);
+        
     }
     const addEventListeners = () => {
         for (let element = 0; element < HTMLcollection.length; element++) {
@@ -88,13 +109,14 @@ export default function EditBook(props) {
 
         const redoImage = document.getElementById('redo-image')
         if (redoImage) {
-
-            document.getElementById('ratingContainer').removeChild(redoImage)
+            const con =  document.getElementById('ratingContainer')
+            con.removeChild(redoImage)
+         
             rating = null
         }
     }
     const ratingHover = (event) => {
-
+ 
         if (event.path[1].children.length > 0) {
 
             const children = event.path[1].children
@@ -134,8 +156,8 @@ export default function EditBook(props) {
         const redoImage = document.getElementById('redo-image')
 
         if (!redoImage) {
-            rating = index + 1  
             
+ 
             const span = document.createElement('img')
 
             span.src = 'https://image.flaticon.com/icons/png/512/44/44650.png'
@@ -144,7 +166,7 @@ export default function EditBook(props) {
             span.addEventListener('click', addEventListeners)
             document.getElementById('ratingContainer').appendChild(span)
         }
-
+        rating = index + 1  
     }
     const ratingUnFocus = (event) => {
      
@@ -157,30 +179,6 @@ export default function EditBook(props) {
                 if (classList.includes('checked'))
                     event.path[1].children[i].classList.remove('checked')
             }
-        }
-    }
-    const addOptions = () => {
-        const currYear = new Date().getFullYear()
-        var startYear = 2010
-        const yearContainer = document.getElementById('year')
-        if(yearContainer)
-        while(startYear <= currYear) {
-
-            var option = document.createElement('option')
-            option.setAttribute('value', startYear)
-            option.textContent = startYear
-            yearContainer.appendChild(option)
-            startYear++
-        }
-        var month = 1
-        const monthContainer = document.getElementById('year')
-        if(monthContainer)
-        while ( month <= 12) {
-            var option = document.createElement('option')
-            option.setAttribute('value', month)
-            option.textContent = month
-            monthContainer.appendChild(option)
-            month++
         }
     }
     const removeOnClick = (e) => {
@@ -235,7 +233,11 @@ export default function EditBook(props) {
 
     useEffect(() => {
         initialSetUp()
-    }, [])
+    }, [currentBook])
+
+    useEffect(() => {
+        
+    }, [currentBook])
 
     return (
         <div id='edit-container'>

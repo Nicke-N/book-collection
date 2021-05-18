@@ -1,12 +1,95 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { getCollection, addBook } from '../kit/api/Book'
 import { DataContext } from '../context/DataContext'
+import { addOptions, closeModal } from '../kit/Functions'
 
 export default function AddBook() {
     const { setCollection } = useContext(DataContext)
     var genres = []
     var rating = null
+    const addEventListeners = () => {
+        
+        for (let element = 0; element < HTMLcollection.length; element++) {
 
+            HTMLcollection[element].addEventListener('mouseover', ratingHover)
+            HTMLcollection[element].addEventListener('click', ratingClick)
+            HTMLcollection[element].addEventListener('mouseleave', ratingUnFocus)
+
+        }
+
+        const redoImage = document.getElementById('redo-image')
+        if (redoImage) {
+
+            document.getElementById('ratingContainer').removeChild(redoImage)
+            rating = null
+        }
+    }
+    const ratingHover = (event) => {
+
+        if (event.path[1].children.length > 0) {
+
+            const children = event.path[1].children
+            const index = Array.from(children).indexOf(event.currentTarget)
+            const currentClassList = Array.from(children[index].classList)
+            if (currentClassList.length > 2) {
+
+                for (let i = 0; i < 5; i++) {
+
+                    const classList = Array.from(event.path[1].children[i].classList)
+
+                    if (i <= index) {
+                        event.path[1].children[i].classList.add('checked')
+                    } else {
+                        if (classList.includes('checked'))
+                            event.path[1].children[i].classList.remove('checked')
+                    }
+
+                }
+
+            }
+        }
+
+    }
+    const ratingClick = (event) => {
+        const children = event.path[1].children
+        const index = Array.from(children).indexOf(event.currentTarget)
+        
+        for (let element = 0; element < HTMLcollection.length; element++) {
+
+            HTMLcollection[element].removeEventListener('mouseover', ratingHover)
+            HTMLcollection[element].removeEventListener('mouseleave', ratingUnFocus)
+            HTMLcollection[element].removeEventListener('click', ratingClick)
+
+        }
+
+        const redoImage = document.getElementById('redo-image')
+
+        if (!redoImage) {
+            
+            
+            const span = document.createElement('img')
+
+            span.src = 'https://image.flaticon.com/icons/png/512/44/44650.png'
+            span.classList.add('redo-icon')
+            span.setAttribute('id', 'redo-image')
+            span.addEventListener('click', addEventListeners)
+            document.getElementById('ratingContainer').appendChild(span)
+        }
+        rating = index + 1  
+    }
+    const ratingUnFocus = (event) => {
+     
+        if (event.path[1].children.length > 0) {
+
+            for (let i = 0; i < 5; i++) {
+
+                const classList = Array.from(event.path[1].children[i].classList)
+
+                if (classList.includes('checked'))
+                    event.path[1].children[i].classList.remove('checked')
+            }
+        }
+    }
     const post = async () => {
         var book = {}
         const title = document.getElementById('title').value
@@ -44,44 +127,107 @@ export default function AddBook() {
         await getCollection()
             .then(res => res.json())
             .then(data => setCollection(data))
+            .then(closeModal())
+            .then(
+                document.getElementById('title').value = '',
+                document.getElementById('author').value = '',
+                document.getElementById('image').value = '',
+                document.getElementById('series').value = '',
+                document.getElementById('publisher').value = '',
+                document.getElementById('month').value = '',
+                document.getElementById('year').value = '',
+                document.getElementById('genre-container').textContent = ''
+
+            )
 
     }
+    const addToArray = (e) => {
+       
+        if (e.code === 'Enter') {
+            var genre = document.getElementById('genre')
+            const genresContainer = document.getElementById('genre-container')
+            if (genre) {
+                if (genre.value !== '') {
+                    genres.push(genre.value)
+                    genre.value = ''
+                    
+                    if (genresContainer) {
+                        genresContainer.textContent = ''
+                        genres.map((element)=> {
+                            var span = document.createElement('span')
+                            span.classList.add('detail-genre')
+                            span.textContent = `${element}`
+                            span.addEventListener('click', removeOnClick)
+                            genresContainer.appendChild(span)
+                        })
+                    }
+                    
+                }
+            }
+        }
+            
+        
+    }
+    const removeOnClick = (e) => {
+        e.preventDefault()
+        
+        e.target.parentNode.removeChild(e.target)
+        const index = genres.indexOf(e.target.value)
+        genres.splice(index, 1)
+    }
+    
+    useEffect(() => {
+        addOptions()
+        const genreInput = document.getElementById('genre')
+        if(genreInput)
+        genreInput.addEventListener('keydown', addToArray)
+    }, [])
+    const HTMLcollection = document.getElementsByClassName('icon')
+    if (HTMLcollection) {
+        setTimeout(() => {
+            addEventListeners()
+        }, 1000);
 
+    }
     return (
-        <div className='edit-info'>
+        <div id='edit-container'>
+            <div className='edit-info'>
 
-            <label >Title</label>
-            <input className='edit-detail' id='title' type='text' maxLength='15' />
-            <label >Author</label>
-            <input className='edit-detail' id='author' type='text' maxLength='15' />
-            <label >Publisher</label>
-            <input className='edit-detail' id='publisher' type='text' maxLength='15' />
-            <label>Genre</label>
-            <input className='edit-detail' type="text" id='genre' />
-            <div id='genre-container'></div>
-            <label >Series</label>
-            <input className='edit-detail' id='series' type='text' maxLength='15' />
-            <label >Year read</label>
-            <select className='edit-detail' name="year" id="year">
-            </select>
-            <label >Month read</label>
-            <select className='edit-detail' name="month" id="month">
-            </select>
-            <label >Image URL</label>
-            <input className='edit-detail' id='image' type='text' maxLength='150' />
-            <div id='ratingContainer'>
+<label >Title</label>
+<input className='edit-detail' id='title' type='text' maxLength='15' />
+<label >Author</label>
+<input className='edit-detail' id='author' type='text' maxLength='15' />
+<label >Publisher</label>
+<input className='edit-detail' id='publisher' type='text' maxLength='15' />
+<label>Genre</label>
+<input className='edit-detail' type="text" id='genre' />
+<div id='genre-container'></div>
+<label >Series</label>
+<input className='edit-detail' id='series' type='text' maxLength='15' />
+<label >Year read</label>
+<select className='edit-detail' name="year" id="year">
+</select>
+<label >Month read</label>
+<select className='edit-detail' name="month" id="month">
+</select>
+<label >Image URL</label>
+<input className='edit-detail' id='image' type='text' maxLength='150' />
+<div id='ratingContainer'>
 
-                <span className='fa fa-star icon'></span>
-                <span className='fa fa-star icon'></span>
-                <span className='fa fa-star icon'></span>
-                <span className='fa fa-star icon'></span>
-                <span className='fa fa-star icon'></span>
+    <span className='fa fa-star icon'></span>
+    <span className='fa fa-star icon'></span>
+    <span className='fa fa-star icon'></span>
+    <span className='fa fa-star icon'></span>
+    <span className='fa fa-star icon'></span>
 
-            </div>
+</div>
 
 
-            <button onClick={post} className='accept-btn modal-btn'>Add book</button>
+<button onClick={post} className='accept-btn modal-btn'>Add book</button>
 
+</div>
         </div>
+        
+        
     )
 }

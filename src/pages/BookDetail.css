@@ -6,17 +6,6 @@
     width: 2vw;
     height: 1.2vw;
 }
-
-#details-container {
-    display: grid;
-    grid-template-areas:    'image title            title            back'
-                            'image personalRating   personalRating   empty1'
-                            'image guestsRating     guestsRating     empty1'
-                            'image author           author           empty1'
-                            'image publisher        publisher        empty1'
-                            'image series           series           empty1'
-                            'image buttons          buttons          empty1'; 
-}
 .title {
     grid-area: title;
 }
@@ -44,22 +33,27 @@
     margin-left: 12%;
 }
 .detail-image {
-    height: 100vh;
-    width: 30vw;
+    height: calc(10vh + 8vw);
+    width:  calc(10vh + 8vw);
     grid-area: image;
 }
 .navBack {
     grid-area: back;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .detail {
     background-color: palegoldenrod;
-    border: solid 0.1vw palegoldenrod;
     border-radius: 1vw;
     width: 19.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2vw;
+}
+#return {
+    width: 5vw;
 }
 #return:hover {
     transition: all;

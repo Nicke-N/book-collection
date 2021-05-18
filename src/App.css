@@ -1,6 +1,23 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+html {
   height: 100%;
+  background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
 }
+* {
+  font-family: 'Tangerine', cursive;
+  
+}
+.App {
+  height: 80vh;
+}
+body {
+  margin: 2vh 25vw 0 25vw;
+  
+}
+
+h1 {
+  font-size: 7vh;
+ }
 ul {
   list-style: none;
 }
@@ -16,20 +33,27 @@ a:hover {
 .page-container {
   height: 100vh; 
 }
+.section-divider {
+  margin-top: 2vh;
+  margin-bottom: 7vh;
+  width: 100%;
+  height: 0.5vh;
+  background-color: black;
+}
 .edit-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  height: 20vw;
-  width: 10vw;
+  height: calc(10vw + 10vh);
+  width: calc(5vw + 5vh);
 }
 
 input {
-  height: 2vw;
-  width: 9.55vw;
+  /* height: calc(1vw + 1vh);
+  width: calc(7vw + 4vh); */
   font-size: 1vw;
-  border-radius: 1vw;
+ 
   outline: none;
   border: solid 0.1vw grey;
 }
@@ -42,36 +66,54 @@ label {
 }
 
 button {
-  border-radius: 1vw;
+ 
   border: none;
-}
-
-.accept-btn {
-  background-color: rgb(20, 225, 20);
-  height: 3vw;
-  width: 10vw;
+  outline: none;
   font-size: 1.5vw;
 }
-
-
+select {
+  border: none;
+  outline: none;
+}
+.accept-btn {
+  background-color: rgb(20, 225, 20);
+}
 .accept-btn:hover {
   background-color: palegreen;
 }
 
 .reject-btn {
   background-color: rgb(225, 20, 20);
-  height: 3vw;
-  width: 10vw;
-  font-size: 1.5vw;
+
 }
 
 .reject-btn:hover {
   background-color: rgb(247, 149, 149);
-  height: 3vw;
+}
+
+.nav-btn {
+  background-color: rgb(44, 44, 209);
   font-size: 1.5vw;
+  width: 10vw;
+  color:white;
+}
+
+.nav-button:hover {
+  background-color: rgb(114, 114, 231);
 }
 
 .modal-btn {
   position: relative;
   top: 1vw;
+}
+ img {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  
+ }
+.remove-icon {
+  background-color: transparent;
 }

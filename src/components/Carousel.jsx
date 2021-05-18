@@ -1,75 +1,86 @@
 import React, { useContext } from 'react'
 import './Carousel.css'
 import { DataContext } from '../context/DataContext'
-import BookCover from './BookCover';
+import BookCover from './BookCover'
+import BirchPlank from './BirchPlank'
 
-export default function Carousel2() {
+export default function Carousel() {
     
     const { collection } = useContext(DataContext)
     const date = new Date()
     const currentMonth = date.getMonth() + 1
     const currentYear = date.getFullYear()
-
+    const months = [ "January", "February", "March", "April", "May", "June", 
+    "July", "August", "September", "October", "November", "December" ]
+    
     if (collection) {
-        var carousels = document.querySelectorAll('.js-product-carousel');
+        var carousels = document.querySelectorAll('.book-carousel');
         if (carousels.length > 0) {
+            let count = 0;
             [].forEach.call(carousels, function (carousel) {
-                carouselize(carousel);
+                
+                let array = []
+                Object.entries(collection).map(element => (element[1].monthRead === currentMonth - count && element[1].yearRead === currentYear) ? array.push(element[1]) : null)
+
+                carouselize(carousel, array);
+
+                count ++
             });
         }
     
-        function carouselize(carousel) {
+        function carouselize(carousel, array) {
 
-            var productList = carousel.querySelector('.js-product-list');
-            var productListWidth = 80;
-            var productListSteps = 0;
-            var productAmount = 0;
-            var productAmountVisible = 4;
-            var carouselPrev = carousel.querySelector('.js-carousel-prev');
-            var carouselNext = carousel.querySelector('.js-carousel-next');
+            var bookList = carousel.querySelector('.carousel-book-list');
+            var bookListWidth = 59;
+            var bookListSteps = 0;
+            var bookAmount = 0;
+            var bookAmountVisible = 5;
+            var carouselPrev = carousel.querySelector('.carousel-book-next');
+            var carouselNext = carousel.querySelector('.carousel-book-prev');
     
             //Count all the products
-            [].forEach.call(collection, function (product) {
-                productAmount++;
-                productListWidth += 80;
-                productList.style.width = productListWidth + "vw";
+            [].forEach.call(array, function (product) {
+                bookAmount++;
+                bookListWidth += 60;
+                bookList.style.width = bookListWidth + "vw";
             });
     
             carouselNext.onclick = function () {
 
-                if (productListSteps < productAmount - productAmountVisible ) {
-                    productListSteps++;
-                    moveProductList();
+                if (bookListSteps < bookAmount - bookAmountVisible ) {
+                    bookListSteps++;
+                    moveBookList();
                 }
             }
             carouselPrev.onclick = function () {
-                if (productListSteps > 0) {
-                    productListSteps--;
-                    moveProductList();
+                if (bookListSteps > 0) {
+                    bookListSteps--;
+                    moveBookList();
                 }
             }
     
             // This is a bit hacky, let me know if you find a better way to do this!
-            // Move the carousels product-list
-            function moveProductList() {
-                productList.style.transform = "translateX(-" + 20 * productListSteps + "vw)";
+            // Move the carousels book-list
+            function moveBookList() {
+                bookList.style.transform = "translateX(-" + 10 * bookListSteps + "vw)";
             }
         }
     }
    
     return (
         <div>
-            <div id='carousel1' className="carousel js-product-carousel">
-                <h2>{currentMonth.toString().charAt(1) === '' ? 0 + currentMonth.toString() : currentMonth} - {currentYear}</h2>
-                <div className="carousel__view">
-                    <span className="carousel__control js-carousel-prev"><i className="icon">previous</i></span>
-                    <span href="#" className="carousel__control js-carousel-next"><i className="icon">next</i></span>
-                    <ul className="product-list js-product-list">
+         
+            <div id='carousel1' className="carousel book-carousel">
+                <h2 className='carousel-title'>{months[currentMonth-1]} {currentYear}</h2>
+                <div className="carousel_view">
+                    <span className="carousel_control carousel-book-next"><i className="icon">previous</i></span>
+                    <span href="#" className="carousel_control carousel-book-prev"><i className="icon">next</i></span>
+                    <ul className="book-list carousel-book-list">
                         {collection && Object.entries(collection).map((element) => {
                          
                             if (element[1].monthRead === currentMonth && element[1].yearRead === currentYear) 
-                            return  <li key={element[0]} className="product-list__item">
-                                        <BookCover number={element[0]} data={element[1]}/>
+                            return  <li key={element[0]} className="book-list_item">
+                                        <BookCover carousel data={element[1]}/>
                                     </li>
                         })
 
@@ -77,17 +88,18 @@ export default function Carousel2() {
                     </ul>
                 </div>
             </div>
-            <div id='carousel2' className="carousel js-product-carousel">
-            <h2>{currentMonth.toString().charAt(1) === '' ? 0 + (currentMonth - 1).toString() : currentMonth} - {currentYear}</h2>
-                <div className="carousel__view">
-                    <span className="carousel__control js-carousel-prev"><i className="icon">previous</i></span>
-                    <span href="#" className="carousel__control js-carousel-next"><i className="icon">next</i></span>
-                    <ul className="product-list js-product-list">
+            <BirchPlank />
+            <div id='carousel2' className="carousel book-carousel">
+            <h2  className='carousel-title'>{months[currentMonth-2]} {currentYear}</h2>
+                <div className="carousel_view">
+                    <span className="carousel_control carousel-book-next"><i className="icon">previous</i></span>
+                    <span href="#" className="carousel_control carousel-book-prev"><i className="icon">next</i></span>
+                    <ul className="book-list carousel-book-list">
                     {collection && Object.entries(collection).map((element) => {
                          
                          if (element[1].monthRead === currentMonth-1 && element[1].yearRead === currentYear) 
-                         return  <li key={element[0]} className="product-list__item">
-                                     <BookCover number={element[0]} data={element[1]}/>
+                         return  <li key={element[0]} className="book-list_item">
+                                     <BookCover carousel number={element[0]} data={element[1]}/>
                                  </li>
                      })
 
@@ -95,17 +107,18 @@ export default function Carousel2() {
                     </ul>
                 </div>
             </div>
-            <div id='carousel3' className="carousel js-product-carousel">
-            <h2>{currentMonth.toString().charAt(1) === '' ? 0 + (currentMonth - 2).toString() : currentMonth} - {currentYear}</h2>
-                <div className="carousel__view">
-                    <span className="carousel__control js-carousel-prev"><i className="icon">previous</i></span>
-                    <span href="#" className="carousel__control js-carousel-next"><i className="icon">next</i></span>
-                    <ul className="product-list js-product-list">
+            <BirchPlank />
+            <div id='carousel3' className="carousel book-carousel">
+            <h2  className='carousel-title'>{months[currentMonth-3]} {currentYear}</h2>
+                <div className="carousel_view">
+                    <span className="carousel_control carousel-book-next"><i className="icon">previous</i></span>
+                    <span href="#" className="carousel_control carousel-book-prev"><i className="icon">next</i></span>
+                    <ul className="book-list carousel-book-list">
                     {collection && Object.entries(collection).map((element) => {
                          
                          if (element[1].monthRead === currentMonth-2 && element[1].yearRead === currentYear) 
-                         return  <li key={element[0]} className="product-list__item">
-                                     <BookCover number={element[0]} data={element[1]}/>
+                         return  <li key={element[0]} className="book-list_item">
+                                     <BookCover carousel number={element[0]} data={element[1]}/>
                                  </li>
                      })
 
@@ -114,7 +127,27 @@ export default function Carousel2() {
                     
                 </div>
             </div>
+            <BirchPlank />
+            <div id='carousel4' className="carousel book-carousel">
+            <h2  className='carousel-title'>{months[currentMonth-4]} {currentYear}</h2>
+                <div className="carousel_view">
+                    <span className="carousel_control carousel-book-next"><i className="icon">previous</i></span>
+                    <span href="#" className="carousel_control carousel-book-prev"><i className="icon">next</i></span>
+                    <ul className="book-list carousel-book-list">
+                    {collection && Object.entries(collection).map((element) => {
+                         
+                         if (element[1].monthRead === currentMonth-3 && element[1].yearRead === currentYear) 
+                         return  <li key={element[0]} className="book-list_item">
+                                     <BookCover carousel number={element[0]} data={element[1]}/>
+                                 </li>
+                     })
 
+                     }
+                    </ul>
+                    
+                </div>
+            </div>
+            <BirchPlank />
         </div>
     )
 }

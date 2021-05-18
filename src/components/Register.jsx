@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import './Register.css'
 import { register, login } from '../kit/api/User'
+import { DataContext } from '../context/DataContext'
+import { authenticated } from '../kit/Functions'
 
 export default function Register() {
+
     const history = useHistory()
+    const { setAuthorized } = useContext(DataContext)
     const submit = async (event) => {
         event.preventDefault()
         const details = {
@@ -21,10 +25,11 @@ export default function Register() {
             const registration = sessionStorage.getItem('registration')
             if (registration === 'User was created!' ) {
                 await login({username: details.username, password: details.password})
+                .then(authenticated() ? setAuthorized(true) : document.getElementById('error').textContent = 'Login failed for no reason!')
                 .then(history.push('/collection'))
             } else {
-                console.log(registration)
-                document.getElementById('error').innerHTML = registration
+   
+                document.getElementById('error').textContent = registration
             }
             
         })

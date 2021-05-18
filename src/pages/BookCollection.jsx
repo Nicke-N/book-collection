@@ -1,13 +1,10 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import AddBook from '../components/AddBook'
-import BookCover from '../components/BookCover'
 import Carousel from '../components/Carousel'
-import Carousel2 from '../components/Carousel'
 import { DataContext } from '../context/DataContext'
 import { getCollection } from '../kit/api/Book'
 import './BookCollection.css'
-
+import LeftArrow from '../images/left-arrow.png'
 
 export default function BookCollection() {
     const { setCollection } = useContext(DataContext)
@@ -26,12 +23,22 @@ export default function BookCollection() {
 
     return (
         <div id='collection-page'>
-            <Link className='nav' to='/collection'>
-                Check out the full collection!
-            </Link>
-            <h1 className='latest-title'>Books read recently</h1>
+            <div id='top-container'>
+                <div>
+                    <h1 className='latest-title'>Books read recently</h1>
+                </div>
+                <div id='nav-container'>
+                <Link className='nav' to='/collection'>
+                    Check out the full collection!
+                </Link>
+                </div>
+                
+            </div>
+            
+            <div className='section-divider'></div>
+
             <Carousel />
-         
+            <img src={LeftArrow} alt="" />
         </div>
     )
 }
