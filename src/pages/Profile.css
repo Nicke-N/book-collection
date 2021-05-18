@@ -1,12 +1,30 @@
 .profile-btn {
-    background-color: white;
+    
     border: none;
 }
 .profile-icon {
+    background-color: transparent;
     width: 2vw;
     height: 2vw;
 }
 .profile-icon:hover {
     width: 2.5vw;
     height: 2.5vw;
+}
+#profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+    height: 100%;
+}
+.details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.user-detail {
+    font-size: 5vh;
 }

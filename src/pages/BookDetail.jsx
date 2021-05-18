@@ -17,10 +17,11 @@ export default function BookDetail(props) {
     "July", "August", "September", "October", "November", "December" ]
 
     if (currentBook){
+        
         (currentBook.guestsRating).map(element => guestRating += element.rating)
         voters = currentBook.guestsRating.length
-        
         average = (guestRating / (voters === 0 ? 1 : voters)).toFixed(2)
+
     }
 
     const fetchBook = async () => {
@@ -70,7 +71,7 @@ export default function BookDetail(props) {
         }
     }
     const goBack = () => window.history.back()
-    // FIXA att sidan ej re-renders efter en update!!!
+
     useEffect(() => {
         
         addRatings()
@@ -85,7 +86,7 @@ export default function BookDetail(props) {
         <div className='page-container'>
             {currentBook &&
                 (
-                    <div id='details-container'>
+                    <div className='details-container'>
                         <img className='detail-image' src={currentBook.image} alt="URL has changed!" />
                         
                         <p className='detail title'>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
 import BookCover from './BookCover'
@@ -13,6 +13,7 @@ export default function BookList() {
     const { collection, setCollection, searchVal, setSearchVal, filterOption, setFilterOption, authorized , setAuthorized, currentBook} = useContext(DataContext)
 
     var added
+
     useEffect(() => {
         if (!collection || Object.keys(collection).length === 0) {
             fetchData()
@@ -22,8 +23,12 @@ export default function BookList() {
         addEventListeners()
     }, [filterOption, searchVal])
     useEffect(() => {
+        
+    }, [])
+    useEffect(() => {
         fetchData()
     }, [currentBook])
+
     const fetchData = async () => {
 
         await getCollection()

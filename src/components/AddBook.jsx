@@ -65,7 +65,7 @@ export default function AddBook() {
         const redoImage = document.getElementById('redo-image')
 
         if (!redoImage) {
-            rating = index + 1  
+            
             
             const span = document.createElement('img')
 
@@ -75,7 +75,7 @@ export default function AddBook() {
             span.addEventListener('click', addEventListeners)
             document.getElementById('ratingContainer').appendChild(span)
         }
-
+        rating = index + 1  
     }
     const ratingUnFocus = (event) => {
      

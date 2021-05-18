@@ -1,3 +1,4 @@
+import React, { useContext, useEffect } from 'react'
 import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import BookCollection from './pages/BookCollection';
@@ -7,18 +8,17 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Profile from './pages/Profile';
 import BookList from './components/BookList'
+import { DataContext } from './context/DataContext'
 
 function App() {
 
-  var http = require('http');
+  const { setUserIP } = useContext(DataContext)
+  useEffect(() => {
+    fetch('https://api.ipify.org?format=json')
+    .then(res => res.json())
+    .then(data => setUserIP(data))
+  }, [])
 
-  http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp) {
-    resp.on('data', function(ip) {
-      console.log("My public IP address is: " + ip);
-      const data = `ip: ${ip}`
-      console.log(data)
-    });
-  });
 
   return (
     <div className="App">

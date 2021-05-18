@@ -15,6 +15,7 @@ export default function RemoveUser() {
         setRemove(false)
         closeModal()
         setAuthorized(false)
+        sessionStorage.removeItem('token')
         history.push('/register')
        
     }

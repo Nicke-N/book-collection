@@ -7,6 +7,9 @@ html {
   font-family: 'Tangerine', cursive;
   
 }
+.App {
+  height: 80vh;
+}
 body {
   margin: 2vh 25vw 0 25vw;
   
@@ -69,7 +72,7 @@ button {
   font-size: 1.5vw;
 }
 select {
- 
+  border: none;
   outline: none;
 }
 .accept-btn {
@@ -111,3 +114,6 @@ select {
   -ms-user-select: none;
   
  }
+.remove-icon {
+  background-color: transparent;
+}

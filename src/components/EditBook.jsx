@@ -7,7 +7,7 @@ import { addOptions, closeModal } from '../kit/Functions'
 export default function EditBook(props) {
 
     var rating = null
-    const { currentBook, authorized, setCurrentBook } = useContext(DataContext)
+    const { currentBook, authorized, setCurrentBook, userIP } = useContext(DataContext)
     const bookID = currentBook._id
     var genres = [] 
 
@@ -84,16 +84,8 @@ export default function EditBook(props) {
             book.personalRating = rating ? rating : 0
         } else {
            
-            var http = require('http');
-            await http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp) {
-              return resp.on('data', function(ip) {
-                
-                book.guestID = `ip: ${ip}`
-              });
-            });
+            book.guestID = userIP.ip
             book.rating = rating ? rating : 0
-        
-         
         }
         
         setTimeout( async () => {

@@ -4,6 +4,7 @@ import './Login.css'
 import { login } from '../kit/api/User'
 import { DataContext } from '../context/DataContext'
 import { authenticated } from '../kit/Functions'
+
 export default function Login() {
 
     const { setAuthorized } = useContext(DataContext)
