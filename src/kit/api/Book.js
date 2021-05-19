@@ -6,7 +6,7 @@ export const getCollection = async () => {
         }
     }
 
-      return fetch('http://localhost:5000/collection/', books)
+      return fetch('https://serene-plateau-79418.herokuapp.com/collection/', books)
 
 }
 
@@ -18,7 +18,7 @@ export const getBook = async (bookID) => {
       }
   }
 
-    return fetch(`http://localhost:5000/collection/${bookID}`, book)
+    return fetch(`https://serene-plateau-79418.herokuapp.com/collection/${bookID}`, book)
 
 }
 
@@ -31,7 +31,7 @@ export const deleteBook = async (bookID) => {
     }
   }
 
-    return fetch(`http://localhost:5000/collection/${bookID}`, book)
+    return fetch(`https://serene-plateau-79418.herokuapp.com/collection/${bookID}`, book)
 
 }
 
@@ -46,7 +46,7 @@ export const editBook = async (bookID, newBook) => {
     body: JSON.stringify(newBook)
   }
 
-    return fetch(`http://localhost:5000/collection/${bookID}`, book)
+    return fetch(`https://serene-plateau-79418.herokuapp.com/collection/${bookID}`, book)
 
 }
 
@@ -61,7 +61,7 @@ export const addBook = async (post) => {
           body: JSON.stringify(post)
         }
     
-      return await fetch('http://localhost:5000/collection/', book)
+      return await fetch('https://serene-plateau-79418.herokuapp.com/collection/', book)
       
       
 }

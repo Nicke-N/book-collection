@@ -206,7 +206,7 @@ export default function AddBook() {
 <select className='book-select edit-detail' name="month" id="month">
 </select>
 <label className='book-label'>Image URL</label>
-<input className='book-input edit-detail' id='image' type='text' maxLength='150' />
+<input className='book-input edit-detail' id='image' type='text' maxLength='300' />
 <div id='ratingContainer'>
 
     <span className='fa fa-star icon'></span>

@@ -3,7 +3,6 @@ import { DataContext } from '../context/DataContext'
 import { getUserDetails } from '../kit/api/User'
 import { authenticated } from '../kit/Functions'
 import './Profile.css'
-import Modal from '../components/Modal'
 import ButtonRemove from '../components/ButtonRemove'
 import ButtonEdit from '../components/ButtonEdit'
 
@@ -15,9 +14,8 @@ export default function Profile() {
     if (authenticated()) setAuthorized(true)
 
     useEffect(() => {
-        if (!userDetails) {
-            fetchDetails() 
-        }
+        if (!userDetails) fetchDetails() 
+        
         setModalData(userDetails)
     }, [userDetails])
 

@@ -30,10 +30,6 @@ export default function Modal(props) {
 
     }, [])
 
-    // useEffect(() => {
-
-    // }, [props])
-
     const outsideClick = (e) => {
 
         if (e.target === modal) {
@@ -44,7 +40,6 @@ export default function Modal(props) {
 
         }
     }
-    console.log(props)
     return (
         <div>
             <div id="simpleModal" className="modal-overlay">

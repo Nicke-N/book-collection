@@ -17,6 +17,8 @@
     position: relative;
     left: calc(0.5vw - 0.5vh);
     outline: none;
+    text-align: right;
+    
 }
 .panel-description::-webkit-scrollbar {
     display: none;

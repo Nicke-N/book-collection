@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './NavigationPanel.css'
 import { goBack, showModal } from '../kit/Functions'
 import { DataContext } from '../context/DataContext'
+import PanelPlank from './PanelPlank'
 
 export default function NavigationPanel(props) {
     const { authorized, setAuthorized, currentLocation, setModalData} = useContext(DataContext)
@@ -43,6 +44,7 @@ export default function NavigationPanel(props) {
 
                         </Link>
                     </li>
+                    <PanelPlank />
                     <li>
                         <Link to='/latest'>
                             <div className='nav-text'>
@@ -51,7 +53,9 @@ export default function NavigationPanel(props) {
 
                         </Link>
                     </li>
+                    <PanelPlank />
                     {authorized ?
+                        <>
                         <li>
                             <Link to='/profile'>
                                 <div className='nav-text'>
@@ -60,6 +64,8 @@ export default function NavigationPanel(props) {
 
                             </Link>
                         </li>
+                        <PanelPlank />
+                        </>
                         : null
                     }
 
@@ -71,11 +77,13 @@ export default function NavigationPanel(props) {
                             </div>
                         </Link>
                     </li>
+                    <PanelPlank />
                 </ul>
             </div>
             <div>
                 <ul>
                     {authorized ?
+                    <>
                         <li>
                             <Link onClick={logout}>
                                 <div className='nav-text'>
@@ -83,7 +91,10 @@ export default function NavigationPanel(props) {
                             </div>
                             </Link>
                         </li>
+                        <PanelPlank />
+                        </>
                         :
+                        <>
                         <li>
                             <Link onClick={loginModal}>
                                 <div className='nav-text'>
@@ -91,6 +102,8 @@ export default function NavigationPanel(props) {
                             </div>
                             </Link>
                         </li>
+                        <PanelPlank />
+                        </>
                     }
 
                     <li>
@@ -100,11 +113,12 @@ export default function NavigationPanel(props) {
                             </div>
                         </Link>
                     </li>
+                    <PanelPlank />
                 </ul>
             </div>
             <div id='admin-section'>
                 {authorized ?
-
+                    <>
                     <ul>
                         <li>
                             <Link onClick={addBookModal}>
@@ -113,8 +127,10 @@ export default function NavigationPanel(props) {
                             </div>
                             </Link>
                         </li>
+                        <PanelPlank />
                     </ul>
-
+                  
+                    </>
                     : null
                 }
 

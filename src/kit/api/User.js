@@ -10,7 +10,7 @@ export const register = async (details) => {
         body: JSON.stringify(details)
     }
 
-    return await fetch('http://localhost:5000/user/register', user)
+    return await fetch('https://serene-plateau-79418.herokuapp.com/user/register', user)
                  .then(data => data.text())
                  .then(res => {
                      sessionStorage.setItem('registration', `${res}`)
@@ -28,7 +28,7 @@ export const login = async (details) => {
         body: JSON.stringify(details)
     }
 
-    await fetch('http://localhost:5000/user/login', post)
+    await fetch('https://serene-plateau-79418.herokuapp.com/user/login', post)
         .then(data => data.json())
         .then(res => {
 
@@ -56,7 +56,7 @@ export const getUserDetails = async (username) => {
         }
     }
 
-      return fetch('http://localhost:5000/user/', user)
+      return fetch('https://serene-plateau-79418.herokuapp.com/user/', user)
 
 }
 
@@ -71,7 +71,7 @@ export const updateUser = async (userID, details) => {
         body: JSON.stringify(details)
     }
 
-    return fetch(`http://localhost:5000/user/${userID}`, user)
+    return fetch(`https://serene-plateau-79418.herokuapp.com/user/${userID}`, user)
 
 }
 
@@ -85,6 +85,6 @@ export const deleteUser = async (userID) => {
         }
     }
 
-    return fetch(`http://localhost:5000/user/${userID}`, user)
+    return fetch(`https://serene-plateau-79418.herokuapp.com/user/${userID}`, user)
 
 }

@@ -92,6 +92,7 @@ textarea {
   width: calc(8vw + 6vh);
   height: calc(3vw + 2vh);
   resize: none;
+  font-size: calc(1vw + 1vh);
 }
 .accept-btn {
   background-color: rgb(20, 225, 20);
@@ -131,6 +132,10 @@ textarea {
   -webkit-user-select: none;
   -ms-user-select: none;
   
+ }
+ .panel-plank {
+   width: calc(10vw + 2.5vh);
+   height: 2vh;
  }
 .remove-icon {
   background-color: transparent;

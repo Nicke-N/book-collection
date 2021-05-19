@@ -108,7 +108,7 @@ export default function EditBook(props) {
         }
     }
     const ratingHover = (event) => {
- 
+        
         if (event.path[1].children.length > 0) {
 
             const children = event.path[1].children
@@ -165,8 +165,7 @@ export default function EditBook(props) {
         if (event.path[1].children.length > 0) {
 
             for (let i = 0; i < 5; i++) {
-                console.log(i)
-                console.log(event.path[1].children[i])
+
                 const classList = Array.from(event.path[1].children[i].classList)
 
                 if (classList.includes('checked'))
@@ -256,7 +255,7 @@ export default function EditBook(props) {
                         <select className='book-select edit-detail' name="month" id="month">
                         </select>
                         <label className='book-label'>Image URL</label>
-                        <input className='book-input edit-detail' id='image' type='text' maxLength='150' />
+                        <input className='book-input edit-detail' id='image' type='text' maxLength='300' />
                         <div id='ratingContainer'>
                             
                             <span className='fa fa-star icon'></span>
