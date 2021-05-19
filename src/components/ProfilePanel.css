@@ -1,0 +1,23 @@
+.panel-img {
+    height: calc(5vw + 10vh);
+    width: calc(5vw + 10vh);
+}
+.general-info {
+
+    font-size: calc(1.5vw + 1.5vh);
+
+}
+.panel-description {
+    width: 10vw;
+    height: calc(10vw + 10vh);
+    background: transparent;
+    border: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
+    left: calc(0.5vw - 0.5vh);
+    outline: none;
+}
+.panel-description::-webkit-scrollbar {
+    display: none;
+  }

@@ -16,14 +16,12 @@ export default function Profile() {
 
     useEffect(() => {
         if (!userDetails) {
-            fetchDetails()
-            
+            fetchDetails() 
         }
         setModalData(userDetails)
     }, [userDetails])
 
     useEffect(() => {
-        
         if(!modalData) setModalData(userDetails)
     }, [modalData])
 

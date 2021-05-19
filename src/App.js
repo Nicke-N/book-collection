@@ -9,6 +9,7 @@ import BookList from './components/BookList'
 import { DataContext } from './context/DataContext'
 import NavigationPanel from './components/NavigationPanel';
 import Modal from './components/Modal';
+import ProfilePanel from './components/ProfilePanel';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
     <div className="App">
       <Header/>
       <NavigationPanel />
+      <ProfilePanel />
       <Switch>
         <Route exact path="/collection/:id" component={BookDetail}/>
         <Route exact path="/latest" component={BookCollection}/>

@@ -142,6 +142,10 @@ textarea {
   top: 20%;
   width: 15vw;
 }
-.nav-text {
-  font-size: calc(1.5vw + 1.5vh);
+#user-info-panel {
+  position: fixed;
+  left: 82%;
+  top: 20%;
+  width: 15vw;
+  text-align: right;
 }
