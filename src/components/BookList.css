@@ -50,13 +50,7 @@
     justify-content: center;
     align-items: center;
 }
-.list-nav {
-    position: fixed;
-    bottom: 20%;
-    left: 85%;
-}
-.list-btn {
-    position: fixed;
-    bottom: 20%;
-    left:5vw;
+
+#list-container {
+    height: 100%;
 }

@@ -3,31 +3,26 @@ import { Link } from 'react-router-dom'
 import './NavigationPanel.css'
 import { goBack, showModal } from '../kit/Functions'
 import { DataContext } from '../context/DataContext'
-import Modal from './Modal'
-import AddBook from './AddBook'
 
 export default function NavigationPanel(props) {
-    const { setType, authorized, setAuthorized, currentLocation } = useContext(DataContext)
+    const { authorized, setAuthorized, currentLocation, setModalData} = useContext(DataContext)
 
     useEffect(() => {
 
     }, [currentLocation])
 
     const loginModal = () => {
-        setType('login')
-
+        setModalData('login')
         showModal()
-
     }
 
     const registerModal = () => {
-        setType('register')
-
+        setModalData('register')
         showModal()
     }
 
     const addBookModal = () => {
-        setType('addNewBook')
+        setModalData('addNewBook')
         showModal()
     }
 
@@ -124,7 +119,7 @@ export default function NavigationPanel(props) {
                 }
 
             </div>
-            {/* <Modal type={type}/> */}
+         
         </div>
     )
 }

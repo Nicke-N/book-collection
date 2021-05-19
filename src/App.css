@@ -5,7 +5,11 @@
   
 }
 html {
-  height: 100vh;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .App {
   height: calc(100%);
@@ -41,6 +45,14 @@ a:hover {
   height: 0.5vh;
   background-color: black;
 }
+#edit-container {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 2vh;
+}
 .edit-info {
   display: flex;
   flex-direction: column;
@@ -75,6 +87,11 @@ button {
 select {
   border: none;
   outline: none;
+}
+textarea {
+  width: calc(8vw + 6vh);
+  height: calc(3vw + 2vh);
+  resize: none;
 }
 .accept-btn {
   background-color: rgb(20, 225, 20);

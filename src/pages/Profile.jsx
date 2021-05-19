@@ -9,7 +9,7 @@ import ButtonEdit from '../components/ButtonEdit'
 
 export default function Profile() {
 
-    const { authorized, setAuthorized, userDetails, setUserDetails, remove, type } = useContext(DataContext)
+    const { authorized, setAuthorized, userDetails, setUserDetails, setModalData, modalData } = useContext(DataContext)
 
 
     if (authenticated()) setAuthorized(true)
@@ -17,14 +17,22 @@ export default function Profile() {
     useEffect(() => {
         if (!userDetails) {
             fetchDetails()
+            
         }
+        setModalData(userDetails)
     }, [userDetails])
+
+    useEffect(() => {
+        
+        if(!modalData) setModalData(userDetails)
+    }, [modalData])
 
     const fetchDetails = async () => {
         await getUserDetails('nicke')
             .then(res => res.json())
             .then(data => setUserDetails(data))
     }
+   
 
     return (
         <div id='profile-container'>
@@ -39,7 +47,7 @@ export default function Profile() {
 
                         return (
                             <div>
-                                <img src={element[1]} alt="URL has changed!" />
+                                <img className='profile-img' src={element[1]} alt="URL has changed!" />
                             </div>
                         )
 
@@ -47,10 +55,7 @@ export default function Profile() {
                         return (
                             <div className='user-detail'>{element[0]}: {element[1]}</div>
                         )
-                    }
-
-
-                })
+                    }})
                 }
             </div>
 
@@ -58,14 +63,13 @@ export default function Profile() {
             {authorized ?
 
                 <div id='btn-container'>
-                    <ButtonRemove />
+                    <ButtonRemove type='user' />
                     <ButtonEdit />
-                    <Modal data={userDetails} remove={remove} />
                 </div>
 
-                :
+                : null
 
-                <Modal type={type} />
+             
 
             }
 

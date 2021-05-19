@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import './Register.css'
+import './Sign.css'
 import { register, login } from '../kit/api/User'
 import { DataContext } from '../context/DataContext'
 import { authenticated, closeModal } from '../kit/Functions'

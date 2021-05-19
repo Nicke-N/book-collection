@@ -8,7 +8,7 @@ import LeftArrow from '../images/left-arrow.png'
 import Modal from '../components/Modal'
 
 export default function BookCollection(props) {
-    const { setCollection, type } = useContext(DataContext)
+    const { setCollection } = useContext(DataContext)
     useEffect(() => {
         fetchData()   
     }, [])
@@ -34,7 +34,7 @@ export default function BookCollection(props) {
             <Carousel />
             
             <img src={LeftArrow} alt="" />
-            <Modal type={type}/>
+            {/* <Modal type={type}/> */}
         </div>
     )
 }

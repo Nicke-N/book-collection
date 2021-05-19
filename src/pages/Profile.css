@@ -16,12 +16,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center ;
-    height: 100%;
+    height: 98vh;
 }
 .details-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
+}
+.user-detail {
+    font-size: calc(1vw + 2vh)
+}
+.profile-img {
+    height: calc(10vw + 10vh);
+    width: calc(10vw + 10vh);
 }

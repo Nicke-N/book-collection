@@ -6,64 +6,33 @@
     width: 2vw;
     height: 1.2vw;
 }
-.title {
-    grid-area: title;
-}
-.author {
-    grid-area: author;
-}
-.personalRating {
-    grid-area: personalRating;
-}
-.guestsRating {
-    grid-area: guestsRating;
-}
-.publisher {
-    grid-area: publisher;
-}
-.series {
-    grid-area: series;
-}
-.buttonContainer {
-    grid-area: buttons;
-    /* display: grid;
-    grid */
-}
 .guest-rate-btn {
     margin-left: 12%;
 }
 .detail-image {
     height: calc(10vh + 8vw);
     width:  calc(10vh + 8vw);
-    grid-area: image;
 }
-.navBack {
-    grid-area: back;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .detail {
-    background-color: palegoldenrod;
-    border-radius: 1vw;
-    width: 19.5vw;
+
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2vw;
 }
-#return {
-    width: 5vw;
-}
-#return:hover {
-    transition: all;
-    transition-duration: 1s;
-    transform: scale(2)
-}
+
 .book-label {
     font-size: calc(1vw + 1.5vh);
 }
 
 .book-input, .book-select {
     font-size: calc(1vw + 1.2vh);
+}
+.book-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: normal;
 }

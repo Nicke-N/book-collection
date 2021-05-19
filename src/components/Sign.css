@@ -1,8 +1,3 @@
-textarea {
-    width: calc(8vw + 6vh);
-    height: calc(4vw + 2vh);
-    resize: none;
-}
 .sign-container {
     z-index: 100;
     display: flex;

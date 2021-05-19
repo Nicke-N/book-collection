@@ -4,8 +4,6 @@ import { Switch, Route } from 'react-router-dom'
 import BookCollection from './pages/BookCollection';
 import BookDetail from './pages/BookDetail';
 import Header from './components/Header';
-import Register from './components/Register';
-import Login from './components/Login';
 import Profile from './pages/Profile';
 import BookList from './components/BookList'
 import { DataContext } from './context/DataContext'
@@ -14,7 +12,7 @@ import Modal from './components/Modal';
 
 function App() {
 
-  const { setUserIP, type } = useContext(DataContext)
+  const { setUserIP, modalData } = useContext(DataContext)
 
   useEffect(() => {
     fetch('https://api.ipify.org?format=json')
@@ -33,7 +31,7 @@ function App() {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/" component={BookList} />
       </Switch>
-      {/* <Modal type={type} /> */}
+      <Modal data={modalData} />
     </div>
   );
 }

@@ -8,16 +8,16 @@ import ButtonEdit from '../components/ButtonEdit'
 import ButtonRemove from '../components/ButtonRemove'
 
 export default function BookDetail(props) {
-    
+
     const bookID = props.match.params.id
 
-    const { authorized, setAuthorized, currentBook, setCurrentBook, remove } = useContext(DataContext)
-    var guestRating = 0, voters ,average
-    const months = [ "January", "February", "March", "April", "May", "June", 
-    "July", "August", "September", "October", "November", "December" ]
+    const { authorized, setAuthorized, currentBook, setCurrentBook, setModalData, modalData } = useContext(DataContext)
+    var guestRating = 0, voters, average
+    const months = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"]
 
-    if (currentBook){
-        
+    if (currentBook) {
+
         (currentBook.guestsRating).map(element => guestRating += element.rating)
         voters = currentBook.guestsRating.length
         average = (guestRating / (voters === 0 ? 1 : voters)).toFixed(2)
@@ -29,14 +29,17 @@ export default function BookDetail(props) {
         if (authenticated()) setAuthorized(true)
         await getBook(bookID)
             .then(res => res.json())
-            .then(data => setCurrentBook(data))
+            .then(data => {
+                setCurrentBook(data)
+                setModalData(data)
+            })
 
     }
-    
+
     const addRatings = () => {
 
         const personalRatings = document.getElementsByClassName('personal-detail-icon')
-        
+
         if (personalRatings && currentBook) {
             for (let check = 0; check < 5; check++) {
                 personalRatings[check].classList.remove('checked')
@@ -48,27 +51,26 @@ export default function BookDetail(props) {
         const guestsRatings = document.getElementsByClassName('guests-detail-icon')
 
         if (guestsRatings && currentBook) {
-            
+
             const val = Math.floor(average)
 
             for (let check = 0; check < 5; check++) {
 
                 const classList = Array.from(guestsRatings[check].classList)
-                    
-                if(classList.includes('checked')) guestsRatings[check].classList.remove('checked')
-               
+
+                if (classList.includes('checked')) guestsRatings[check].classList.remove('checked')
+
             }
-  
+
             for (let check = 0; check < val; check++) {
-               
+
                 guestsRatings[check].classList.add('checked')
             }
-        
+
         }
     }
-    
+
     useEffect(() => {
-        
         addRatings()
     }, [currentBook])
 
@@ -77,35 +79,41 @@ export default function BookDetail(props) {
         addRatings()
     }, [])
 
+    useEffect(() => {
+        if (!modalData)
+            setModalData(currentBook)
+    }, [modalData])
+
+
     return (
         <div className='page-container'>
             {currentBook &&
                 (
-                    <div className='details-container'>
+                    <div className='book-details-container'>
                         <img className='detail-image' src={currentBook.image} alt="URL has changed!" />
-                        
-                        <p className='detail title'>
+
+                        <div className='detail title'>
                             Title: {currentBook.title}
-                        </p>
-                        
-                        <p className='detail author'>
+                       </div>
+
+                        <div className='detail author'>
                             Author: {currentBook.author}
-                        </p>
-                        <p className='detail publisher'>
+                       </div>
+                        <div className='detail publisher'>
                             Publisher: {currentBook.publisher}
-                        </p>
-                        <p className='detail series'>
+                       </div>
+                        <div className='detail series'>
                             Series: {currentBook.series}
-                        </p>
-                        <p className='detail personalRating'>
+                       </div>
+                        <div className='detail personalRating'>
                             Personal Rating:
                             <span className='fa fa-star personal-detail-icon'></span>
                             <span className='fa fa-star personal-detail-icon'></span>
                             <span className='fa fa-star personal-detail-icon'></span>
                             <span className='fa fa-star personal-detail-icon'></span>
                             <span className='fa fa-star personal-detail-icon'></span>
-                        </p>
-                        <p className='detail guestsRating'>
+                       </div>
+                        <div className='detail guestsRating'>
                             Guests rating:
                             <span className='fa fa-star guests-detail-icon'></span>
                             <span className='fa fa-star guests-detail-icon'></span>
@@ -113,36 +121,33 @@ export default function BookDetail(props) {
                             <span className='fa fa-star guests-detail-icon'></span>
                             <span className='fa fa-star guests-detail-icon'></span>
                             {`(${average})`}
-                        </p>
-                        <p className='detail genre'>
+                       </div>
+                        <div className='detail genre'>
                             Genre: {currentBook.genre.map(element => ` ${element}`)}
-                        </p>
-                        <p className='detail guests'>
+                       </div>
+                        <div className='detail guests'>
                             {voters} votes
-                        </p>
-                        <p className='detail read'>
+                       </div>
+                        <div className='detail read'>
                             Read: {months[currentBook.monthRead - 1]} {currentBook.yearRead}
-                        </p>
+                       </div>
                         {authorized ?
-                            (
-                                <div className='buttonContainer'>
-                                   <ButtonEdit />
-                                   <ButtonRemove />
-                                </div>
-                            )
+
+                            <div className='buttonContainer'>
+                                <ButtonEdit />
+                                <ButtonRemove type='book' />
+                            </div>
+
                             :
-                            (
-                                <div className='buttonContainer'>
-                                    <button className='accept-btn guest-rate-btn' onClick={showModal}>
-                                        Rate it!
+
+                            <div className='buttonContainer'>
+                                <button className='accept-btn guest-rate-btn' onClick={showModal}>
+                                    Rate it!
                                     </button>
-                                </div>
-                            )
+                            </div>
+
                         }
-                        <div className='navBack'>
-                            <img onClick={goBack} id='return' className='small-icon' src="https://img.flaticon.com/icons/png/512/60/60577.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" alt="" />
-                        </div>
-                        <Modal data={currentBook} remove={remove} />
+
                     </div>
                 )
             }
