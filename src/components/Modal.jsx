@@ -30,10 +30,6 @@ export default function Modal(props) {
 
     }, [])
 
-    // useEffect(() => {
-
-    // }, [props])
-
     const outsideClick = (e) => {
 
         if (e.target === modal) {
@@ -44,7 +40,6 @@ export default function Modal(props) {
 
         }
     }
-
     return (
         <div>
             <div id="simpleModal" className="modal-overlay">
@@ -58,7 +53,7 @@ export default function Modal(props) {
                                     'Remove book'
                                     : props.data && props.data.title ?
                                         'Edit book details'
-                                        : props.data && props.data.username ?
+                                        : props.data && props.data.email ?
                                             'Edit user details'
                                             : props.data && props.data === 'addNewBook' ?
                                                 'Add new Book'
@@ -77,7 +72,7 @@ export default function Modal(props) {
                                 <RemoveBook />
                                 : props.data && props.data.title ?
                                     <EditBook data={props.data} />
-                                    : props.data && props.data.username ?
+                                    : props.data && props.data.email ?
                                         <EditProfile />
                                         : props.data && props.data === 'addNewBook' ?
                                             <AddBook />

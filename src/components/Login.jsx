@@ -1,24 +1,26 @@
 import React, { useContext } from 'react'
 import './Sign.css'
-import { login } from '../kit/api/User'
+import { login, getUserDetails } from '../kit/api/User'
 import { DataContext } from '../context/DataContext'
 import { authenticated, closeModal} from '../kit/Functions'
 
 export default function Login() {
 
-    const { setAuthorized } = useContext(DataContext)
+    const { setAuthorized, setUserDetails } = useContext(DataContext)
 
     const submit = async (event) =>  {
         event.preventDefault()
         const details = {username: event.target[0].value, password: event.target[1].value} 
 
         await login(details)
-        .then(() => {
+        .then( async() => {
             
             if (authenticated()) {
                 setAuthorized(true)
                 closeModal()
-               
+               await getUserDetails('nicke')
+               .then(res => res.json())
+               .then(data => setUserDetails(data))
             } else {
 
                 document.getElementById('error').textContent = sessionStorage.getItem('error')
