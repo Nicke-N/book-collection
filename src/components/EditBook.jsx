@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { editBook, getBook } from '../kit/api/Book'
 import { DataContext } from '../context/DataContext'
 import './EditBook.css'
-import { addOptions, closeModal } from '../kit/Functions'
+import { addOptions, closeModal, clearInfo } from '../kit/Functions'
 
 export default function EditBook(props) {
 
@@ -45,15 +45,7 @@ export default function EditBook(props) {
             
         }
     }
-    const clearInfo = () => {
-        document.getElementById('genre-container').textContent = ''
-        document.getElementById('author').value = ''
-        document.getElementById('series').value = ''
-        document.getElementById('publisher').value = ''
-        document.getElementById('image').value =''
-        document.getElementById('year').value = ''
-        document.getElementById('month').value = ''
-    }
+    
     const updateBook = async () => {
         var book = {}
         if (authorized) {
@@ -173,7 +165,8 @@ export default function EditBook(props) {
         if (event.path[1].children.length > 0) {
 
             for (let i = 0; i < 5; i++) {
-
+                console.log(i)
+                console.log(event.path[1].children[i])
                 const classList = Array.from(event.path[1].children[i].classList)
 
                 if (classList.includes('checked'))

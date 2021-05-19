@@ -1,18 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
-html {
-  height: 100%;
-  background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
-}
+
 * {
   font-family: 'Tangerine', cursive;
   
 }
+html {
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .App {
-  height: 80vh;
+  height: calc(100%);
+  
 }
 body {
   margin: 2vh 25vw 0 25vw;
-  
+  background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
 }
 
 h1 {
@@ -39,6 +44,14 @@ a:hover {
   width: 100%;
   height: 0.5vh;
   background-color: black;
+}
+#edit-container {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 2vh;
 }
 .edit-info {
   display: flex;
@@ -74,6 +87,11 @@ button {
 select {
   border: none;
   outline: none;
+}
+textarea {
+  width: calc(8vw + 6vh);
+  height: calc(3vw + 2vh);
+  resize: none;
 }
 .accept-btn {
   background-color: rgb(20, 225, 20);
@@ -116,4 +134,14 @@ select {
  }
 .remove-icon {
   background-color: transparent;
+}
+
+#navigation-panel {
+  position: fixed;
+  right: 85%;
+  top: 20%;
+  width: 15vw;
+}
+.nav-text {
+  font-size: calc(1.5vw + 1.5vh);
 }

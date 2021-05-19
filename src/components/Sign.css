@@ -1,0 +1,18 @@
+.sign-container {
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.user-label {
+    font-size: calc(1vw + 1.5vh);
+}
+
+.user-input {
+    font-size: calc(1vw + 1.2vh);
+}
+
+.sign-btn {
+    margin-top: calc(0.5vw + 0.5vh);
+}

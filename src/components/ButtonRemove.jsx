@@ -3,12 +3,12 @@ import Delete from '../images/delete.svg'
 import { showModal } from '../kit/Functions'
 import { DataContext } from '../context/DataContext'
 
-export default function ButtonRemove() {
+export default function ButtonRemove(props) {
 
     const { setRemove } = useContext(DataContext)
     const deleteModal = () => {
         
-        setRemove(true)
+        setRemove(props.type)
         showModal()
        
     }

@@ -73,8 +73,8 @@ export default function Carousel() {
             <div id='carousel1' className="carousel book-carousel">
                 <h2 className='carousel-title'>{months[currentMonth-1]} {currentYear}</h2>
                 <div className="carousel_view">
-                    <span className="carousel_control carousel-book-next"><i className="icon">previous</i></span>
-                    <span href="#" className="carousel_control carousel-book-prev"><i className="icon">next</i></span>
+                    <span className="carousel_control carousel-book-next"><i className="nav-icon">previous</i></span>
+                    <span href="#" className="carousel_control carousel-book-prev"><i className="nav-icon">next</i></span>
                     <ul className="book-list carousel-book-list">
                         {collection && Object.entries(collection).map((element) => {
                          
@@ -92,8 +92,8 @@ export default function Carousel() {
             <div id='carousel2' className="carousel book-carousel">
             <h2  className='carousel-title'>{months[currentMonth-2]} {currentYear}</h2>
                 <div className="carousel_view">
-                    <span className="carousel_control carousel-book-next"><i className="icon">previous</i></span>
-                    <span href="#" className="carousel_control carousel-book-prev"><i className="icon">next</i></span>
+                    <span className="carousel_control carousel-book-next"><i className="nav-icon">previous</i></span>
+                    <span href="#" className="carousel_control carousel-book-prev"><i className="nav-icon">next</i></span>
                     <ul className="book-list carousel-book-list">
                     {collection && Object.entries(collection).map((element) => {
                          
@@ -111,8 +111,8 @@ export default function Carousel() {
             <div id='carousel3' className="carousel book-carousel">
             <h2  className='carousel-title'>{months[currentMonth-3]} {currentYear}</h2>
                 <div className="carousel_view">
-                    <span className="carousel_control carousel-book-next"><i className="icon">previous</i></span>
-                    <span href="#" className="carousel_control carousel-book-prev"><i className="icon">next</i></span>
+                    <span className="carousel_control carousel-book-next"><i className="nav-icon">previous</i></span>
+                    <span href="#" className="carousel_control carousel-book-prev"><i className="nav-icon">next</i></span>
                     <ul className="book-list carousel-book-list">
                     {collection && Object.entries(collection).map((element) => {
                          
@@ -131,8 +131,8 @@ export default function Carousel() {
             <div id='carousel4' className="carousel book-carousel">
             <h2  className='carousel-title'>{months[currentMonth-4]} {currentYear}</h2>
                 <div className="carousel_view">
-                    <span className="carousel_control carousel-book-next"><i className="icon">previous</i></span>
-                    <span href="#" className="carousel_control carousel-book-prev"><i className="icon">next</i></span>
+                    <span className="carousel_control carousel-book-next"><i className="nav-icon">previous</i></span>
+                    <span href="#" className="carousel_control carousel-book-prev"><i className="nav-icon">next</i></span>
                     <ul className="book-list carousel-book-list">
                     {collection && Object.entries(collection).map((element) => {
                          

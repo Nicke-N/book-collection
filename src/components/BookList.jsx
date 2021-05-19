@@ -1,16 +1,14 @@
 import React, { useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
 import BookCover from './BookCover'
 import { getCollection } from '../kit/api/Book'
 import './BookList.css'
-import { showModal, authenticated } from '../kit/Functions.js'
-import Modal from './Modal'
+import {  authenticated } from '../kit/Functions.js'
 import BirchPlank from './BirchPlank'
 
 export default function BookList() {
 
-    const { collection, setCollection, searchVal, setSearchVal, filterOption, setFilterOption, authorized , setAuthorized, currentBook} = useContext(DataContext)
+    const { collection, setCollection, searchVal, setSearchVal, filterOption, setFilterOption, authorized , setAuthorized, currentBook, type } = useContext(DataContext)
 
     var added
 
@@ -54,7 +52,7 @@ export default function BookList() {
     const returnToTop = () => window.scroll(0, 0)
 
     return (
-        <div>
+        <div id='list-container'>
             <div className='top-container'>
                 <div id='filterOptions'>
                     <select name="filter" id="filter">
@@ -67,9 +65,6 @@ export default function BookList() {
                 <div id='search-field'>
                     <input id='search' type="text" maxLength='50' onChange={searchHandler} />
                 </div>     
-                <Link id='nav' to='/latest'>
-                    <button className='nav-btn'>Check my latest reads</button>
-                </Link>
             </div>
             <div className='section-divider'></div>
 
@@ -96,16 +91,6 @@ export default function BookList() {
 
                 }
             </div>
-            <button className='nav-btn list-nav'onClick={returnToTop}>Return to top</button>
-            { authorized ? 
-                <>
-                    <button className='accept-btn list-btn'onClick={showModal}>Add book</button>
-                    <Modal type='addNewBook' />
-                </>
-                : 
-                null
-            }
-            
         </div>
 
     )

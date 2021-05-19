@@ -1,12 +1,12 @@
 #book-list {
     display: grid;
-    grid-template-columns: repeat( 4, 1fr);
-    grid-template-rows: repeat(1fr, 0.5fr);
+    grid-template-columns: repeat( 5, 1fr);
     grid-gap: 3vh;
 }
 .top-container {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 4fr;
+    height: 5vh;
   }
 #nav {
     display: flex;
@@ -21,7 +21,10 @@
    align-items: center;
 }
 #search {
-    width: 80%;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 4vh;
 }
 #latest-title {
     text-align: center;
@@ -47,13 +50,7 @@
     justify-content: center;
     align-items: center;
 }
-.list-nav {
-    position: fixed;
-    bottom: 5%;
-    left: 85%;
-}
-.list-btn {
-    position: fixed;
-    bottom: 5%;
-    left:5vw;
+
+#list-container {
+    height: 100%;
 }

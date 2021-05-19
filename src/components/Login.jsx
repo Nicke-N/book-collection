@@ -1,14 +1,12 @@
 import React, { useContext } from 'react'
-import { useHistory } from 'react-router-dom'
-import './Login.css'
+import './Sign.css'
 import { login } from '../kit/api/User'
 import { DataContext } from '../context/DataContext'
-import { authenticated } from '../kit/Functions'
+import { authenticated, closeModal} from '../kit/Functions'
 
 export default function Login() {
 
     const { setAuthorized } = useContext(DataContext)
-    const history = useHistory()
 
     const submit = async (event) =>  {
         event.preventDefault()
@@ -19,30 +17,28 @@ export default function Login() {
             
             if (authenticated()) {
                 setAuthorized(true)
-                history.push('/collection')
+                closeModal()
                
             } else {
 
-                document.getElementById('error').innerHTML = sessionStorage.getItem('error')
+                document.getElementById('error').textContent = sessionStorage.getItem('error')
             }
         
         })      
     }
 
     return (
-        <div>
+        <div className='sign-container'>
             <div id='error'></div>
-            <form onSubmit={submit}>
-            <div>
-                Username: 
-                <input name='username' type="text" maxLength='15'/>
-            </div>
-            <div>
-                Password: 
-                <input name='password' type="password" maxLength='15'/>
-            </div>
+            <form onSubmit={submit} className='sign-container'>
+    
+                <label className='user-label'>Username</label>
+                <input className='user-input' name='username' type="text" maxLength='15'/>
+                <label className='user-label'>Password</label>
+                <input className='user-input' name='password' type="password" maxLength='15'/>
+    
 
-            <button type='submit' name='Login'>Login</button>
+            <button className='accept-btn sign-btn' type='submit' name='Login'>Login</button>
         </form>
         </div>
         

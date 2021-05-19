@@ -5,14 +5,14 @@ import { DataContext } from '../context/DataContext'
 import { getCollection } from '../kit/api/Book'
 import './BookCollection.css'
 import LeftArrow from '../images/left-arrow.png'
+import Modal from '../components/Modal'
 
-export default function BookCollection() {
+export default function BookCollection(props) {
     const { setCollection } = useContext(DataContext)
     useEffect(() => {
         fetchData()   
-        
     }, [])
-
+  
     const fetchData = async () => {
   
         await getCollection()
@@ -27,18 +27,14 @@ export default function BookCollection() {
                 <div>
                     <h1 className='latest-title'>Books read recently</h1>
                 </div>
-                <div id='nav-container'>
-                <Link className='nav' to='/collection'>
-                    Check out the full collection!
-                </Link>
-                </div>
-                
             </div>
             
-            <div className='section-divider'></div>
+            <div className='section-divider' />
 
             <Carousel />
+            
             <img src={LeftArrow} alt="" />
+            {/* <Modal type={type}/> */}
         </div>
     )
 }
