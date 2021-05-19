@@ -19,7 +19,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2vw;
+    text-align: left;
+    font-size: calc(1.5vw + 1.5vh)
 }
 
 .book-label {
@@ -34,5 +35,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    column-gap: normal;
+}
+
+.guest-rate-btn {
+    width: calc(5vw + 3vh)
 }

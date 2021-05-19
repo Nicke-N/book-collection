@@ -6,7 +6,7 @@ import { authenticated, closeModal} from '../kit/Functions'
 
 export default function Login() {
 
-    const { setAuthorized, setUserDetails } = useContext(DataContext)
+    const { setAuthorized, setUserDetails, setModalData } = useContext(DataContext)
 
     const submit = async (event) =>  {
         event.preventDefault()
@@ -21,6 +21,7 @@ export default function Login() {
                await getUserDetails('nicke')
                .then(res => res.json())
                .then(data => setUserDetails(data))
+               .then(setModalData(null))
             } else {
 
                 document.getElementById('error').textContent = sessionStorage.getItem('error')

@@ -4,20 +4,15 @@
   font-family: 'Tangerine', cursive;
   
 }
-html {
 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 .App {
   height: calc(100%);
   
 }
-body {
+ body {
   margin: 2vh 25vw 0 25vw;
   background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
+  min-height: 98vh;
 }
 
 h1 {
@@ -28,6 +23,7 @@ ul {
 }
 a {
   text-decoration: none;
+  outline: none;
 }
 a:hover {
   transition: all;

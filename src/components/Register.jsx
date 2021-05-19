@@ -7,7 +7,7 @@ import { authenticated, closeModal } from '../kit/Functions'
 export default function Register() {
 
 
-    const { setAuthorized } = useContext(DataContext)
+    const { setAuthorized, setModalData } = useContext(DataContext)
     const submit = async (event) => {
         event.preventDefault()
         const details = {
@@ -27,7 +27,9 @@ export default function Register() {
                 if (registration === 'User was created!') {
                     await login({ username: details.username, password: details.password })
                         .then(authenticated() ? setAuthorized(true) : document.getElementById('error').textContent = 'Login failed for no reason!')
+                        .then(setModalData(null))
                         .then(closeModal())
+                        
                 } else {
 
                     document.getElementById('error').textContent = registration

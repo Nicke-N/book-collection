@@ -3,8 +3,7 @@ import { DataContext } from '../context/DataContext'
 import BookCover from './BookCover'
 import { getCollection } from '../kit/api/Book'
 import './BookList.css'
-import {  authenticated } from '../kit/Functions.js'
-import BirchPlank from './BirchPlank'
+import { authenticated } from '../kit/Functions.js'
 
 export default function BookList() {
 
@@ -71,7 +70,7 @@ export default function BookList() {
             <div id='book-list'>
                 {searchVal && filterOption !== 'genre' ? 
                     
-                    Object.entries(collection).map((element, index) => ((element[1][filterOption]).toLowerCase()).includes(searchVal) ? (index + 1 ) % 4 === 0 ? <> <BirchPlank /> <BookCover  key={element[0]} data={element[1]} /> </>: <BookCover  key={element[0]} data={element[1]} /> : null)
+                    Object.entries(collection).map((element) => ((element[1][filterOption]).toLowerCase()).includes(searchVal) ?  <BookCover  key={element[0]} data={element[1]} /> : null)
 
                     : searchVal && filterOption === 'genre' ?
 

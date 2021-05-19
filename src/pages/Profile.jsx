@@ -47,6 +47,12 @@ export default function Profile() {
                             </div>
                         )
 
+                    } else if (element[0] === 'description') {
+                    
+                        return (
+                            <textarea className='profile-description'>{element[1]}</textarea>
+                        )
+                    
                     } else if (element[0] !== 'password' && element[0] !== '__v' && element[0] !== '_id') {
                         return (
                             <div className='user-detail'>{element[0]}: {element[1]}</div>
