@@ -19,11 +19,13 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   
 }
 #search {
     width: 100%;
     height: 100%;
     border: none;
+    background-color: #FFE6D0;;
     font-size: 4vh;
 }
 #latest-title {
@@ -43,13 +45,7 @@
     border: none;
     border-radius: none;
 }
-#filterOptions {
-    border-radius: 1vw;
-    background-color: chartreuse;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 #list-container {
     height: 100%;

@@ -37,7 +37,7 @@ export default function Profile() {
  
                     if (element[0] === 'goodReads' || element[0] === 'instagram') {
                         return (
-                            <div className='user-detail'><a href={element[1]}>{element[0]}: Visit my page! </a></div>
+                            <div className='user-detail'><a rel="noreferrer noopener" target="_blank" href={element[1]}>{element[0]}: Visit my page! </a></div>
                         )
                     } else if (element[0] === 'image') {
 

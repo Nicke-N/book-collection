@@ -40,11 +40,11 @@ export default function ProfilePanel() {
                     </div>
                     <PanelPlank />
                     <div className='general-info'>
-                        <a href={userDetails.instagram}>@Instagram</a>
+                        <a rel="noreferrer noopener" target="_blank" href={userDetails.instagram}>@Instagram</a>
                     </div>
                     <PanelPlank />
                     <div className='general-info'>
-                        <a href={userDetails.goodReads}>@GoodReads</a>
+                        <a rel="noreferrer noopener" target="_blank" href={userDetails.goodReads}>@GoodReads</a>
                     </div>
                     <PanelPlank />
                     <textarea id='panel-description' className='general-info panel-description' cols='10' rows='10' readOnly>

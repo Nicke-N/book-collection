@@ -48,7 +48,6 @@ export default function BookList() {
         document.getElementById('filter').addEventListener('mouseleave', setOptionValue)
     }
     const setOptionValue = () => setFilterOption(document.getElementById('filter').value)
-    const returnToTop = () => window.scroll(0, 0)
 
     return (
         <div id='list-container'>
