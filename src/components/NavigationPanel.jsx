@@ -53,6 +53,7 @@ export default function NavigationPanel() {
 
                         </Link>
                     </li>
+                   
                     <PanelPlank />
                     {authorized ?
                         <>
@@ -60,7 +61,7 @@ export default function NavigationPanel() {
                             <Link to='/profile'>
                                 <div className='nav-text'>
                                     Profile
-                            </div>
+                                </div>
 
                             </Link>
                         </li>
@@ -68,9 +69,15 @@ export default function NavigationPanel() {
                         </>
                         : null
                     }
-
-
-                    <li >
+                     <li>
+                        <Link to='/credits'>
+                            <div className='nav-text'>
+                                Credits
+                            </div>
+                        </Link>
+                    </li>
+                    <PanelPlank />
+                    <li>
                         <Link onClick={goBack}>
                             <div className='nav-text'>
                                 Return

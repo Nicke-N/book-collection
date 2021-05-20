@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import BookCollection from './pages/BookCollection';
 import Profile from './pages/Profile';
 import Latest from './pages/Latest'
+import Credits from './pages/Credits'
 import { DataContext } from './context/DataContext'
 import NavigationPanel from './components/NavigationPanel';
 import Modal from './components/Modal';
@@ -29,6 +30,7 @@ function App() {
       <ProfilePanel />
       <Switch>
         <Route exact path="/collection/:id" component={BookDetail}/>
+        <Route exact path="/credits" component={Credits}/>
         <Route exact path="/latest" component={Latest}/>
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/" component={BookCollection} />
