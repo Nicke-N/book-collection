@@ -5,7 +5,7 @@ import { goBack, showModal } from '../kit/Functions'
 import { DataContext } from '../context/DataContext'
 import PanelPlank from './PanelPlank'
 
-export default function NavigationPanel(props) {
+export default function NavigationPanel() {
     const { authorized, setAuthorized, currentLocation, setModalData} = useContext(DataContext)
 
     useEffect(() => {
@@ -53,6 +53,7 @@ export default function NavigationPanel(props) {
 
                         </Link>
                     </li>
+                   
                     <PanelPlank />
                     {authorized ?
                         <>
@@ -60,7 +61,7 @@ export default function NavigationPanel(props) {
                             <Link to='/profile'>
                                 <div className='nav-text'>
                                     Profile
-                            </div>
+                                </div>
 
                             </Link>
                         </li>
@@ -68,9 +69,15 @@ export default function NavigationPanel(props) {
                         </>
                         : null
                     }
-
-
-                    <li >
+                     <li>
+                        <Link to='/credits'>
+                            <div className='nav-text'>
+                                Credits
+                            </div>
+                        </Link>
+                    </li>
+                    <PanelPlank />
+                    <li>
                         <Link onClick={goBack}>
                             <div className='nav-text'>
                                 Return

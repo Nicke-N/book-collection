@@ -2,14 +2,15 @@ import React, { useContext, useEffect } from 'react'
 import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import BookCollection from './pages/BookCollection';
-import BookDetail from './pages/BookDetail';
-import Header from './components/Header';
 import Profile from './pages/Profile';
-import BookList from './components/BookList'
+import Latest from './pages/Latest'
+import Credits from './pages/Credits'
 import { DataContext } from './context/DataContext'
 import NavigationPanel from './components/NavigationPanel';
 import Modal from './components/Modal';
 import ProfilePanel from './components/ProfilePanel';
+import BookDetail from './pages/BookDetail';
+import Header from './components/Header';
 
 function App() {
 
@@ -29,9 +30,10 @@ function App() {
       <ProfilePanel />
       <Switch>
         <Route exact path="/collection/:id" component={BookDetail}/>
-        <Route exact path="/latest" component={BookCollection}/>
+        <Route exact path="/credits" component={Credits}/>
+        <Route exact path="/latest" component={Latest}/>
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/" component={BookList} />
+        <Route exact path="/" component={BookCollection} />
       </Switch>
       <Modal data={modalData} />
     </div>

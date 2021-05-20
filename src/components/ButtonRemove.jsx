@@ -10,7 +10,6 @@ export default function ButtonRemove(props) {
         
         setRemove(props.type)
         showModal()
-       
     }
 
     return (
