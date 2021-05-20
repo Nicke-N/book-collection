@@ -32,9 +32,7 @@ export default function BookCollection(props) {
             <div className='section-divider' />
 
             <Carousel />
-            
-            <img src={LeftArrow} alt="" />
-            {/* <Modal type={type}/> */}
+
         </div>
     )
 }

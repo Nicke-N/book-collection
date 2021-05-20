@@ -59,12 +59,10 @@ a:hover {
 }
 
 input {
-  /* height: calc(1vw + 1vh);
-  width: calc(7vw + 4vh); */
   font-size: 1vw;
- 
+  border: none;
   outline: none;
-  border: solid 0.1vw grey;
+  background-color: #FFE6D0;
 }
 
 .edit-detail {
@@ -79,26 +77,37 @@ button {
   border: none;
   outline: none;
   font-size: 1.5vw;
+ ;
 }
 select {
   border: none;
   outline: none;
+  background-color: #FFE6D0;
 }
 textarea {
   width: calc(8vw + 6vh);
   height: calc(3vw + 2vh);
   resize: none;
   font-size: calc(1vw + 1vh);
+   background-color: #FFE6D0;
+       outline: none;
+    
+    border: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+textarea::-webkit-scrollbar {
+  display: none;
 }
 .accept-btn {
-  background-color: rgb(20, 225, 20);
+  background-color: #FFE6D0;
 }
 .accept-btn:hover {
   background-color: palegreen;
 }
 
 .reject-btn {
-  background-color: rgb(225, 20, 20);
+  background-color: rgb(189, 83, 34);
 
 }
 

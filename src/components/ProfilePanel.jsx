@@ -13,7 +13,6 @@ export default function ProfilePanel() {
        
         if (!userDetails) fetchDetails()
 
-        console.log('effect')
     }, [userDetails])
 
     const fetchDetails = async () => {
@@ -22,8 +21,7 @@ export default function ProfilePanel() {
             .then(res => res.json())
             .then(data => setUserDetails(data))
     }
-    if (userDetails)
-    console.log(userDetails.description)
+    
     return (
         <div id='user-info-panel'>
             {userDetails ?
@@ -47,11 +45,7 @@ export default function ProfilePanel() {
                         <a rel="noreferrer noopener" target="_blank" href={userDetails.goodReads}>@GoodReads</a>
                     </div>
                     <PanelPlank />
-                    <textarea id='panel-description' className='general-info panel-description' cols='10' rows='10' readOnly>
-                    
-                        {userDetails.description}
-                      
-                    </textarea>
+                    <textarea id='panel-description' className='general-info panel-description' cols='10' rows='10' defaultValue={userDetails.description} readOnly></textarea>
                     <PanelPlank />
                 </div>
                 : null

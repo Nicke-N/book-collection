@@ -1,3 +1,7 @@
 .nav-text {
     font-size: calc(1.5vw + 1.5vh);
+    color: black;
+}
+.nav-text:hover {
+    transform:scale(1.2);
 }

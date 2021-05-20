@@ -37,12 +37,12 @@ export default function Profile() {
  
                     if (element[0] === 'goodReads' || element[0] === 'instagram') {
                         return (
-                            <div className='user-detail'><a rel="noreferrer noopener" target="_blank" href={element[1]}>{element[0]}: Visit my page! </a></div>
+                            <div key={element[0]} className='user-detail'><a rel="noreferrer noopener" target="_blank" href={element[1]}>{element[0]}: Visit my page! </a></div>
                         )
                     } else if (element[0] === 'image') {
 
                         return (
-                            <div>
+                            <div key={element[0]}>
                                 <img className='profile-img' src={element[1]} alt="URL has changed!" />
                             </div>
                         )
@@ -50,12 +50,12 @@ export default function Profile() {
                     } else if (element[0] === 'description') {
                     
                         return (
-                            <textarea className='profile-description'>{element[1]}</textarea>
+                            <textarea key={element[0]} className='profile-description'defaultValue={element[1]}></textarea>
                         )
                     
                     } else if (element[0] !== 'password' && element[0] !== '__v' && element[0] !== '_id') {
                         return (
-                            <div className='user-detail'>{element[0]}: {element[1]}</div>
+                            <div key={element[0]} className='user-detail'>{element[0]}: {element[1]}</div>
                         )
                     }})
                 }

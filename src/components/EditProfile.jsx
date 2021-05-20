@@ -44,12 +44,12 @@ export default function EditProfile() {
                     return (
                         <>
                             <>
-                            <label className='user-label' htmlFor='oldPassword'>Old Password</label>
-                                <input className='user-input' maxLength='20' type='password' for='oldPassword' id='oldPassword'></input>
+                                    <label className='user-label' htmlFor='oldPassword'>Old Password</label>
+                                <input className='user-input' maxLength='20' type='password'htmlFor='oldPassword' id='oldPassword'></input>
                             </>
                             <>
                                 <label className='user-label' htmlFor={element[0]}>New Password</label>
-                                <input className='user-input' maxLength='20' type='password' for={element[0]} id={element[0]}></input>
+                                <input className='user-input' maxLength='20' type='password'htmlFor={element[0]} id={element[0]}></input>
                             </>
                         </>
                     )
@@ -57,21 +57,21 @@ export default function EditProfile() {
                     return (
                         <>
                             <label className='user-label' htmlFor={element[0]}>{element[0]}</label>
-                            <textarea maxLength='200' type='text' for={element[0]} id={element[0]}>{element[1]}</textarea>
+                            <textarea maxLength='200' type='text'htmlFor={element[0]} id={element[0]} defaultValue={userDetails.description}></textarea>
                         </>
                     )
                 } else if (element[0] === 'goodReads' || element[0] === 'instagram' || element[0] === 'image') {
                     return (
                         <>
                             <label className='user-label' htmlFor={element[0]}>{element[0]}</label>
-                            <input className='user-input' maxLength='200' type='text' for={element[0]} id={element[0]}></input>
+                            <input className='user-input' maxLength='200' type='text'htmlFor={element[0]} id={element[0]}></input>
                         </>
                     )
                 } else if (element[0] !== '_id' && element[0] !== '__v') {
                     return (
                         <>
                             <label className='user-label' htmlFor={element[0]}>{element[0]}</label>
-                            <input className='user-input' maxLength='20' type='text' for={element[0]} id={element[0]}></input>
+                            <input className='user-input' maxLength='20' type='text' htmlFor={element[0]} id={element[0]}></input>
                         </>
                     )
                 }
