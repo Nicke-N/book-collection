@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/book-collection/static/css/main.6b3aaf49.chunk.css",
+    "main.js": "/book-collection/static/js/main.f15f13fe.chunk.js",
+    "main.js.map": "/book-collection/static/js/main.f15f13fe.chunk.js.map",
+    "runtime-main.js": "/book-collection/static/js/runtime-main.c64ae6b6.js",
+    "runtime-main.js.map": "/book-collection/static/js/runtime-main.c64ae6b6.js.map",
+    "static/js/2.4e9be9bf.chunk.js": "/book-collection/static/js/2.4e9be9bf.chunk.js",
+    "static/js/2.4e9be9bf.chunk.js.map": "/book-collection/static/js/2.4e9be9bf.chunk.js.map",
+    "static/js/3.f4424609.chunk.js": "/book-collection/static/js/3.f4424609.chunk.js",
+    "static/js/3.f4424609.chunk.js.map": "/book-collection/static/js/3.f4424609.chunk.js.map",
+    "index.html": "/book-collection/index.html",
+    "static/css/main.6b3aaf49.chunk.css.map": "/book-collection/static/css/main.6b3aaf49.chunk.css.map",
+    "static/js/2.4e9be9bf.chunk.js.LICENSE.txt": "/book-collection/static/js/2.4e9be9bf.chunk.js.LICENSE.txt",
+    "static/media/delete.e23797be.svg": "/book-collection/static/media/delete.e23797be.svg",
+    "static/media/edit.3c70b537.svg": "/book-collection/static/media/edit.3c70b537.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c64ae6b6.js",
+    "static/js/2.4e9be9bf.chunk.js",
+    "static/css/main.6b3aaf49.chunk.css",
+    "static/js/main.f15f13fe.chunk.js"
+  ]
+}
