@@ -15,7 +15,7 @@ export default function Credits() {
             </div>
             <div className='credit'>
                 Icons made by 
-                <a rel="noreferrer noopener" target="_blank" href="" title="Kiranshastry"> Kiranshastry </a> 
+                <a  href="#" title="Kiranshastry"> Kiranshastry </a> 
                 from 
                 <a rel="noreferrer noopener" target="_blank" href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
             </div>
