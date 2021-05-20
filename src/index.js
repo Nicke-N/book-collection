@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { DataProvider } from './context/DataContext';
 
 ReactDOM.render(
-  <BrowserRouter basename='/book-collection'>
+  <BrowserRouter>
     <React.StrictMode>
       <DataProvider>
         <App />
