@@ -7,13 +7,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { DataProvider } from './context/DataContext';
 
 ReactDOM.render(
-  <BrowserRouter>
-  {/* <React.StrictMode> */}
-  <DataProvider>
-  <App />
-  </DataProvider>
+  <BrowserRouter basename='/book-collection'>
+    <React.StrictMode>
+      <DataProvider>
+        <App />
+      </DataProvider>
 
-  {/* </React.StrictMode> */}
+    </React.StrictMode>
   </BrowserRouter>
   ,
   document.getElementById('root')
