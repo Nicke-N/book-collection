@@ -5,7 +5,7 @@ import { goBack, showModal } from '../kit/Functions'
 import { DataContext } from '../context/DataContext'
 import PanelPlank from './PanelPlank'
 
-export default function NavigationPanel(props) {
+export default function NavigationPanel() {
     const { authorized, setAuthorized, currentLocation, setModalData} = useContext(DataContext)
 
     useEffect(() => {

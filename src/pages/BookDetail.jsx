@@ -1,9 +1,8 @@
 import React, { useEffect, useContext } from 'react'
 import { getBook } from '../kit/api/Book'
 import './BookDetail.css'
-import Modal from '../components/Modal'
 import { DataContext } from '../context/DataContext'
-import { authenticated, showModal, goBack } from '../kit/Functions'
+import { authenticated, showModal } from '../kit/Functions'
 import ButtonEdit from '../components/ButtonEdit'
 import ButtonRemove from '../components/ButtonRemove'
 
