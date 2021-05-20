@@ -4,20 +4,15 @@
   font-family: 'Tangerine', cursive;
   
 }
-html {
 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 .App {
   height: calc(100%);
   
 }
-body {
+ body {
   margin: 2vh 25vw 0 25vw;
   background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
+  min-height: 98vh;
 }
 
 h1 {
@@ -28,6 +23,7 @@ ul {
 }
 a {
   text-decoration: none;
+  outline: none;
 }
 a:hover {
   transition: all;
@@ -63,12 +59,10 @@ a:hover {
 }
 
 input {
-  /* height: calc(1vw + 1vh);
-  width: calc(7vw + 4vh); */
   font-size: 1vw;
- 
+  border: none;
   outline: none;
-  border: solid 0.1vw grey;
+  background-color: #FFE6D0;
 }
 
 .edit-detail {
@@ -83,26 +77,37 @@ button {
   border: none;
   outline: none;
   font-size: 1.5vw;
+ ;
 }
 select {
   border: none;
   outline: none;
+  background-color: #FFE6D0;
 }
 textarea {
   width: calc(8vw + 6vh);
   height: calc(3vw + 2vh);
   resize: none;
   font-size: calc(1vw + 1vh);
+   background-color: #FFE6D0;
+       outline: none;
+    
+    border: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+textarea::-webkit-scrollbar {
+  display: none;
 }
 .accept-btn {
-  background-color: rgb(20, 225, 20);
+  background-color: #FFE6D0;
 }
 .accept-btn:hover {
   background-color: palegreen;
 }
 
 .reject-btn {
-  background-color: rgb(225, 20, 20);
+  background-color: rgb(189, 83, 34);
 
 }
 
@@ -150,7 +155,7 @@ textarea {
 #user-info-panel {
   position: fixed;
   left: 82%;
-  top: 20%;
+  top: 7%;
   width: 15vw;
   text-align: right;
 }

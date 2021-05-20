@@ -11,24 +11,23 @@
     height: 100%;
     width: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.6);
 
   }
   
   .modal-content{
-    color: #b7b7b7;
-    background-color: white;
+    color: #FFE6D0;
+    background-color: rgb(197, 108, 67);
     width: calc(15vw + 10vh);
     height: calc(30vw + 30vh);
     box-shadow: 0 1vh 1.5vh 0 rgba(0,0,0,0.2),0 1vh 2vh 0 rgba(0,0,0,0.17);
-    border: solid 1px white;
-    border-radius: 1vw;
+    
     z-index: 10000;
   }
   
   .modal-header{
-    background: white;
-    color: #b7b7b7;
+    background: rgb(197, 108, 67);
+    color: #FFE6D0;
     border-radius: 1vw;
     height: 15%;
     display: grid;

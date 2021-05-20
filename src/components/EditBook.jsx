@@ -243,7 +243,7 @@ export default function EditBook(props) {
                         <input className='book-input edit-detail' id='author' type='text' maxLength='15' />
                         <label className='book-label'>Publisher</label>
                         <input className='book-input edit-detail' id='publisher' type='text' maxLength='15' />
-                        <label>Genre</label>
+                        <label className='book-label'>Genre</label>
                         <input className='book-input edit-detail' type="text" id='genre'/>
                         <div id='genre-container'></div>
                         <label className='book-label'>Series</label>
