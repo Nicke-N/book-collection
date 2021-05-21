@@ -111,42 +111,23 @@ export default function EditBook(props) {
     const ratingHover = (event) => {
 
         var children, index
-        if (event.path) {
-            if (event.path[1].children.length > 0) {
-
-                children = event.path[1].children
-               
-                
-            }
-        } else if (event.target.parentElement.children){
+  
             children = event.target.parentElement.children
-        }
+        
 
         index = Array.from(children).indexOf(event.currentTarget)
         const currentClassList = Array.from(children[index].classList)
         if (currentClassList.length > 2) {
             for (let i = 0; i < 5; i++) {
-                var classList
-
-                if (event.path) {
-                    classList = Array.from(event.path[1].children[i].classList)
-                } else {
-                    classList = Array.from(event.target.parentElement.children[i].classList)
-                }
-
-                if (i <= index && event.path) {
-
-                    event.path[1].children[i].classList.add('checked')
-                } else if (i <= index && event.target.parentElement.children) {
+                var classList = Array.from(event.target.parentElement.children[i].classList)
+                
+                    if (i <= index && event.target.parentElement.children) {
                 
                     event.target.parentElement.children[i].classList.add('checked')
                 } else {
-                    if (event.path) {
-                        if (classList.includes('checked')) event.path[1].children[i].classList.remove('checked')
-                    } else {
-                        if (classList.includes('checked')) event.target.parentElement.children[i].classList.remove('checked')
-                    }
                    
+                    if (classList.includes('checked')) event.target.parentElement.children[i].classList.remove('checked')
+                                       
                 }
             }
         }
@@ -155,9 +136,7 @@ export default function EditBook(props) {
     }
     const ratingClick = (event) => {
         var children, index
-        if (event.path) {
-            children = event.path[1].children
-        } else if (event.target.parentElement.children){
+        if (event.target.parentElement.children){
             children = event.target.parentElement.children
         }
         index = Array.from(children).indexOf(event.currentTarget)
@@ -175,7 +154,6 @@ export default function EditBook(props) {
 
         if (!redoImage) {
             
- 
             const span = document.createElement('img')
 
             span.src = 'https://image.flaticon.com/icons/png/512/44/44650.png'
@@ -187,18 +165,8 @@ export default function EditBook(props) {
        
     }
     const ratingUnFocus = (event) => {
-        if (event.path) {
-            if (event.path[1].children.length > 0) {
 
-                for (let i = 0; i < 5; i++) {
-    
-                    const classList = Array.from(event.path[1].children[i].classList)
-    
-                    if (classList.includes('checked'))
-                        event.path[1].children[i].classList.remove('checked')
-                }
-            }
-        } else {
+ 
             if (event.target.parentElement.children.length > 0) {
 
                 for (let i = 0; i < 5; i++) {
@@ -209,7 +177,7 @@ export default function EditBook(props) {
                     event.target.parentElement.children[i].classList.remove('checked')
                 }
             }
-        }
+        
        
     }
     const removeOnClick = (e) => {
