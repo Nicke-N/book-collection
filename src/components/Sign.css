@@ -16,3 +16,6 @@
 .sign-btn {
     margin-top: calc(0.5vw + 0.5vh);
 }
+#error {
+    font-size: calc(1vw + 1vh);
+}
