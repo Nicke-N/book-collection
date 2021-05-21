@@ -27,58 +27,72 @@ export default function AddBook() {
     }
     const ratingHover = (event) => {
 
+        var children, index
         if (event.path) {
             if (event.path[1].children.length > 0) {
 
-                const children = event.path[1].children
-                const index = Array.from(children).indexOf(event.currentTarget)
-                const currentClassList = Array.from(children[index].classList)
-                if (currentClassList.length > 2) {
-    
-                    for (let i = 0; i < 5; i++) {
-    
-                        const classList = Array.from(event.path[1].children[i].classList)
-    
-                        if (i <= index) {
-                            event.path[1].children[i].classList.add('checked')
-                        } else {
-                            if (classList.includes('checked'))
-                                event.path[1].children[i].classList.remove('checked')
-                        }
-    
+                children = event.path[1].children
+               
+                
+            }
+        } else if (event.target.parentElement.children){
+            children = event.target.parentElement.children
+        }
+
+        index = Array.from(children).indexOf(event.currentTarget)
+        const currentClassList = Array.from(children[index].classList)
+        if (currentClassList.length > 2) {
+            for (let i = 0; i < 5; i++) {
+                var classList
+
+                if (event.path) {
+                    classList = Array.from(event.path[1].children[i].classList)
+                } else {
+                    classList = Array.from(event.target.parentElement.children[i].classList)
+                }
+
+                if (i <= index && event.path) {
+
+                    event.path[1].children[i].classList.add('checked')
+                } else if (i <= index && event.target.parentElement.children) {
+                
+                    event.target.parentElement.children[i].classList.add('checked')
+                } else {
+                    if (event.path) {
+                        if (classList.includes('checked')) event.path[1].children[i].classList.remove('checked')
+                    } else {
+                        if (classList.includes('checked')) event.target.parentElement.children[i].classList.remove('checked')
                     }
-    
+                   
                 }
             }
-    
-        } else {
-            console.log(event.target.parentElement.childrenNodes)
         }
         
+
     }
     const ratingClick = (event) => {
+        var children, index
         if (event.path) {
-            const children = event.path[1].children
-            const index = Array.from(children).indexOf(event.currentTarget)
-    
-            for (let element = 0; element < HTMLcollection.length; element++) {
-    
-                HTMLcollection[element].removeEventListener('mouseover', ratingHover)
-                HTMLcollection[element].removeEventListener('mouseleave', ratingUnFocus)
-                HTMLcollection[element].removeEventListener('click', ratingClick)
-    
-            }
-
-            rating = index + 1
-        } else {
-            console.log(event)
+            children = event.path[1].children
+        } else if (event.target.parentElement.children){
+            children = event.target.parentElement.children
         }
-      
+        index = Array.from(children).indexOf(event.currentTarget)
+        for (let element = 0; element < HTMLcollection.length; element++) {
+    
+            HTMLcollection[element].removeEventListener('mouseover', ratingHover)
+            HTMLcollection[element].removeEventListener('mouseleave', ratingUnFocus)
+            HTMLcollection[element].removeEventListener('click', ratingClick)
+
+        }
+
+        rating = index + 1  
 
         const redoImage = document.getElementById('redo-image')
 
         if (!redoImage) {
-
+            
+ 
             const span = document.createElement('img')
 
             span.src = 'https://image.flaticon.com/icons/png/512/44/44650.png'
@@ -87,7 +101,7 @@ export default function AddBook() {
             span.addEventListener('click', addEventListeners)
             document.getElementById('ratingContainer').appendChild(span)
         }
-        
+       
     }
     const ratingUnFocus = (event) => {
         if (event.path) {
@@ -102,9 +116,18 @@ export default function AddBook() {
                 }
             }
         } else {
-            console.log(event)
+            if (event.target.parentElement.children.length > 0) {
+
+                for (let i = 0; i < 5; i++) {
+    
+                    const classList = Array.from(event.target.parentElement.children[i].classList)
+    
+                    if (classList.includes('checked'))
+                    event.target.parentElement.children[i].classList.remove('checked')
+                }
+            }
         }
-        
+       
     }
     const post = async () => {
         var book = {}
