@@ -20,7 +20,7 @@ export default function Register() {
             description: event.target[6].value
         }
 
-
+        document.getElementById('error').textContent = ''
         await register(details)
             .then(async () => {
                 const registration = sessionStorage.getItem('registration')

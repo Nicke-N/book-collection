@@ -11,7 +11,7 @@ export default function Login() {
     const submit = async (event) =>  {
         event.preventDefault()
         const details = {username: event.target[0].value, password: event.target[1].value} 
-
+        document.getElementById('error').textContent = ''
         await login(details)
         .then( async() => {
             
