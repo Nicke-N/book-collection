@@ -10,5 +10,11 @@
     text-align: center;
 }
 .credit {
-    font-size: calc(2vw + 2vh);
+    font-size: calc(2vw + 3vh);
+}
+
+@media screen and (max-width: 500px) {
+    #credits-container {
+        justify-content: flex-start;
+    }
 }

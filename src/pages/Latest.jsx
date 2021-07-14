@@ -20,10 +20,10 @@ export default function BookCollection(props) {
 
     return (
         <div id='collection-page'>
-            <div id='top-container'>
-                <div>
-                    <h1 className='latest-title'>Books read recently</h1>
-                </div>
+            <div id='title-container'>
+                
+                <h1 className='latest-title'>Latest reads</h1>
+               
             </div>
             
             <div className='section-divider' />
