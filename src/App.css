@@ -9,7 +9,7 @@
   height: calc(100%);
 }
  body {
-  margin: 2vh 25vw 0 25vw;
+  margin: 2vh 25vw 2vh 25vw;
 }
 html {
   background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
