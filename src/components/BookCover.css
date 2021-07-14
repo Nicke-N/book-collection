@@ -1,5 +1,5 @@
 .cover {
-    width: 18vw;
+    width: 9vw;
     height: 24vh;
 }
 .collection {
@@ -63,12 +63,8 @@ a:hover + .hidden-book {
 
 @media screen and (max-width: 500px) {
     .cover {
-        width: calc(3vw + 12vh);
-        height:  calc(6vw + 18vh);
-    }
-    .collection {
-        height: 22vh;
-        
+        width: 24vw;
+        height: 15vh;
     }
     .cover-collection {
         width: 90%;

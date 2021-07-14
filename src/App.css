@@ -16,7 +16,7 @@
 }
 
 h1 {
-  font-size: 7vh;
+  font-size: calc(2vw + 3vh);
  }
 ul {
   list-style: none;
@@ -164,6 +164,6 @@ textarea::-webkit-scrollbar {
   #navigation-panel {
 
     right: 93%;
-
+    top: 18.5%;
   }
 }
