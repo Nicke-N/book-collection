@@ -149,7 +149,7 @@ textarea::-webkit-scrollbar {
 #navigation-panel {
   position: fixed;
   right: 85%;
-  top: 20%;
+  top: 24%;
   width: 15vw;
 }
 #user-info-panel {
@@ -162,9 +162,8 @@ textarea::-webkit-scrollbar {
 
 @media screen and (max-width: 500px) {
   #navigation-panel {
-    position: fixed;
+
     right: 93%;
-    top: 20%;
-    width: 15vw;
+
   }
 }
