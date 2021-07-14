@@ -7,14 +7,14 @@
 
 .App {
   height: calc(100%);
-  
 }
  body {
   margin: 2vh 25vw 0 25vw;
-  background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
-  min-height: 98vh;
 }
-
+html {
+  background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
+  min-height: 99.9vh;
+}
 h1 {
   font-size: calc(2vw + 3vh);
  }
@@ -164,6 +164,11 @@ textarea::-webkit-scrollbar {
   #navigation-panel {
 
     right: 93%;
-    top: 18.5%;
+    top: 27.8%;
+  }
+  #user-info-panel {
+
+    top: 16.5%;
+
   }
 }
