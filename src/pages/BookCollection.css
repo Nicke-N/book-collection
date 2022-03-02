@@ -50,3 +50,14 @@
 #list-container {
     height: 100%;
 }
+
+@media screen and (max-width: 500px) {
+    #book-list {
+        grid-template-columns: repeat( 2, 1fr);
+        grid-gap: 0;    
+    }
+
+    .top-container {
+        grid-template-columns: 1fr 2fr;
+    }
+}

@@ -7,16 +7,16 @@
 
 .App {
   height: calc(100%);
-  
 }
  body {
-  margin: 2vh 25vw 0 25vw;
-  background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
-  min-height: 98vh;
+  margin: 2vh 25vw 2vh 25vw;
 }
-
+html {
+  background-image:linear-gradient( #FFE6D0, rgb(197, 108, 67));
+  min-height: 99.9vh;
+}
 h1 {
-  font-size: 7vh;
+  font-size: calc(2vw + 3vh);
  }
 ul {
   list-style: none;
@@ -149,7 +149,7 @@ textarea::-webkit-scrollbar {
 #navigation-panel {
   position: fixed;
   right: 85%;
-  top: 20%;
+  top: 24%;
   width: 15vw;
 }
 #user-info-panel {
@@ -158,4 +158,17 @@ textarea::-webkit-scrollbar {
   top: 7%;
   width: 15vw;
   text-align: right;
+}
+
+@media screen and (max-width: 500px) {
+  #navigation-panel {
+
+    right: 93%;
+    top: 27.8%;
+  }
+  #user-info-panel {
+
+    top: 16.5%;
+
+  }
 }

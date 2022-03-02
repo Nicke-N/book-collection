@@ -12,6 +12,8 @@ export default function Login() {
         event.preventDefault()
         const details = {username: event.target[0].value, password: event.target[1].value} 
         document.getElementById('error').textContent = ''
+        sessionStorage.removeItem('error')
+        
         await login(details)
         .then( async() => {
             

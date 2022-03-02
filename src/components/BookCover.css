@@ -60,3 +60,14 @@ a:hover + .hidden-book {
 .hidden-book:hover {
     display:block;
 }
+
+@media screen and (max-width: 500px) {
+    .cover {
+        width: 24vw;
+        height: 15vh;
+    }
+    .cover-collection {
+        width: 90%;
+        height: 80%;
+    }
+}

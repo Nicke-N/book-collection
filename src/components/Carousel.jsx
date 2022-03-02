@@ -12,7 +12,24 @@ export default function Carousel() {
     const currentYear = date.getFullYear()
     const months = [ "January", "February", "March", "April", "May", "June", 
     "July", "August", "September", "October", "November", "December" ]
+    const width  = window.innerWidth || document.documentElement.clientWidth || 
+        document.body.clientWidth;
+ 
+    var bookListWidth, bookListSteps = 0, bookAmount= 0, bookAmountVisible, widthIncrease, move
     
+    if (width <= 500) {
+
+        bookListWidth = 59
+        widthIncrease = 60
+        bookAmountVisible = 5
+        move = 26
+    } else {
+        bookListWidth = 25
+        widthIncrease = 26
+        bookAmountVisible = 2
+        move = 10
+    }
+   
     if (collection) {
         var carousels = document.querySelectorAll('.book-carousel');
         if (carousels.length > 0) {
@@ -31,17 +48,12 @@ export default function Carousel() {
         function carouselize(carousel, array) {
 
             var bookList = carousel.querySelector('.carousel-book-list');
-            var bookListWidth = 59;
-            var bookListSteps = 0;
-            var bookAmount = 0;
-            var bookAmountVisible = 5;
             var carouselPrev = carousel.querySelector('.carousel-book-next');
             var carouselNext = carousel.querySelector('.carousel-book-prev');
-    
-            //Count all the products
-            [].forEach.call(array, function (product) {
+
+            [].forEach.call(array, function () {
                 bookAmount++;
-                bookListWidth += 60;
+                bookListWidth += widthIncrease;
                 bookList.style.width = bookListWidth + "vw";
             });
     
@@ -58,11 +70,9 @@ export default function Carousel() {
                     moveBookList();
                 }
             }
-    
-            // This is a bit hacky, let me know if you find a better way to do this!
-            // Move the carousels book-list
+
             function moveBookList() {
-                bookList.style.transform = "translateX(-" + 10 * bookListSteps + "vw)";
+                bookList.style.transform = "translateX(-" + move * bookListSteps + "vw)";
             }
         }
     }

@@ -40,3 +40,14 @@
 .guest-rate-btn {
     width: calc(5vw + 3vh)
 }
+
+@media screen and (max-width: 500px) {
+
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}

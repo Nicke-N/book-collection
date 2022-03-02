@@ -54,16 +54,17 @@ export default function BookList() {
             <div className='top-container'>
                 <div id='filterOptions'>
                     <select name="filter" id="filter">
+                        <option className='option' value="genre">Genre</option>
                         <option className='option' value="author">Author</option>
                         <option className='option' value="title">Title</option>
                         <option className='option' value="publisher">Publisher</option>
-                        <option className='option' value="genre">Genre</option>
                     </select>
                 </div>
                 <div id='search-field'>
                     <input id='search' type="text" maxLength='50' onChange={searchHandler} />
                 </div>     
             </div>
+
             <div className='section-divider'></div>
 
             <div id='book-list'>
@@ -82,13 +83,14 @@ export default function BookList() {
                                 added = true
                                 return <BookCover key={element[0]} data={element[1]} />
                             }
-                         
+                             
                         })
                     })
                     : collection && Object.entries(collection).map((element) => <BookCover key={element[0]} data={element[1]} />)
 
                 }
             </div>
+        
         </div>
 
     )

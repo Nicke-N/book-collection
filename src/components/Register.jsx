@@ -21,6 +21,8 @@ export default function Register() {
         }
 
         document.getElementById('error').textContent = ''
+        sessionStorage.removeItem('error')
+
         await register(details)
             .then(async () => {
                 const registration = sessionStorage.getItem('registration')
