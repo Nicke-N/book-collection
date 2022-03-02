@@ -16,11 +16,11 @@ function App() {
 
   const { setUserIP, modalData } = useContext(DataContext)
 
-  // useEffect(() => {
-  //   fetch('https://api.ipify.org?format=json')
-  //     .then(res => res.json())
-  //     .then(data => setUserIP(data))
-  // }, [])
+  useEffect(() => {
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => setUserIP(data))
+  }, [])
 
 
   return (
