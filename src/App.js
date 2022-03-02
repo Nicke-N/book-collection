@@ -16,11 +16,11 @@ function App() {
 
   const { setUserIP, modalData } = useContext(DataContext)
 
-  useEffect(() => {
-    fetch('https://api.ipify.org?format=json')
-      .then(res => res.json())
-      .then(data => setUserIP(data))
-  }, [])
+  // useEffect(() => {
+  //   fetch('https://api.ipify.org?format=json')
+  //     .then(res => res.json())
+  //     .then(data => setUserIP(data))
+  // }, [])
 
 
   return (
@@ -29,11 +29,11 @@ function App() {
       <NavigationPanel />
       <ProfilePanel />
       <Routes>
-        <Route exact path="/collection/:id" component={<BookDetail />} />
-        <Route exact path="/credits" component={<Credits />} />
-        <Route exact path="/latest" component={<Latest />} />
-        <Route exact path="/profile" component={<Profile />} />
-        <Route exact path="/" component={<BookCollection />} />
+        <Route exact path="/collection/:id" element={<BookDetail />} />
+        <Route exact path="/credits" element={<Credits />} />
+        <Route exact path="/latest" element={<Latest />} />
+        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/" element={<BookCollection />} />
       </Routes>
       <Modal data={modalData} />
     </div>

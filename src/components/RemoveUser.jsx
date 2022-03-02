@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
 import { closeModal } from '../kit/Functions'
 import { deleteUser } from '../kit/api/User'
@@ -8,7 +8,7 @@ import './Remove.css'
 export default function RemoveUser() {
 
     const { userDetails, setRemove, setAuthorized } = useContext (DataContext)
-    const history = useHistory()
+    const navigate = useNavigate()
     const removeAccount = async () => {
 
         await deleteUser(userDetails._id)
@@ -16,7 +16,7 @@ export default function RemoveUser() {
         closeModal()
         setAuthorized(false)
         sessionStorage.removeItem('token')
-        history.push('/register')
+        navigate('/register')
        
     }
 

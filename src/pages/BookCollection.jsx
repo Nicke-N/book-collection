@@ -10,7 +10,7 @@ export default function BookList() {
     const { collection, setCollection, searchVal, setSearchVal, filterOption, setFilterOption, authorized , setAuthorized, currentBook, type } = useContext(DataContext)
 
     var added
-
+    console.log(collection)
     useEffect(() => {
         if (!collection || Object.keys(collection).length === 0) {
             fetchData()

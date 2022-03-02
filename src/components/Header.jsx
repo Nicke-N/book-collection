@@ -7,7 +7,7 @@ export default function Header() {
             <Helmet>
                 <meta charSet="utf-8" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-                <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+                {/* <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getip"></script> */}
                 <title>My Collection</title>
             </Helmet>
         </div>

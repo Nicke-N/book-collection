@@ -78,11 +78,11 @@ export default function NavigationPanel() {
                     </li>
                     <PanelPlank />
                     <li>
-                        <Link onClick={goBack}>
+                        <a href='#' onClick={goBack}>
                             <div className='nav-text'>
                                 Return
                             </div>
-                        </Link>
+                        </a>
                     </li>
                     <PanelPlank />
                 </ul>
@@ -92,33 +92,33 @@ export default function NavigationPanel() {
                     {authorized ?
                     <>
                         <li>
-                            <Link onClick={logout}>
+                            <a href='#' onClick={logout}>
                                 <div className='nav-text'>
                                     Logout
                             </div>
-                            </Link>
+                            </a>
                         </li>
                         <PanelPlank />
                         </>
                         :
                         <>
                         <li>
-                            <Link onClick={loginModal}>
+                            <a href='#' onClick={loginModal}>
                                 <div className='nav-text'>
                                     Login
                             </div>
-                            </Link>
+                            </a>
                         </li>
                         <PanelPlank />
                         </>
                     }
 
                     <li>
-                        <Link onClick={registerModal}>
+                        <a href='#' onClick={registerModal}>
                             <div className='nav-text'>
                                 Register
                             </div>
-                        </Link>
+                        </a>
                     </li>
                     <PanelPlank />
                 </ul>
@@ -128,11 +128,11 @@ export default function NavigationPanel() {
                     <>
                     <ul>
                         <li>
-                            <Link onClick={addBookModal}>
+                            <a href='#' onClick={addBookModal}>
                                 <div className='nav-text'>
                                     Add book
                             </div>
-                            </Link>
+                            </a>
                         </li>
                         <PanelPlank />
                     </ul>
