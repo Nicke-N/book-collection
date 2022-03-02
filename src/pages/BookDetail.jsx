@@ -5,10 +5,11 @@ import { DataContext } from '../context/DataContext'
 import { authenticated, showModal } from '../kit/Functions'
 import ButtonEdit from '../components/ButtonEdit'
 import ButtonRemove from '../components/ButtonRemove'
+import { useParams } from 'react-router-dom'
 
 export default function BookDetail(props) {
-
-    const bookID = props.match.params.id
+    const { id } = useParams()
+    const bookID = id
 
     const { authorized, setAuthorized, currentBook, setCurrentBook, setModalData, modalData } = useContext(DataContext)
     var guestRating = 0, voters, average
